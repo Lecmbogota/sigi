@@ -1,0 +1,41 @@
+actualizar porcentajes y meta
+UPDATE
+    productividad
+    INNER JOIN estudios ON productividad.estudio_prod = estudios.Estudio
+SET
+    productividad.meta_prod = estudios.TME * productividad.total_horas_trabajadas_prod,
+    productividad.meta_prod = (
+        SELECT
+            FLOOR(meta_prod)
+    ),
+    productividad.porcentaje_prod = (
+        (
+            productividad.enc_realizadas_prod / productividad.meta_prod
+        ) * 100
+    ),
+    productividad.porcentaje_prod = (
+        SELECT
+            (FORMAT(productividad.porcentaje_prod, 0))
+    );
+
+insertar registro contados
+INSERT INTO
+    productividad (
+        enc_realizadas_prod,
+        agente_prod,
+        estudio_prod,
+        fecha_prod
+    )
+SELECT
+    COUNT(ee_estudio) ee_estatus,
+    ee_encuestador,
+    ee_estudio,
+    ee_fecha
+FROM
+    ee_carga
+WHERE
+    ee_estatus = 1
+GROUP BY
+    ee_estudio,
+    ee_fecha,
+    ee_encuestador;
