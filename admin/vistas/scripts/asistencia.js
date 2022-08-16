@@ -19,7 +19,7 @@ $("#formulario").on("submit",function(e){
 
 
 
-//funcion listar
+//listar Reporte General
 function listar(){
 	tabla=$('#tbllistado').dataTable({
 		"aProcessing": true,//activamos el procedimiento del datatable
@@ -28,8 +28,7 @@ function listar(){
 		buttons: [
                   'copyHtml5',
                   'excelHtml5',
-                  'csvHtml5',
-                  'pdf'
+
 		],
 		"ajax":
 		{
@@ -41,7 +40,7 @@ function listar(){
 			}
 		},
 		"bDestroy":true,
-		"iDisplayLength":200,//paginacion
+		"iDisplayLength":10,//paginacion
 		"order":[[0,"desc"]]//ordenar (columna, orden)
 	}).DataTable();
 }
@@ -66,7 +65,7 @@ function listaru(){
 			}
 		},
 		"bDestroy":true,
-		"iDisplayLength":200,//paginacion
+		"iDisplayLength":10,//paginacion
 		"order":[[0,"desc"]]//ordenar (columna, orden)
 	}).DataTable();
 }
@@ -99,7 +98,7 @@ var  fecha_inicio = $("#fecha_inicio").val();
 			}
 		},
 		"bDestroy":true,
-		"iDisplayLength":200,//paginacion
+		"iDisplayLength":10,//paginacion
 		"order":[[0,"desc"]]//ordenar (columna, orden)
 	}).DataTable();
 }

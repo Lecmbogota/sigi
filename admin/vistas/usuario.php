@@ -60,14 +60,14 @@ require 'header.php';
                                             <label for="">Nombres (*):</label>
                                             <input class="form-control" type="hidden" name="idusuario" id="idusuario">
                                             <input class="form-control" type="text" name="nombre" id="nombre"
-                                                maxlength="100" placeholder="Nombres" required>
+                                                maxlength="100" placeholder="Nombres" onkeyup="this.value = this.value.toUpperCase();" required>
                                         </div>
 
 
                                         <div class="form-group col-lg-2">
                                             <label for="">Apellidos (*):</label>
                                             <input class="form-control" type="text" name="apellidos" id="apellidos"
-                                                maxlength="100" placeholder="Apellidos" required>
+                                                maxlength="100" placeholder="Apellidos" onkeyup="this.value = this.value.toUpperCase();"  required>
                                         </div>
                                         <div class="form-group col-lg-3">
                                             <label for="">Email: </label>
@@ -83,16 +83,16 @@ require 'header.php';
                                     <div class="card-body">
                                         <div class="form-group col-lg-12">
                                             <div class="form-group col-lg-6">
-                                            <label class="form-label select-label">Departamento:</label>
+                                            <label class="form-label select-label">Cargo:</label>
                                                 <select class="select" name="idtipousuario" id="idtipousuario" required>
                                                 </select>
                                                 
                                             </div>
 
-                                            <div class="form-group col-lg-6">
+                                            <div class="form-group col-lg-6" hidden>
                                             <label class="form-label select-label">Departamento:</label>
                                                 <select class="select" name="iddepartamento" id="iddepartamento"
-                                                    required>
+                                                    >
                                                 </select>
                                                 
                                             </div>
@@ -141,6 +141,8 @@ require 'header.php';
                                 </div>
                         </form>
                     </div>
+                    </div>
+
                     <!--modal para ver la venta-->
                     <div class="modal fade" id="getCodeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                         aria-hidden="true">

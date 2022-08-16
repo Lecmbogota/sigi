@@ -17,7 +17,7 @@ require 'header.php';
         <div class="col-md-12">
       <div class="box">
 <div class="box-header with-border">
-  <h1 class="box-title">Usuarios</h1>
+  <h1 class="box-title">Reporte de Asistencia General</h1>
   <div class="box-tools pull-right">
     
   </div>
@@ -30,22 +30,13 @@ require 'header.php';
       <th>Opciones</th>
       <th>Código</th>
       <th>Nombres</th>
-      <th>Área</th>
+      <th>apellidos</th>
+      <th>Cargo</th>
       <th>Fecha Hora</th>
       <th>Asistencia</th>
       <th>Fecha</th>
     </thead>
-    <tbody>
-    </tbody>
-    <tfoot>
-      <th>Opciones</th>
-      <th>Código</th>
-      <th>Nombres</th>
-      <th>Área</th>
-      <th>Fecha Hora</th>
-      <th>Asistencia</th>
-      <th>Fecha</th>
-    </tfoot>   
+ 
   </table>
 </div>
 
