@@ -10,15 +10,15 @@ public function __construct(){
 }
 
 //metodo insertar regiustro
-public function insertar($Cliente,$Estudio,$Nivel,$Precio,$Muestra,$Fecha_Inicio_Estudio,$Fecha_Entrega_Estudio,$TMO,$TME,$Estado){
+public function insertar($Cliente,$Estudio,$Nivel,$PCotizacion,$PComision,$Muestra,$Fecha_Inicio_Estudio,$Fecha_Entrega_Estudio,$TMO,$TME,$Estado){
 	date_default_timezone_set('America/Bogota');
-	$sql="INSERT INTO estudios (Cliente,Estudio,Nivel,Precio, Muestra,Fecha_Inicio_Estudio,Fecha_Entrega_Estudio,TMO,TME,Estado) VALUES ('$Cliente','$Estudio','$Nivel','$Precio','$Muestra','$Fecha_Inicio_Estudio','$Fecha_Entrega_Estudio','$TMO','$TME','1')";
+	$sql="INSERT INTO estudios (Cliente,Estudio,Nivel,PCotizacion,PComision, Muestra,Fecha_Inicio_Estudio,Fecha_Entrega_Estudio,TMO,TME,Estado) VALUES ('$Cliente','$Estudio','$Nivel','$PCotizacion','$PComision','$Muestra','$Fecha_Inicio_Estudio','$Fecha_Entrega_Estudio','$TMO','$TME','1')";
 	return ejecutarConsulta($sql);
 
 }
 
-public function editar($id_Estudio,$Cliente,$Estudio,$Nivel,$Precio,$Muestra,$Fecha_Inicio_Estudio,$Fecha_Entrega_Estudio,$TMO,$TME,$Estado,$Fecha_Creacion){
-	$sql="UPDATE estudios SET Cliente='$Cliente',Estudio='$Estudio',Nivel='$Nivel',Precio='$Precio',Muestra='$Muestra',Fecha_Inicio_Estudio='$Fecha_Inicio_Estudio',Fecha_Entrega_Estudio='$Fecha_Entrega_Estudio',TMO='$TMO',TME='$TME',Estado='$Estado' ,Fecha_Creacion='$Fecha_Creacion' WHERE id_Estudio='$id_Estudio'";
+public function editar($id_Estudio,$Cliente,$Estudio,$Nivel,$PCotizacion,$PComision,$Muestra,$Fecha_Inicio_Estudio,$Fecha_Entrega_Estudio,$TMO,$TME,$Estado,$Fecha_Creacion){
+	$sql="UPDATE estudios SET Cliente='$Cliente',Estudio='$Estudio',Nivel='$Nivel',PCotizacion='$PCotizacion',PComision='$PComision',Muestra='$Muestra',Fecha_Inicio_Estudio='$Fecha_Inicio_Estudio',Fecha_Entrega_Estudio='$Fecha_Entrega_Estudio',TMO='$TMO',TME='$TME',Estado='$Estado' ,Fecha_Creacion='$Fecha_Creacion' WHERE id_Estudio='$id_Estudio'";
 	 return ejecutarConsulta($sql);
 
 }

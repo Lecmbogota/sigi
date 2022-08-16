@@ -54,17 +54,17 @@ require_once('../modelos/Usuario.php');
                         <?php if ($_SESSION['tipousuario'] == 'DIRECTOR DE OPERACIONES') {
 ?>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <div class="small-box bg-aqua">
+                            <div class="small-box bg-blue">
 
                                 <a href="estudios.php" class="small-box-footer">
                                     <div class="inner">
                                         <h5 style="font-size: 20px;">
                                             <strong>Estudios</strong>
                                         </h5>
-                                        <p>Creacion, Vizaulizacion, Edicion, Desgarga </p>
+                                        <p>Creacion, Visualizacion, Edicion, Desgarga </p>
                                     </div>
                                     <div class="icon">
-                                        <i class="fa fa-list" aria-hidden="true"></i>
+                                        <i class="fa-handshake-o" aria-hidden="true"></i>
                                     </div>&nbsp;
                                     <div class="small-box-footer">
                                         <i class="fa"></i>
@@ -78,7 +78,7 @@ require_once('../modelos/Usuario.php');
                         <?php if ($_SESSION['tipousuario'] == 'DIRECTORA ADMINISTRATIVA Y FINANCIERA') {
 ?>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <div class="small-box bg-green">
+                            <div class="small-box bg-blue">
 
                                 <a href="asistencia.php" class="small-box-footer">
                                     <div class="inner">
@@ -86,7 +86,7 @@ require_once('../modelos/Usuario.php');
                                             <strong>Lista de Asistencia General</strong>
 
                                         </h5>
-                                        <p>Visualización y Desgarga</p>
+                                        <p>Visualización y Descarga</p>
                                     </div>
                                     <div class="icon">
                                         <i class="fa fa-list" aria-hidden="true"></i>
@@ -99,14 +99,14 @@ require_once('../modelos/Usuario.php');
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <div class="small-box bg-aqua">
+                            <div class="small-box bg-blue">
 
                                 <a href="rptasistencia.php" class="small-box-footer">
                                     <div class="inner">
                                         <h5 style="font-size: 20px;">
                                             <strong>Lista de Asistencia Detallada</strong>
                                         </h5>
-                                        <p>Visualización y Desgarga</p>
+                                        <p>Visualización y Descarga</p>
                                     </div>
                                     <div class="icon">
                                         <i class="fa fa-list" aria-hidden="true"></i>
@@ -119,17 +119,17 @@ require_once('../modelos/Usuario.php');
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <div class="small-box bg-aqua">
+                            <div class="small-box bg-blue">
 
                                 <a href="estudios.php" class="small-box-footer">
                                     <div class="inner">
                                         <h5 style="font-size: 20px;">
                                             <strong>Estudios</strong>
                                         </h5>
-                                        <p>Creacion, Vizaulizacion, Edicion, Desgarga </p>
+                                        <p>Creacion, Visualizacion, Edicion, Descarga </p>
                                     </div>
                                     <div class="icon">
-                                        <i class="fa fa-list" aria-hidden="true"></i>
+                                        <i class="fa fa-book" aria-hidden="true"></i>
                                     </div>&nbsp;
                                     <div class="small-box-footer">
                                         <i class="fa"></i>

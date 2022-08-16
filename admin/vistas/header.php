@@ -98,27 +98,16 @@
                                             individual</a></li>
                                 </ul>
                             </li>
-                            <li class="treeview">
-                                <a href="#">
-                                    <i class="fa fa-clock-o" aria-hidden="true"></i> <span> Dir. Operaciones</span>
-                                    <span class="pull-right-container">
-                                        <i class="fa fa-angle-left pull-right"></i>
-                                    </span>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="estudios.php"><i class="fa fa-laptop" aria-hidden="true"></i>
-                                            <span>DIR. OPERACIONES</span><span class="pull-right-container">
-                                                <i class="fa fa-angle-left pull-right"></i></a>
-                                        </span>
-
-                                    </li>
-                                </ul>
-                            </li>
                         </ul>
-
+                    </li>
+                    <ul class="sidebar-menu tree" data-widget="tree">
+                    <li><a href="verestudios.php"><i class="fa fa-laptop" aria-hidden="true"></i>
+                            <span>DIR. OPERACIONES</span><span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i></a>
+                        </span>
 
                     </li>
-
+                </ul>
                     <li>
                         <a href="../ajax/usuario.php?op=salir"><i class="fa fa-power-off" aria-hidden="true"></i>
                             <span>CERRAR SESION</a>
@@ -159,7 +148,7 @@
                                         individual</a></li>
                             </ul>
                         </li>
-                    
+
                     </ul>
 
 
@@ -195,18 +184,38 @@
                                         Reporte General</a>
                                 </li>
 
-                                
+
                                 <li><a href="rptasistencia.php"><i class="fa fa-pie-chart" aria-hidden="true"></i>
                                         Reporte
                                         individual</a></li>
-                                <li><a href="http://192.168.0.122/sigi/vistas/liderasis.php"><i class="fa fa-pie-chart" aria-hidden="true"></i>
+                                <li><a href="http://192.168.0.122/sigi/vistas/liderasis.php"><i class="fa fa-pie-chart"
+                                            aria-hidden="true"></i>
                                         Control de Asistencia</a></li>
                             </ul>
                         </li>
 
                     </ul>
-                    
-                
+
+                <li>
+                    <a href="../ajax/usuario.php?op=salir"><i class="fa fa-power-off" aria-hidden="true"></i>
+                        <span>CERRAR SESION</a>
+                </li>
+
+                </ul>
+                <?php } ?>
+
+                <?php if ($_SESSION['tipousuario'] == 'LIDER DE GESTION') {
+                        ?>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-users" aria-hidden="true"></i> <span>ADMINISTRACION</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <!--MODULO DE ASISTNCIA-->
+                    <ul class="treeview-menu">
+                    </ul>
 
                 </li>
 

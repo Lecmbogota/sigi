@@ -182,7 +182,7 @@ function mostrar_clave(id_Estudio){
 }
 //funcion para desactivar
 function desactivar(id_Estudio){
-	bootbox.confirm("¿Esta seguro de desactivar este dato?", function(result){
+	bootbox.confirm("¿Esta seguro de Cerrar este Estudio?", function(result){
 		if (result) {
 			$.post("../ajax/estudio.php?op=desactivar", {id_Estudio : id_Estudio}, function(e){
 				bootbox.alert(e);
@@ -193,7 +193,7 @@ function desactivar(id_Estudio){
 }
 
 function activar(id_Estudio){
-	bootbox.confirm("¿Esta seguro de activar este dato?" , function(result){
+	bootbox.confirm("¿Esta seguro de Reactivar este Estudio?" , function(result){
 		if (result) {
 			$.post("../ajax/estudio.php?op=activar", {id_Estudio : id_Estudio}, function(e){
 				bootbox.alert(e);

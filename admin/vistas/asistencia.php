@@ -8,52 +8,49 @@ if (!isset($_SESSION['nombre'])) {
 
 require 'header.php';
  ?>
-    <div class="content-wrapper">
+<div class="content-wrapper">
     <!-- Main content -->
     <section class="content">
+        <ol class="breadcrumb">
+            <li><a href="escritorio.php">VOLVER</a></li>
+            <li class="active"> Reporte General de Asistencia</li>
+        </ol>
+        <!-- Default box -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <!--box-header-->
+                    <!--centro-->
+                    <div class="panel-body table-responsive" id="listadoregistros">
+                        <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
+                            <thead>
+                                <th>Opciones</th>
+                                <th>Código</th>
+                                <th>Nombres</th>
+                                <th>apellidos</th>
+                                <th>Cargo</th>
+                                <th>Fecha Hora</th>
+                                <th>Asistencia</th>
+                                <th>Fecha</th>
+                            </thead>
 
-      <!-- Default box -->
-      <div class="row">
-        <div class="col-md-12">
-      <div class="box">
-<div class="box-header with-border">
-  <h1 class="box-title">Reporte de Asistencia General</h1>
-  <div class="box-tools pull-right">
-    
-  </div>
-</div>
-<!--box-header-->
-<!--centro-->
-<div class="panel-body table-responsive" id="listadoregistros">
-  <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
-    <thead>
-      <th>Opciones</th>
-      <th>Código</th>
-      <th>Nombres</th>
-      <th>apellidos</th>
-      <th>Cargo</th>
-      <th>Fecha Hora</th>
-      <th>Asistencia</th>
-      <th>Fecha</th>
-    </thead>
- 
-  </table>
-</div>
+                        </table>
+                    </div>
 
 
-      </div>
-      </div>
-      <!-- /.box -->
+                </div>
+            </div>
+            <!-- /.box -->
 
     </section>
     <!-- /.content -->
-  </div>
+</div>
 <?php 
 
 require 'footer.php';
  ?>
- <script src="scripts/asistencia.js"></script>
- <?php 
+<script src="scripts/asistencia.js"></script>
+<?php 
 }
 
 ob_end_flush();

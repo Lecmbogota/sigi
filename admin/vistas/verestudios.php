@@ -19,13 +19,6 @@ require 'header.php';
         <div class="row">
             <div class="col-md-12">
                 <div class="box">
-                    <!-- BOTON AGREGAR NUEVO ESTUDIO -->
-                    <div class="box-header with-border">
-                        <h1 class="box-title"><button class="btn btn-success" onclick="mostrarformu(true)"
-                                id="btnagregar"><i class="fa fa-plus-circle"></i>Crear Estudio</button></h1>
-                    </div>
-
-
                     <!-- ENCABEZADOS DE LA TABLA ESTUDIOS  -->
                     <div class="panel-body table-responsive" id="listadoregistros">
                         <table id="tbllist" class="table table-hover table-fixed" width='100%'>
