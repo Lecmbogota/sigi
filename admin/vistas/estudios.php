@@ -43,6 +43,7 @@ require 'header.php';
                                 <th>TMO</th>
                                 <th>TME</th>
                                 <th>ESTATUS</th>
+                                <th>PROGRESO</th>
 
                             </thead>
                         </table>

@@ -16,15 +16,17 @@ $Fecha_Entrega_Estudio = isset( $_POST[ 'Fecha_Entrega_Estudio' ] )? limpiarCade
 $TMO = isset( $_POST[ 'TMO' ] )? limpiarCadena( $_POST[ 'TMO' ] ):'';
 $TME = isset( $_POST[ 'TMO' ] )? limpiarCadena( $_POST[ 'TME' ] ):'';
 $Estado = isset( $_POST[ 'Estado' ] )? limpiarCadena( $_POST[ 'Estado' ] ):'';
+$slash = isset( $_POST[ 'slash' ] )? limpiarCadena( $_POST[ 'slash' ] ):'';
+$Avance_estudio = isset( $_POST[ 'Avance_estudio' ] )? limpiarCadena( $_POST[ 'Avance_estudio' ] ):'';
 
 switch ( $_GET[ 'op' ] ) {
     case 'guardareditar':
 
     if ( empty( $id_Estudio ) ) {
-        $rspta = $estudio->insertar( $Cliente, $Estudio, $Nivel, $PCotizacion,$PComision, $Muestra, $Fecha_Inicio_Estudio, $Fecha_Entrega_Estudio, $TMO, $TME,$Estado);
+        $rspta = $estudio->insertar( $Cliente, $Estudio, $Nivel, $PCotizacion,$PComision, $Muestra, $Fecha_Inicio_Estudio, $Fecha_Entrega_Estudio, $TMO, $TME,$Estado,$slash,$Avance_estudio);
         echo $rspta ? 'Datos del Estudio registrados correctamente' : 'No se pudo registrar todos los datos del Estudio';
     } else {
-        $rspta = $usuario->insertar($Cliente, $Estudio, $Nivel, $PCotizacion,$PComision, $Muestra, $Fecha_Inicio_Estudio, $Fecha_Entrega_Estudio, $TMO, $TME);
+        $rspta = $usuario->insertar($Cliente, $Estudio, $Nivel, $PCotizacion,$PComision, $Muestra, $Fecha_Inicio_Estudio, $Fecha_Entrega_Estudio, $TMO, $TME,$slash,$Avance_estudio);
         echo $rspta ? 'Datos del Estudio actualizados correctamente' : 'No se pudo actualizar los datos del Estudio';
     }
     break;
@@ -53,7 +55,8 @@ switch ( $_GET[ 'op' ] ) {
 				'8'=>$reg->Fecha_Entrega_Estudio,
 				'9'=>$reg->TMO,
 				'10'=>$reg->TME,
-				"11"=>($reg->Estado)?'<span class="label bg-green">En Curso</span>':'<span class="label bg-red">Cerrado</span>'
+				"11"=>($reg->Estado)?'<span class="label bg-green">En Curso</span>':'<span class="label bg-red">Cerrado</span>',
+				"12"=>($reg->Estado)? '<progress value="'.$reg->Avance_estudio.'" max="'.$reg->Muestra.'"></progress>'.$reg->Avance_estudio.''.$reg->slash.''.$reg->Muestra.'':'<progress value="'.$reg->Avance_estudio.'" max="'.$reg->Muestra.'"></progress>'.$reg->Avance_estudio.''.$reg->slash.''.$reg->Muestra.''
 
 			);
 		}

@@ -8,7 +8,18 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>CC | Admin</title>
+    <title>- SIGI -- Sistema Integrado de Gestion Interna -</title>
+
+    <script type="text/javascript">
+    var titleText = document.title;
+
+    function titleMarquee() {
+
+        titleText = titleText.substring(1, titleText.length) + titleText.substring(0, 1);
+        document.title = titleText;
+        setTimeout("titleMarquee()", 200);
+    }
+    </script>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap currently v3.4.1 -->
@@ -32,7 +43,7 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../public/css/_all-skins.min.css">
     <link rel="apple-touch-icon" href="../public/img/apple-touch-icon.png">
-    <link rel="shortcut icon" href="../public/img/favicon.ico">
+    <link rel="shortcut icon" href="http://www.operative.net.co/images/logo.png">
 
     <!-- DATATABLES -->
     <link rel="stylesheet" type="text/css" href="../public/datatables/jquery.dataTables.min.css">
@@ -45,7 +56,7 @@
 </head>
 
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" onload="titleMarquee()">
 
     <div class="wrapper">
         <header class="main-header">
@@ -101,13 +112,13 @@
                         </ul>
                     </li>
                     <ul class="sidebar-menu tree" data-widget="tree">
-                    <li><a href="verestudios.php"><i class="fa fa-laptop" aria-hidden="true"></i>
-                            <span>DIR. OPERACIONES</span><span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i></a>
-                        </span>
+                        <li><a href="verestudios.php"><i class="fa fa-laptop" aria-hidden="true"></i>
+                                <span>DIR. OPERACIONES</span><span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i></a>
+                            </span>
 
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
                     <li>
                         <a href="../ajax/usuario.php?op=salir"><i class="fa fa-power-off" aria-hidden="true"></i>
                             <span>CERRAR SESION</a>
