@@ -10,17 +10,25 @@ public function __construct(){
 }
 
 //metodo insertar regiustro
-public function insertar($Cliente,$Estudio,$Nivel,$Muestra,$Fecha_Inicio_Estudio,$Fecha_Entrega_Estudio,$TMO,$TME){
+public function insertar($Cliente,$Estudio,$Nivel,$Precio,$Muestra,$Fecha_Inicio_Estudio,$Fecha_Entrega_Estudio,$TMO,$TME,$Estado){
 	date_default_timezone_set('America/Bogota');
-	$sql="INSERT INTO estudios (Cliente,Estudio,Nivel,Muestra,Fecha_Inicio_Estudio,Fecha_Entrega_Estudio,TMO,TME) VALUES ('$Cliente','$Estudio','$Nivel','$Muestra','$Fecha_Inicio_Estudio','$Fecha_Entrega_Estudio','$TMO','$TME')";
+	$sql="INSERT INTO estudios (Cliente,Estudio,Nivel,Precio, Muestra,Fecha_Inicio_Estudio,Fecha_Entrega_Estudio,TMO,TME,Estado) VALUES ('$Cliente','$Estudio','$Nivel','$Precio','$Muestra','$Fecha_Inicio_Estudio','$Fecha_Entrega_Estudio','$TMO','$TME','1')";
 	return ejecutarConsulta($sql);
 
 }
 
-public function editar($id_Estudio,$Cliente,$Estudio,$Nivel,$Muestra,$Fecha_Inicio_Estudio,$Fecha_Entrega_Estudio,$TMO,$TME,$Fecha_Creacion){
-	$sql="UPDATE estudios SET Cliente='$Cliente',Estudio='$Estudio',Nivel='$Nivel',Muestra='$Muestra',Fecha_Inicio_Estudio='$Fecha_Inicio_Estudio',Fecha_Entrega_Estudio='$Fecha_Entrega_Estudio',TMO='$TMO',TME='$TME' ,Fecha_Creacion='$Fecha_Creacion' WHERE id_Estudio='$id_Estudio'";
+public function editar($id_Estudio,$Cliente,$Estudio,$Nivel,$Precio,$Muestra,$Fecha_Inicio_Estudio,$Fecha_Entrega_Estudio,$TMO,$TME,$Estado,$Fecha_Creacion){
+	$sql="UPDATE estudios SET Cliente='$Cliente',Estudio='$Estudio',Nivel='$Nivel',Precio='$Precio',Muestra='$Muestra',Fecha_Inicio_Estudio='$Fecha_Inicio_Estudio',Fecha_Entrega_Estudio='$Fecha_Entrega_Estudio',TMO='$TMO',TME='$TME',Estado='$Estado' ,Fecha_Creacion='$Fecha_Creacion' WHERE id_Estudio='$id_Estudio'";
 	 return ejecutarConsulta($sql);
 
+}
+public function desactivar($id_Estudio){
+	$sql="UPDATE estudios SET Estado='0' WHERE id_Estudio='$id_Estudio'";
+	return ejecutarConsulta($sql);
+}
+public function activar($id_Estudio){
+	$sql="UPDATE estudios SET Estado='1' WHERE id_Estudio='$id_Estudio'";
+	return ejecutarConsulta($sql);
 }
 
 //metodo para mostrar registros

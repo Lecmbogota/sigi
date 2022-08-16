@@ -45,6 +45,7 @@ require 'header.php';
                                 <th>CLIENTE</th>
                                 <th>ESTUDIO</th>
                                 <th>NIVEL</th>
+                                <th>PRECIO</th>
                                 <th>MUESTRA</th>
                                 <th>FECHA INICIO</th>
                                 <th>FECHA ENTREGA</th>
@@ -90,6 +91,13 @@ require 'header.php';
                             <div class="form-group col-lg-2 col-md-2 col-xs-2">
                                 <label for="">Muestra:</label>
                                 <input class="form-control" type="text" name="Muestra" id="Muestra" maxlength="100"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
+                            </div>
+
+                            <!-- INPUT PRECIO -->
+                            <div class="form-group col-lg-2 col-md-2 col-xs-2">
+                                <label for="">Precio:</label>
+                                <input class="form-control" type="text" name="Precio" id="Precio" maxlength="100"
                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
                             </div>
 

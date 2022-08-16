@@ -232,43 +232,6 @@
 
                     </li>
                 </ul>
-                
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-users" aria-hidden="true"></i> <span>ADMINISTRACION</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <!--MODULO DE ASISTNCIA-->
-                    <ul class="treeview-menu">
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-clock-o" aria-hidden="true"></i> <span> Asistencias</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="asistencia.php"><i class="fa fa-pie-chart" aria-hidden="true"></i>
-                                        Reporte General</a>
-                                </li>
-
-                                
-                                <li><a href="rptasistencia.php"><i class="fa fa-pie-chart" aria-hidden="true"></i>
-                                        Reporte
-                                        individual</a></li>
-                                <li><a href="http://192.168.0.122/sigi/vistas/liderasis.php"><i class="fa fa-pie-chart" aria-hidden="true"></i>
-                                        Control de Asistencia</a></li>
-                            </ul>
-                        </li>
-
-                    </ul>
-                    
-                
-
-                </li>
-
                 <li>
                     <a href="../ajax/usuario.php?op=salir"><i class="fa fa-power-off" aria-hidden="true"></i>
                         <span>CERRAR SESION</a>

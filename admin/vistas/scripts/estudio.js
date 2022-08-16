@@ -180,7 +180,28 @@ function mostrar_clave(id_Estudio){
             $("#id_Estudio").val(data.id_Estudio);
 		});
 }
+//funcion para desactivar
+function desactivar(id_Estudio){
+	bootbox.confirm("¿Esta seguro de desactivar este dato?", function(result){
+		if (result) {
+			$.post("../ajax/estudio.php?op=desactivar", {id_Estudio : id_Estudio}, function(e){
+				bootbox.alert(e);
+				tabla.ajax.reload();
+			});
+		}
+	})
+}
 
+function activar(id_Estudio){
+	bootbox.confirm("¿Esta seguro de activar este dato?" , function(result){
+		if (result) {
+			$.post("../ajax/estudio.php?op=activar", {id_Estudio : id_Estudio}, function(e){
+				bootbox.alert(e);
+				tabla.ajax.reload();
+			});
+		}
+	})
+}
 
 
 
