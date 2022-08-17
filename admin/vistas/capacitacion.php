@@ -1,13 +1,11 @@
-<?php 
+<?php
 //activamos almacenamiento en el buffer
 ob_start();
 session_start();
 if (!isset($_SESSION['nombre'])) {
-  header("Location: login.html");
-}else{
-
-require 'header.php';
- ?>
+    header('Location: login.html');
+} else {
+    require 'header.php'; ?>
 <div class="content-wrapper">
     <!-- Main content -->
     <section class="content">
@@ -57,11 +55,14 @@ require 'header.php';
 
                     <div class="panel-body" id="formularioregistros">
                         <!-- INICIO FORMULARIO -->
-                        <form action="" name="formulario" id="formulario" method="POST">
+                        <form action="code.php" method="POST">
                             <div class="col-xs-12">
                                 <div class='form-group col-lg-3 '>
                                     <label for="">AGENTE:</label>
-                                    <select name='agente' id='agente' class='form-control select-picker'  data-live-search="true" required>
+                                    <select name="idcliente[]" id="idcliente"  class="form-control selectpicker"
+                                multiple="multiple" data-live-search="true"   required>
+                            </select>
+                                <br>
                                     </select>
                                 </div>
                                 <div class='form-group col-lg-4 ' hidden="hidden">
@@ -70,9 +71,8 @@ require 'header.php';
                                 </div>
                                 <div class='form-group col-lg-5 '>
                                     <label for=''>ESTUDIO:</label>
-                                    <select name='estudio' id='estudio' class='form-control select-picker' required>
-
-                                    </select>
+                                    <input class="form-control" type="text"  name="estudio"
+                                        required>
                                 </div>
                                 <div class="form-group col-lg-2">
                                     <label for="">CALIFICACION:</label>
@@ -92,7 +92,7 @@ require 'header.php';
                                 <button class="btn btn-danger" onclick="cancelarform()" type="button"><i
                                         class="fa fa-arrow-circle-left"></i>
                                     Volver</button>
-                                <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"
+                                <button class="btn btn-primary" type="submit" name="save_multi_select"><i class="fa fa-save"
                                         aling='middle'></i>
                                     Guardar</button>
                             </div>
@@ -108,13 +108,10 @@ require 'header.php';
     </section>
     <!-- /.content -->
 </div>
-<?php 
-
-require 'footer.php';
- ?>
+<?php require 'footer.php'; ?>
 <script src="scripts/capacitacion.js"></script>
-<?php 
+<?php
 }
 
 ob_end_flush();
-  ?>
+?>

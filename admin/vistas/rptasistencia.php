@@ -3,14 +3,9 @@
 ob_start();
 session_start();
 if (!isset($_SESSION['nombre'])) {
-  header("Location: login.html");
-}else{
-
-
-require 'header.php';
-
-
- ?>
+    header('Location: login.html');
+} else {
+    require 'header.php'; ?>
 <div class="content-wrapper">
     <!-- Main content -->
     <section class="content">
@@ -28,12 +23,12 @@ require 'header.php';
                         <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
                             <label>Fecha Inicio</label>
                             <input type="date" class="form-control" name="fecha_inicio" id="fecha_inicio"
-                                value="<?php echo date("Y-m-d"); ?>">
+                                value="<?php echo date('Y-m-d'); ?>">
                         </div>
                         <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
                             <label>Fecha Fin</label>
                             <input type="date" class="form-control" name="fecha_fin" id="fecha_fin"
-                                value="<?php echo date("Y-m-d"); ?>">
+                                value="<?php echo date('Y-m-d'); ?>">
                         </div>
                         <div class="form-inline col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Empleado</label>
@@ -74,14 +69,10 @@ require 'header.php';
     </section>
     <!-- /.content -->
 </div>
-<?php 
-
-
-require 'footer.php';
- ?>
+<?php require 'footer.php'; ?>
 <script src="scripts/asistencia.js"></script>
-<?php 
+<?php
 }
 
 ob_end_flush();
-  ?>
+?>

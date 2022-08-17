@@ -14,24 +14,19 @@ $("#formularioc").on("submit",function(c){
   
 
 
-// SELECT AGENTES Y ESTUDIOS
-   $("document").ready(function(){
-	$( "#estudio" ).load( "listestudios.php" );
-})
 
-$("document").ready(function(){
-	$( "#agente" ).load( "listagentes.php" );
-	$( "#agente" ).change(function(){
-	var id = $("#agente").val();
-	$.get("listadocedula.php",{param_id:id})
-	.done(function(data){
-		$("#documento").html(data);
-	})
-	})
-	
-})
+    $(document).ready(function() {
+        $('idcliente').multiselect({
+            buttonWidth: '400px',
+            dropRight: true
+        });
+    });
 
-
+    //cargamos los items al select cliente
+   $.post("../ajax/asistencia.php?op=selectAgente", function(r){
+   	$("#idcliente").html(r);
+   	$('#idcliente').selectpicker('refresh');
+   });
 
 }
 

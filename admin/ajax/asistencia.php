@@ -1,176 +1,222 @@
-<?php 
+<?php
 require_once "../modelos/Asistencia.php";
-if (strlen(session_id())<1) 
-	session_start();
-$asistencia=new Asistencia();
+if (strlen(session_id()) < 1) {
+  session_start();
+}
+$asistencia = new Asistencia();
 
-$codigo_persona=isset($_POST["codigo_persona"])? limpiarCadena($_POST["codigo_persona"]):"";
-$iddepartamento=isset($_POST["iddepartamento"])? limpiarCadena($_POST["iddepartamento"]):"";
-
-
+$codigo_persona = isset($_POST["codigo_persona"])
+  ? limpiarCadena($_POST["codigo_persona"])
+  : "";
+$iddepartamento = isset($_POST["iddepartamento"])
+  ? limpiarCadena($_POST["iddepartamento"])
+  : "";
 
 switch ($_GET["op"]) {
-	case 'guardaryeditar':
-		$result=$asistencia->verificarcodigo_persona($codigo_persona);
+  case 'guardaryeditar':
+    $result = $asistencia->verificarcodigo_persona($codigo_persona);
 
-      	if($result > 0) {
-	date_default_timezone_set('America/Bogota');
-      		$fecha = date("Y-m-d");
-			$hora = date("H:i:s");
+    if ($result > 0) {
+      date_default_timezone_set('America/Bogota');
+      $fecha = date("Y-m-d");
+      $hora = date("H:i:s");
 
-			$result2=$asistencia->seleccionarcodigo_persona($codigo_persona);
-			   
-     		$par = abs($result2%2);
+      $result2 = $asistencia->seleccionarcodigo_persona($codigo_persona);
 
-          if ($par == 0){ 
-                              
-                $tipo = "Entrada";
-        		$rspta=$asistencia->registrar_entrada($codigo_persona,$tipo);
-    			//$movimiento = 0;
-    			echo $rspta ? '<h3><strong>Nombres: </strong> '. $result['nombre'].' '.$result['apellidos'].'</h3><div class="alert alert-success"> Ingreso registrado '.$hora.'</div>' : 'No se pudo registrar el ingreso';
-   		  }else{ 
-                $tipo = "Salida";
-         		$rspta=$asistencia->registrar_salida($codigo_persona,$tipo);
-     			//$movimiento = 1;
-     			echo $rspta ? '<h3><strong>Nombres: </strong> '. $result['nombre'].' '.$result['apellidos'].'</h3><div class="alert alert-danger"> Salida registrada '.$hora.'</div>' : 'No se pudo registrar la salida';             
-        } 
-        } else {
-		         echo '<div class="alert alert-danger">
+      $par = abs($result2 % 2);
+
+      if ($par == 0) {
+        $tipo = "Entrada";
+        $rspta = $asistencia->registrar_entrada($codigo_persona, $tipo);
+        //$movimiento = 0;
+        echo $rspta
+          ? '<h3><strong>Nombres: </strong> ' .
+            $result['nombre'] .
+            ' ' .
+            $result['apellidos'] .
+            '</h3><div class="alert alert-success"> Ingreso registrado ' .
+            $hora .
+            '</div>'
+          : 'No se pudo registrar el ingreso';
+      } else {
+        $tipo = "Salida";
+        $rspta = $asistencia->registrar_salida($codigo_persona, $tipo);
+        //$movimiento = 1;
+        echo $rspta
+          ? '<h3><strong>Nombres: </strong> ' .
+            $result['nombre'] .
+            ' ' .
+            $result['apellidos'] .
+            '</h3><div class="alert alert-danger"> Salida registrada ' .
+            $hora .
+            '</div>'
+          : 'No se pudo registrar la salida';
+      }
+    } else {
+      echo '<div class="alert alert-danger">
                        <i class="icon fa fa-warning"></i> DEBE SELECCIONAR UNA OPCION!
                          </div>';
-        }
+    }
 
-	break;
+    break;
 
-	
-	case 'mostrar':
-		$rspta=$asistencia->mostrar($idasistencia);
-		echo json_encode($rspta);
-	break;
+  case 'mostrar':
+    $rspta = $asistencia->mostrar($idasistencia);
+    echo json_encode($rspta);
+    break;
 
+  case 'listar':
+    $rspta = $asistencia->listar();
+    //declaramos un array
+    $data = [];
 
-	
-	case 'listar':
-		$rspta=$asistencia->listar();
-		//declaramos un array
-		$data=Array();
+    while ($reg = $rspta->fetch_object()) {
+      $data[] = [
+        "0" =>
+          '<button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>',
+        "1" => $reg->codigo_persona,
+        "2" => $reg->nombre,
+        "3" => $reg->apellidos,
+        "4" => $reg->tipousuario,
+        "5" => $reg->fecha_hora,
+        "6" => $reg->tipo,
+        "7" => $reg->fecha,
+      ];
+    }
 
+    $results = [
+      "sEcho" => 1, //info para datatables
+      "iTotalRecords" => count($data), //enviamos el total de registros al datatable
+      "iTotalDisplayRecords" => count($data), //enviamos el total de registros a visualizar
+      "aaData" => $data,
+    ];
+    echo json_encode($results);
 
-		while ($reg=$rspta->fetch_object()) {
-			$data[]=array(
-				"0"=>'<button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>',
-				"1"=>$reg->codigo_persona,
-				"2"=>$reg->nombre,
-				"3"=>$reg->apellidos,
-				"4"=>$reg->tipousuario,
-				"5"=>$reg->fecha_hora,
-				"6"=>$reg->tipo,
-				"7"=>$reg->fecha
-				);
-		}
+    break;
 
-		$results=array(
-             "sEcho"=>1,//info para datatables
-             "iTotalRecords"=>count($data),//enviamos el total de registros al datatable
-             "iTotalDisplayRecords"=>count($data),//enviamos el total de registros a visualizar
-             "aaData"=>$data); 
-		echo json_encode($results);
+  case 'listaru':
+    $idusuario = $_SESSION["idusuario"];
+    $rspta = $asistencia->listaru($idusuario);
+    //declaramos un array
+    $data = [];
 
-	break;
+    while ($reg = $rspta->fetch_object()) {
+      $data[] = [
+        "0" =>
+          '<button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>',
+        "1" => $reg->codigo_persona,
+        "2" => $reg->nombre,
+        "3" => $reg->departamento,
+        "4" => $reg->fecha_hora,
+        "5" => $reg->tipo,
+        "6" => $reg->fecha,
+      ];
+    }
 
-	case 'listaru':
-    $idusuario=$_SESSION["idusuario"];
-		$rspta=$asistencia->listaru($idusuario);
-		//declaramos un array
-		$data=Array();
+    $results = [
+      "sEcho" => 1, //info para datatables
+      "iTotalRecords" => count($data), //enviamos el total de registros al datatable
+      "iTotalDisplayRecords" => count($data), //enviamos el total de registros a visualizar
+      "aaData" => $data,
+    ];
+    echo json_encode($results);
 
+    break;
 
-		while ($reg=$rspta->fetch_object()) {
-			$data[]=array(
-				"0"=>'<button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>',
-				"1"=>$reg->codigo_persona,
-				"2"=>$reg->nombre,
-				"3"=>$reg->departamento,
-				"4"=>$reg->fecha_hora,
-				"5"=>$reg->tipo,
-				"6"=>$reg->fecha
-				);
-		}
+  case 'listar_asistencia':
+    $fecha_inicio = $_REQUEST["fecha_inicio"];
+    $fecha_fin = $_REQUEST["fecha_fin"];
+    $codigo_persona = $_REQUEST["idcliente"];
+    $rspta = $asistencia->listar_asistencia(
+      $fecha_inicio,
+      $fecha_fin,
+      $codigo_persona
+    );
+    //declaramos un array
+    $data = [];
 
-		$results=array(
-             "sEcho"=>1,//info para datatables
-             "iTotalRecords"=>count($data),//enviamos el total de registros al datatable
-             "iTotalDisplayRecords"=>count($data),//enviamos el total de registros a visualizar
-             "aaData"=>$data); 
-		echo json_encode($results);
+    while ($reg = $rspta->fetch_object()) {
+      $data[] = [
+        "0" => $reg->fecha,
+        "1" => $reg->nombre,
+        "2" => $reg->tipo,
+        "3" => $reg->fecha_hora,
+        "4" => $reg->codigo_persona,
+      ];
+    }
 
-	break;
+    $results = [
+      "sEcho" => 1, //info para datatables
+      "iTotalRecords" => count($data), //enviamos el total de registros al datatable
+      "iTotalDisplayRecords" => count($data), //enviamos el total de registros a visualizar
+      "aaData" => $data,
+    ];
+    echo json_encode($results);
 
-	case 'listar_asistencia':
-    $fecha_inicio=$_REQUEST["fecha_inicio"];
-    $fecha_fin=$_REQUEST["fecha_fin"];
-    $codigo_persona=$_REQUEST["idcliente"]; 
-		$rspta=$asistencia->listar_asistencia($fecha_inicio,$fecha_fin,$codigo_persona);
-		//declaramos un array
-		$data=Array();
+    break;
+  case 'listar_asistenciau':
+    $fecha_inicio = $_REQUEST["fecha_inicio"];
+    $fecha_fin = $_REQUEST["fecha_fin"];
+    $codigo_persona = $_SESSION["codigo_persona"];
+    $rspta = $asistencia->listar_asistencia(
+      $fecha_inicio,
+      $fecha_fin,
+      $codigo_persona
+    );
+    //declaramos un array
+    $data = [];
 
+    while ($reg = $rspta->fetch_object()) {
+      $data[] = [
+        "0" => $reg->fecha,
+        "1" => $reg->nombre,
+        "2" => $reg->tipo,
+        "3" => $reg->fecha_hora,
+        "4" => $reg->codigo_persona,
+      ];
+    }
 
-		while ($reg=$rspta->fetch_object()) {
-			$data[]=array(
-				"0"=>$reg->fecha,
-				"1"=>$reg->nombre,
-				"2"=>$reg->tipo,
-				"3"=>$reg->fecha_hora,
-				"4"=>$reg->codigo_persona
-				);
-		}
+    $results = [
+      "sEcho" => 1, //info para datatables
+      "iTotalRecords" => count($data), //enviamos el total de registros al datatable
+      "iTotalDisplayRecords" => count($data), //enviamos el total de registros a visualizar
+      "aaData" => $data,
+    ];
+    echo json_encode($results);
 
-		$results=array(
-             "sEcho"=>1,//info para datatables
-             "iTotalRecords"=>count($data),//enviamos el total de registros al datatable
-             "iTotalDisplayRecords"=>count($data),//enviamos el total de registros a visualizar
-             "aaData"=>$data); 
-		echo json_encode($results);
+    break;
 
-	break;
-	case 'listar_asistenciau':
-    $fecha_inicio=$_REQUEST["fecha_inicio"];
-    $fecha_fin=$_REQUEST["fecha_fin"];
-    $codigo_persona=$_SESSION["codigo_persona"]; 
-		$rspta=$asistencia->listar_asistencia($fecha_inicio,$fecha_fin,$codigo_persona);
-		//declaramos un array
-		$data=Array();
+  case 'selectPersona':
+    require_once "../modelos/Usuario.php";
+    $usuario = new Usuario();
 
+    $rspta = $usuario->listar();
 
-		while ($reg=$rspta->fetch_object()) {
-			$data[]=array(
-				"0"=>$reg->fecha,
-				"1"=>$reg->nombre,
-				"2"=>$reg->tipo,
-				"3"=>$reg->fecha_hora,
-				"4"=>$reg->codigo_persona
-				);
-		}
+    while ($reg = $rspta->fetch_object()) {
+      echo '<option value=' .
+        $reg->codigo_persona .
+        '>' .
+        $reg->nombre .
+        ' ' .
+        $reg->apellidos .
+        '</option>';
+    }
+    break;
+  case 'selectAgente':
+    require_once "../modelos/Usuario.php";
+    $usuario = new Usuario();
 
-		$results=array(
-             "sEcho"=>1,//info para datatables
-             "iTotalRecords"=>count($data),//enviamos el total de registros al datatable
-             "iTotalDisplayRecords"=>count($data),//enviamos el total de registros a visualizar
-             "aaData"=>$data); 
-		echo json_encode($results);
+    $rspta = $usuario->listaru();
 
-	break;
-
-		case 'selectPersona':
-			require_once "../modelos/Usuario.php";
-			$usuario=new Usuario();
-
-			$rspta=$usuario->listar();
-
-			while ($reg=$rspta->fetch_object()) {
-				echo '<option value=' . $reg->codigo_persona.'>'.$reg->nombre.' '.$reg->apellidos.'</option>';
-			}
-			break;
-
+    while ($reg = $rspta->fetch_object()) {
+      echo '<option value=' .
+        $reg->codigo_persona .
+        '>' .
+        $reg->nombre .
+        ' ' .
+        $reg->apellidos .
+        '</option>';
+    }
+    break;
 }
 ?>

@@ -1,6 +1,6 @@
 <?php
 
-require "../config/Conexion.php";
+require "../config/Conexionasis.php";
 
 
 $rspta = mysqli_query($conexion,"SELECT * FROM estudios");

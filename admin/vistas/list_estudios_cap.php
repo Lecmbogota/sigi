@@ -1,6 +1,6 @@
 <?php
 
-require "../config/Conexion.php";
+require "../config/Conexionasis.php";
 
 $cedula = $_GET[ 'param_id' ];
 $rspta = mysqli_query($conexion,"SELECT DISTINCT cedulacap,estudio FROM capacitacion WHERE cedulacap = $cedula");
@@ -8,3 +8,5 @@ $rspta = mysqli_query($conexion,"SELECT DISTINCT cedulacap,estudio FROM capacita
 while ($row = mysqli_fetch_array($rspta)){
     echo'<option value="'.$row['estudio'].'">'.$row['estudio'].'</option>';
 }
+
+    

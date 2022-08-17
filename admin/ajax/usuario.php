@@ -90,6 +90,34 @@ switch ($_GET["op"]) {
 
 	break;
 
+case 'listar':
+		$rspta=$usuario->listar();
+		//declaramos un array
+		$data=Array();
+
+
+		while ($reg=$rspta->fetch_object()) {
+			$data[]=array(
+				"0"=>($reg->estado)?'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-pencil"></i></button>'.' '.'<button class="btn btn-info btn-xs" onclick="mostrar_clave('.$reg->idusuario.')"><i class="fa fa-key"></i></button>'.' '.'<button class="btn btn-danger btn-xs" onclick="desactivar('.$reg->idusuario.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-pencil"></i></button>'.' '.'<button class="btn btn-info btn-xs" onclick="mostrar_clave('.$reg->idusuario.')"><i class="fa fa-key"></i></button>'.' '.'<button class="btn btn-primary btn-xs" onclick="activar('.$reg->idusuario.')"><i class="fa fa-check"></i></button>',
+				"1"=>$reg->nombre,
+				"2"=>$reg->apellidos,
+                "3"=>$reg->cedula,
+				"4"=>($reg->estado)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
+				);
+		}
+
+		$results=array(
+             "sEcho"=>1,//info para datatables
+             "iTotalRecords"=>count($data),//enviamos el total de registros al datatable
+             "iTotalDisplayRecords"=>count($data),//enviamos el total de registros a visualizar
+             "aaData"=>$data); 
+		echo json_encode($results);
+
+	break;
+
+
+
+
 
 	case 'verificar':
 		//validar si el usuario tiene acceso al sistema

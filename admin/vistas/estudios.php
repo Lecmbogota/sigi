@@ -73,7 +73,7 @@ require 'header.php';
                             <!-- INPUT NIVEL -->
                             <div class="form-group col-lg-2 col-md-2 col-xs-2">
                                 <label for="">Nivel:</label>
-                                <select class="form-control" name="Nivel" id="Nivel">
+                                <select class="form-control" name="Nivel" id="Nivel" data-live-search="true" data-live-search-style="startsWith">
                                     <option value="Nivel 1">Nivel 1</option>
                                     <option value="Nivel 2">Nivel 2</option>
                                     <option value="Nivel 3">Nivel 3</option>
