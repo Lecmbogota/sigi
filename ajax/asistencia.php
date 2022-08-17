@@ -9,6 +9,7 @@ $tipo=isset($_POST["tipo"])? limpiarCadena($_POST["tipo"]):"";
 
 
 
+
 switch ($_GET["op"]) {
 	case 'registrar_asistencia':
 		$result=$asistencia->verificarcodigo_persona($codigo_persona);

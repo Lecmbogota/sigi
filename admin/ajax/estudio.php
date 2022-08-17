@@ -42,6 +42,7 @@ switch ( $_GET[ 'op' ] ) {
 		$data = Array();
 	
 		while ( $reg = $rspta->fetch_object() ) {
+			
 			$data[] = array(
 				"0"=>($reg->Estado)?'<a" onclick="desactivar('.$reg->id_Estudio.')"><i class="fa fa-toggle-on" style="color:green"></i></a</div>'
 				:'<a onclick="activar('.$reg->id_Estudio.')"><i class="fa fa-toggle-off" style="color:red"></i></a></div>',
@@ -56,7 +57,7 @@ switch ( $_GET[ 'op' ] ) {
 				'9'=>$reg->TMO,
 				'10'=>$reg->TME,
 				"11"=>($reg->Estado)?'<span class="label bg-green">En Curso</span>':'<span class="label bg-red">Cerrado</span>',
-				"12"=>($reg->Estado)? '<progress value="'.$reg->Avance_estudio.'" max="'.$reg->Muestra.'"></progress>'.$reg->Avance_estudio.''.$reg->slash.''.$reg->Muestra.'':'<progress value="'.$reg->Avance_estudio.'" max="'.$reg->Muestra.'"></progress>'.$reg->Avance_estudio.''.$reg->slash.''.$reg->Muestra.''
+				"12"=>($reg->Estado)?'<progress value="'.$reg->Avance_estudio.'" max="'.$reg->Muestra.'"></progress>'.$reg->Avance_estudio.''.$reg->slash.''.$reg->Muestra.'':'<progress value="'.$reg->Avance_estudio.'" max="'.$reg->Muestra.'"></progress>'.$reg->Avance_estudio.''.$reg->slash.''.$reg->Muestra.''
 
 			);
 		}

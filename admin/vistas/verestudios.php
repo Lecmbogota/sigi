@@ -24,7 +24,6 @@ require 'header.php';
                         <table id="tbllist" class="table table-hover table-fixed" width='100%'>
                             <thead>
                                 <th>-</th>
-
                                 <th>CLIENTE</th>
                                 <th>ESTUDIO</th>
                                 <th>NIVEL</th>
@@ -36,12 +35,9 @@ require 'header.php';
                                 <th>TMO</th>
                                 <th>TME</th>
                                 <th>ESTATUS</th>
-
                             </thead>
                         </table>
                     </div>
-
-
                     <!-- FORMULARIO AGREGAR ESTUDIO -->
                     <div class="panel-body" id="formularioregistros">
                     
@@ -54,14 +50,12 @@ require 'header.php';
                                 <input class="form-control" type="text" name="Cliente" id="nombre" maxlength="100"
                                     onkeyup="this.value = this.value.toUpperCase();" required>
                             </div>
-
                             <!-- INPUT ESTUDIO -->
                             <div class="form-group col-lg-6 col-md-6 col-xs-6">
                                 <label for="">Estudio:</label>
                                 <input class="form-control" type="text" name="Estudio" id="Estudio" maxlength="100"
                                     onkeyup="this.value = this.value.toUpperCase();" required>
                             </div>
-
                             <!-- INPUT NIVEL -->
                             <div class="form-group col-lg-2 col-md-2 col-xs-2">
                                 <label for="">Nivel:</label>
@@ -107,8 +101,6 @@ require 'header.php';
                                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                     required>
                             </div>
-
-
                             <!-- DATAPICKER FECHA DE INICIO -->
                             <div class="form-group col-lg-2 col-md-2 col-xs-2">
                                 <label for="">Fecha de Inicio:</label>
@@ -120,17 +112,11 @@ require 'header.php';
                                 <input type="date" class="form-control" id="Fecha_Entrega_Estudio"
                                     name="Fecha_Entrega_Estudio" min="2022-01-01" max="2032-12-31" required>
                             </div>
-
-
-
                             <!-- BOTON GUARDAR -->
                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>
                                     Guardar</button>
-
-
-
-                                <!-- BOTON CANCELAR -->
+                                              <!-- BOTON CANCELAR -->
                                 <button class="btn btn-danger" onclick="cancelarform()" type="button"><i
                                         class="fa fa-arrow-circle-left"></i> Cancelar</button>
                             </div>
