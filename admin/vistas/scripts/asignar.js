@@ -13,11 +13,13 @@ function init() {
   })
 
   $('document').ready(function () {
+    $('#agente').selectpicker('refresh')
     $('#estudio').load('list_Estudios_cap.php')
     $('#estudio').change(function () {
       var id = $('#estudio').val()
       $.get('list_agentes_cap.php', { param_id: id }).done(function (Data) {
         $('#agente').html(Data)
+        $('#agente').selectpicker('refresh')
       })
     })
   })

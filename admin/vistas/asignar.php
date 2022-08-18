@@ -65,7 +65,8 @@ if (!isset($_SESSION['nombre'])) {
                                 <!-- INPUT CLIENTE -->
 
                                 <label for="">AGENTE:</label>
-                                    <select name="agente[]" id="agente"  class="form-control"   required>                     
+                                    <select name="agente[]" id="agente"   class="form-control"
+                                multiple="multiple" data-live-search="true"  required>                     
                                 </select>
                             </div>
                             <!-- SELECT ESTUDIO -->

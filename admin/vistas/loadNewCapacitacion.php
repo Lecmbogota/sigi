@@ -16,7 +16,7 @@ if (isset($_POST['save_multi_select'])) {
         $query_run = mysqli_query($con, $query);
 
         $query =
-            'UPDATE asignacionestudio INNER JOIN capacitacion ON asignacionestudio.cedula_asig = capacitacion.cedulacap  SET asignacionestudio.agente_asig = capacitacion.agentecap';
+            'UPDATE capacitacion INNER JOIN estudios ON capacitacion.idestudiocap = estudios.id_Estudio SET capacitacion.estudio = estudios.Estudio';
         $query_run = mysqli_query($con, $query);
     }
     if ($query_run) {
