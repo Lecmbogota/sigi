@@ -13,35 +13,13 @@ function init() {
   })
 
   $('document').ready(function () {
-    $('#agente').load('list_agentes_cap.php')
-    $('#agente').change(function () {
-      var id = $('#agente').val()
-      $.get('list_Estudios_cap.php', { param_id: id }).done(function (Data) {
-        $('#estudio').html(Data)
-        $('#estudio').selectpicker('refresh')
+    $('#estudio').load('list_Estudios_cap.php')
+    $('#estudio').change(function () {
+      var id = $('#estudio').val()
+      $.get('list_agentes_cap.php', { param_id: id }).done(function (Data) {
+        $('#agente').html(Data)
       })
     })
-  })
-
-  $('document').ready(function () {
-    $('#agente').change(function () {
-      var id = $('#agente').val()
-      $.get('list_cedula_cap.php', { param_id: id }).done(function (Data) {
-        $('#cedula').html(Data)
-      })
-    })
-  })
-
-  //cargamos los items al select Estudio
-  $.post('../ajax/asignar.php?op=selectEstudio', function (r) {
-    $('#estudio').html(r)
-    $('#estudio').selectpicker('refresh')
-  })
-
-  //cargamos los items al select Agente
-  $.post('../ajax/asignar.php?op=selectAgente', function (r) {
-    $('#idcliente').html(r)
-    $('#idcliente').selectpicker('refresh')
   })
 }
 

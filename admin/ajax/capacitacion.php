@@ -102,7 +102,7 @@ switch ($_GET['op']) {
 
     while ($reg = $rspta->fetch_object()) {
       echo '<option value=' .
-        $reg->Estudio .
+        $reg->id_Estudio .
         '> ' .
         $reg->Estudio .
         '</option>';

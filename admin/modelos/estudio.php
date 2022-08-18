@@ -78,7 +78,8 @@ class Estudio
 
     public function Selectes()
     {
-        $sql = 'SELECT * FROM estudios WHERE Estado = 1 ORDER BY Estudio ASC';
+        $sql =
+            'SELECT * FROM estudios WHERE Estado = 1 ORDER BY Estudio ASC';
         return ejecutarConsulta($sql);
     }
 }

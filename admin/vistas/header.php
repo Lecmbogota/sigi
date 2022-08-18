@@ -1,7 +1,7 @@
 <?php
-    if (strlen(session_id()) < 1)
-        session_start();
-    ?>
+if (strlen(session_id()) < 1) {
+    session_start();
+} ?>
 <!DOCTYPE html>
 <html>
 
@@ -87,8 +87,10 @@
                     </li>
 
 
-                    <?php if ($_SESSION['tipousuario'] == 'DIRECTORA ADMINISTRATIVA Y FINANCIERA') {
-                        ?>
+                    <?php if (
+                        $_SESSION['tipousuario'] ==
+                        'DIRECTORA ADMINISTRATIVA Y FINANCIERA'
+                    ) { ?>
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-users" aria-hidden="true"></i> <span>ADMINISTRACION</span>
@@ -137,8 +139,9 @@
                 <?php } ?>
 
 
-                <?php if ($_SESSION['tipousuario'] == 'AUXILIAR ADMINISTRATIVO') {
-                        ?>
+                <?php if (
+                    $_SESSION['tipousuario'] == 'AUXILIAR ADMINISTRATIVO'
+                ) { ?>
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-users" aria-hidden="true"></i> <span>ADMINISTRACION</span>
@@ -177,8 +180,9 @@
                 </ul>
                 <?php } ?>
 
-                <?php if ($_SESSION['tipousuario'] == 'LÍDER CATI ESTUDIOS MASIVOS') {
-                        ?>
+                <?php if (
+                    $_SESSION['tipousuario'] == 'LÍDER CATI ESTUDIOS MASIVOS'
+                ) { ?>
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-users" aria-hidden="true"></i> <span>ADMINISTRACION</span>
@@ -220,8 +224,7 @@
                 </ul>
                 <?php } ?>
 
-                <?php if ($_SESSION['tipousuario'] == 'LIDER DE GESTION') {
-                        ?>
+                <?php if ($_SESSION['tipousuario'] == 'LIDER DE GESTION') { ?>
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-users" aria-hidden="true"></i> <span>ADMINISTRACION</span>
@@ -247,8 +250,9 @@
 
 
 
-                <?php if ($_SESSION['tipousuario'] == 'DIRECTOR DE OPERACIONES') {
-                        ?>
+                <?php if (
+                    $_SESSION['tipousuario'] == 'DIRECTOR DE OPERACIONES'
+                ) { ?>
                 <ul class="sidebar-menu tree" data-widget="tree">
                     <li><a href="estudios.php"><i class="fa fa-laptop" aria-hidden="true"></i>
                             <span>DIR. OPERACIONES</span><span class="pull-right-container">
@@ -288,8 +292,7 @@
 
 
 
-                <?php if ($_SESSION['tipousuario'] == 'Administrador') {
-                        ?>
+                <?php if ($_SESSION['tipousuario'] == 'Administrador') { ?>
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-cogs" aria-hidden="true"></i> <span>IT</span>

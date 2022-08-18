@@ -8,7 +8,7 @@ $rspta = mysqli_query(
 );
 while ($row = mysqli_fetch_array($rspta)) {
     echo '<option value="' .
-        $row['agentecap'] .
+        $row['cedulacap'] .
         '">' .
         $row['agentecap'] .
         '</option>';

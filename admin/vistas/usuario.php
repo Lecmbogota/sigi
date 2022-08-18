@@ -1,13 +1,11 @@
-<?php 
+<?php
 //activamos almacenamiento en el buffer
 ob_start();
 session_start();
 if (!isset($_SESSION['nombre'])) {
-  header("Location: login.html");
-}else{
-
-require 'header.php';
- ?>
+    header('Location: login.html');
+} else {
+    require 'header.php'; ?>
 <div class="content-wrapper">
     <!-- Main content -->
     <section class="content">
@@ -83,7 +81,8 @@ require 'header.php';
                                     <div class="card-body">
                                         <div class="form-group col-lg-12">
                                             <div class="form-group col-lg-6">
-                                            <label class="form-label select-label">Cargo:</label>
+                                            <label>Cargo:</label>
+                                            <br>
                                                 <select class="select" name="idtipousuario" id="idtipousuario" required>
                                                 </select>
                                                 
@@ -186,13 +185,10 @@ require 'header.php';
     </section>
     <!-- /.content -->
 </div>
-<?php 
-
-require 'footer.php';
- ?>
+<?php require 'footer.php'; ?>
 <script src="scripts/usuario.js"></script>
-<?php 
+<?php
 }
 
 ob_end_flush();
-  ?>
+?>

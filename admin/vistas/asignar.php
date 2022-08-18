@@ -51,12 +51,13 @@ if (!isset($_SESSION['nombre'])) {
 
                     <!-- FORMULARIO AGREGAR ESTUDIO -->
                     <div class="panel-body" id="formularioregistros">
+                        
                         <form action="loadNewAsignacion.php" method="POST">
                             <div class='form-group col-lg-8 '>
                                 <label for=''>ESTUDIO:</label>
-                                #crea select picker de estudio 
-                                <select name="estudio" id="estudio" class="form-control selectpicker"
-                                 data-live-search="true"   required>
+                                
+                                <select name="estudio" class="form-control" id="estudio" 
+                                data-live-search="true" required>
                                </select>
 
                             </div>
@@ -64,18 +65,10 @@ if (!isset($_SESSION['nombre'])) {
                                 <!-- INPUT CLIENTE -->
 
                                 <label for="">AGENTE:</label>
-                                    <select name="idcliente[]" id="idcliente"  class="form-control selectpicker"
-                                multiple="multiple" data-live-search="true"   required>                     
+                                    <select name="agente[]" id="agente"  class="form-control"   required>                     
                                 </select>
                             </div>
                             <!-- SELECT ESTUDIO -->
-                            
-                            <div class='form-group col-lg-4 ' hidden>
-                                <label for=''>CEDULA:</label>
-                                <select name='cedula' id='cedula' class='form-control select-picker'  required>
-
-                                </select>
-                            </div>
 
                             <!-- INPUT TMO -->
                             <div class="form-group col-lg-2 ">
@@ -106,10 +99,11 @@ if (!isset($_SESSION['nombre'])) {
 
 
 
-
-                            <!-- BOTON GUARDAR -->
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>
+                            <div <div class="col-xs-10">
+                            
+            
+                                <button class="btn btn-primary" type="submit" name="save_multi_select"><i class="fa fa-save"
+                                        aling='middle'></i>
                                     Guardar</button>
 
 
