@@ -81,7 +81,31 @@ switch ($_GET['op']) {
   case 'selectAgente':
     require_once "../modelos/Usuario.php";
     $usuario = new Usuario();
+
     $rspta = $usuario->listaru();
-    $rspta = $usuario->listaru();
+
+    while ($reg = $rspta->fetch_object()) {
+      echo '<option value=' .
+        $reg->codigo_persona .
+        '>' .
+        $reg->nombre .
+        ' ' .
+        $reg->apellidos .
+        '</option>';
+    }
+    break;
+
+  case 'selectEstudio':
+    require_once "../modelos/estudio.php";
+    $Estudio = new Estudio();
+    $rspta = $Estudio->Selectes();
+
+    while ($reg = $rspta->fetch_object()) {
+      echo '<option value=' .
+        $reg->Estudio .
+        '> ' .
+        $reg->Estudio .
+        '</option>';
+    }
     break;
 }

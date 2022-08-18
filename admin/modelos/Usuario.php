@@ -79,7 +79,8 @@ class Usuario
     }
     public function listaru()
     {
-        $sql = 'SELECT * FROM usuarios WHERE idtipousuario = 6 AND estado = 1 ';
+        $sql =
+            'SELECT * FROM usuarios WHERE idtipousuario = 6 AND estado = 1  ORDER BY nombre ASC';
         return ejecutarConsulta($sql);
     }
 

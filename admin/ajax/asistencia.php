@@ -19,46 +19,117 @@ switch ($_GET["op"]) {
     if ($result > 0) {
       date_default_timezone_set('America/Bogota');
       $fecha = date("Y-m-d");
-      $hora = date("H:i:s");
+      $hora = date("H:i");
 
-      $result2 = $asistencia->seleccionarcodigo_persona($codigo_persona);
-
-      $par = abs($result2 % 2);
-
-      if ($par == 0) {
-        $tipo = "Entrada";
-        $rspta = $asistencia->registrar_entrada($codigo_persona, $tipo);
+      if ($tipo == "INICIO GESTION") {
+        $rspta = $asistencia->registrar_inicio_gestion($codigo_persona, $tipo);
         //$movimiento = 0;
         echo $rspta
           ? '<h3><strong>Nombres: </strong> ' .
             $result['nombre'] .
-            ' ' .
-            $result['apellidos'] .
-            '</h3><div class="alert alert-success"> Ingreso registrado ' .
+            '</h3><div class="alert alert-success"> INICIO GESTION - REGISTRADO ' .
             $hora .
             '</div>'
           : 'No se pudo registrar el ingreso';
-      } else {
-        $tipo = "Salida";
-        $rspta = $asistencia->registrar_salida($codigo_persona, $tipo);
+      }
+
+      if ($tipo == "FIN GESTION") {
+        $rspta = $asistencia->registrar_fin_gestion($codigo_persona, $tipo);
         //$movimiento = 1;
         echo $rspta
           ? '<h3><strong>Nombres: </strong> ' .
             $result['nombre'] .
-            ' ' .
-            $result['apellidos'] .
-            '</h3><div class="alert alert-danger"> Salida registrada ' .
+            '</h3><div class="alert alert-danger"> FIN GESTION - REGISTRADO ' .
             $hora .
             '</div>'
           : 'No se pudo registrar la salida';
       }
-    } else {
-      echo '<div class="alert alert-danger">
-                       <i class="icon fa fa-warning"></i> DEBE SELECCIONAR UNA OPCION!
-                         </div>';
-    }
 
-    break;
+      if ($tipo == "INICIO BREAK") {
+        $rspta = $asistencia->registrar_inicio_break($codigo_persona, $tipo);
+        //$movimiento = 1;
+        echo $rspta
+          ? '<h3><strong>Nombres: </strong> ' .
+            $result['nombre'] .
+            '</h3><div class="alert alert-success"> INICIO BREAK - REGISTRADO ' .
+            $hora .
+            '</div>'
+          : 'No se pudo registrar la salida';
+      }
+
+      if ($tipo == "FIN BREAK") {
+        $rspta = $asistencia->registrar_fin_break($codigo_persona, $tipo);
+        //$movimiento = 1;
+        echo $rspta
+          ? '<h3><strong>Nombres: </strong> ' .
+            $result['nombre'] .
+            '</h3><div class="alert alert-danger"> FIN BREAK - REGISTRADO ' .
+            $hora .
+            '</div>'
+          : 'No se pudo registrar la salida';
+      }
+      if ($tipo == "INICIO ALMUERZO") {
+        $rspta = $asistencia->registrar_inicio_break($codigo_persona, $tipo);
+        //$movimiento = 1;
+        echo $rspta
+          ? '<h3><strong>Nombres: </strong> ' .
+            $result['nombre'] .
+            '</h3><div class="alert alert-success"> INICIO ALMUERZO - REGISTRADO ' .
+            $hora .
+            '</div>'
+          : 'No se pudo registrar la salida';
+      }
+
+      if ($tipo == "FIN ALMUERZO") {
+        $rspta = $asistencia->registrar_fin_break($codigo_persona, $tipo);
+        //$movimiento = 1;
+        echo $rspta
+          ? '<h3><strong>Nombres: </strong> ' .
+            $result['nombre'] .
+            '</h3><div class="alert alert-danger"> FIN ALMUERZO - REGISTRADO ' .
+            $hora .
+            '</div>'
+          : 'No se pudo registrar la salida';
+      }
+      if ($tipo == "INICIO CAPACITACION") {
+        $rspta = $asistencia->registrar_inicio_break($codigo_persona, $tipo);
+        //$movimiento = 1;
+        echo $rspta
+          ? '<h3><strong>Nombres: </strong> ' .
+            $result['nombre'] .
+            '</h3><div class="alert alert-success"> INICIO CAPACITACION - REGISTRADO ' .
+            $hora .
+            '</div>'
+          : 'No se pudo registrar la salida';
+      }
+
+      if ($tipo == "FIN CAPACITACION") {
+        $rspta = $asistencia->registrar_fin_break($codigo_persona, $tipo);
+        //$movimiento = 1;
+        echo $rspta
+          ? '<h3><strong>Nombres: </strong> ' .
+            $result['nombre'] .
+            '</h3><div class="alert alert-danger"> FIN CAPACITACION - REGISTRADO ' .
+            $hora .
+            '</div>'
+          : 'No se pudo registrar la salida';
+      } elseif (
+        $tipo != "INICIO GESTION" &&
+        $tipo != "FIN GESTION" &&
+        $tipo != "INICIO BREAK" &&
+        $tipo != "FIN BREAK" &&
+        $tipo != "INICIO ALMUERZO" &&
+        $tipo != "FIN ALMUERZO" &&
+        $tipo != "INICIO CAPACITACION" &&
+        $tipo != "FIN CAPACITACION"
+      ) {
+        echo '<div class="alert alert-danger">
+                       <i class="icon fa fa-warning"></i> No hay empleado registrado con esa código...!
+                         </div>';
+      }
+
+      break;
+    }
 
   case 'mostrar':
     $rspta = $asistencia->mostrar($idasistencia);
@@ -97,30 +168,6 @@ switch ($_GET["op"]) {
   case 'listaru':
     $idusuario = $_SESSION["idusuario"];
     $rspta = $asistencia->listaru($idusuario);
-    //declaramos un array
-    $data = [];
-
-    while ($reg = $rspta->fetch_object()) {
-      $data[] = [
-        "0" =>
-          '<button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>',
-        "1" => $reg->codigo_persona,
-        "2" => $reg->nombre,
-        "3" => $reg->departamento,
-        "4" => $reg->fecha_hora,
-        "5" => $reg->tipo,
-        "6" => $reg->fecha,
-      ];
-    }
-
-    $results = [
-      "sEcho" => 1, //info para datatables
-      "iTotalRecords" => count($data), //enviamos el total de registros al datatable
-      "iTotalDisplayRecords" => count($data), //enviamos el total de registros a visualizar
-      "aaData" => $data,
-    ];
-    echo json_encode($results);
-
     break;
 
   case 'listar_asistencia':
@@ -191,22 +238,6 @@ switch ($_GET["op"]) {
     $usuario = new Usuario();
 
     $rspta = $usuario->listar();
-
-    while ($reg = $rspta->fetch_object()) {
-      echo '<option value=' .
-        $reg->codigo_persona .
-        '>' .
-        $reg->nombre .
-        ' ' .
-        $reg->apellidos .
-        '</option>';
-    }
-    break;
-  case 'selectAgente':
-    require_once "../modelos/Usuario.php";
-    $usuario = new Usuario();
-
-    $rspta = $usuario->listaru();
 
     while ($reg = $rspta->fetch_object()) {
       echo '<option value=' .

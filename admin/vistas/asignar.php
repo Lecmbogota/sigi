@@ -1,13 +1,11 @@
-<?php 
+<?php
 //activamos almacenamiento en el buffer
 ob_start();
 session_start();
 if (!isset($_SESSION['nombre'])) {
-  header("Location: login.html");
-}else{
-
-require 'header.php';
- ?>
+    header('Location: login.html');
+} else {
+    require 'header.php'; ?>
 <div class="content-wrapper">
     <!-- Main content -->
     <section class="content">
@@ -53,7 +51,7 @@ require 'header.php';
 
                     <!-- FORMULARIO AGREGAR ESTUDIO -->
                     <div class="panel-body" id="formularioregistros">
-                        <form action="" name="formulario" id="formulario" method="POST">
+                        <form action="loadNewAsignacion" method="POST">
                             <div class="form-group col-lg-4 ">
                                 <!-- INPUT CLIENTE -->
 
@@ -127,13 +125,10 @@ require 'header.php';
     </section>
     <!-- /.content -->
 </div>
-<?php 
-
-require 'footer.php';
- ?>
+<?php require 'footer.php'; ?>
 <script src="scripts/asignar.js"></script>
-<?php 
+<?php
 }
 
 ob_end_flush();
-  ?>
+?>

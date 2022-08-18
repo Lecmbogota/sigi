@@ -44,7 +44,9 @@ function listar(){
 		"order":[[0,"desc"]]//ordenar (columna, orden)
 	}).DataTable();
 }
-function listaru(){
+
+
+function listaru() {
 	tabla=$('#tbllistadou').dataTable({
 		"aProcessing": true,//activamos el procedimiento del datatable
 		"aServerSide": true,//paginacion y filrado realizados por el server

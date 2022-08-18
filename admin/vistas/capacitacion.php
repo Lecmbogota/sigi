@@ -55,25 +55,31 @@ if (!isset($_SESSION['nombre'])) {
 
                     <div class="panel-body" id="formularioregistros">
                         <!-- INICIO FORMULARIO -->
-                        <form action="code.php" method="POST">
+                        <form action="loadNewCapacitacion.php" method="POST">
                             <div class="col-xs-12">
                                 <div class='form-group col-lg-3 '>
                                     <label for="">AGENTE:</label>
                                     <select name="idcliente[]" id="idcliente"  class="form-control selectpicker"
                                 multiple="multiple" data-live-search="true"   required>
-                            </select>
-                                <br>
-                                    </select>
+                                <script>
+                                    $('#idcliente').selectpicker('val', [<?php echo $idcliente; ?>]);
+                                </script>                       
+                                </select>
+ 
+                                
+
+
+
+
                                 </div>
-                                <div class='form-group col-lg-4 ' hidden="hidden">
-                                    <select name='documento' id='documento' class='form-control select-picker' > 
-                                    </select>
-                                </div>
+
                                 <div class='form-group col-lg-5 '>
                                     <label for=''>ESTUDIO:</label>
-                                    <input class="form-control" type="text"  name="estudio"
-                                        required>
+                                    <select name="estudio" id="estudio"  class="form-control selectpicker"
+                                data-live-search="true"   >
+                                </select>
                                 </div>
+                                
                                 <div class="form-group col-lg-2">
                                     <label for="">CALIFICACION:</label>
                                     <input class="form-control" type="number" step="0.1" name="calificacion"
