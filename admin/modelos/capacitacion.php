@@ -57,6 +57,17 @@ class Capacitacion
         $sql = 'SELECT count(*) agentecap FROM capacitacion';
         return ejecutarConsulta($sql);
     }
+    public function listaru()
+    {
+        $sql =
+            'SELECT DISTINCT agentecap FROM capacitacion ORDER BY agentecap ASC';
+        return ejecutarConsulta($sql);
+    }
+    public function Selectes()
+    {
+        $sql = 'SELECT DISTINCT estudio FROM capacitacion ORDER BY estudio ASC';
+        return ejecutarConsulta($sql);
+    }
 }
 
 ?>

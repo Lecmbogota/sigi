@@ -23,6 +23,7 @@ function init() {
     $('#idcliente').html(r)
     $('#idcliente').selectpicker('refresh')
   })
+  
 }
 
 //funcion limpiar

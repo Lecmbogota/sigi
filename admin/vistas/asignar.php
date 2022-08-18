@@ -51,21 +51,25 @@ if (!isset($_SESSION['nombre'])) {
 
                     <!-- FORMULARIO AGREGAR ESTUDIO -->
                     <div class="panel-body" id="formularioregistros">
-                        <form action="loadNewAsignacion" method="POST">
-                            <div class="form-group col-lg-4 ">
+                        <form action="loadNewAsignacion.php" method="POST">
+                            <div class='form-group col-lg-8 '>
+                                <label for=''>ESTUDIO:</label>
+                                #crea select picker de estudio 
+                                <select name="estudio" id="estudio" class="form-control selectpicker"
+                                 data-live-search="true"   required>
+                               </select>
+
+                            </div>
+                        <div class="form-group col-lg-4 ">
                                 <!-- INPUT CLIENTE -->
 
                                 <label for="">AGENTE:</label>
-                                <select name='agente' id='agente' class='form-control select-picker' placeholder="Seleccionar..." required>
+                                    <select name="idcliente[]" id="idcliente"  class="form-control selectpicker"
+                                multiple="multiple" data-live-search="true"   required>                     
                                 </select>
                             </div>
                             <!-- SELECT ESTUDIO -->
-                            <div class='form-group col-lg-8 '>
-                                <label for=''>ESTUDIO:</label>
-                                <select name='estudio' id='estudio' class='form-control select-picker' required>
-
-                                </select>
-                            </div>
+                            
                             <div class='form-group col-lg-4 ' hidden>
                                 <label for=''>CEDULA:</label>
                                 <select name='cedula' id='cedula' class='form-control select-picker'  required>

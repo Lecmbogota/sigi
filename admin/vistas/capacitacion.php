@@ -60,10 +60,8 @@ if (!isset($_SESSION['nombre'])) {
                                 <div class='form-group col-lg-3 '>
                                     <label for="">AGENTE:</label>
                                     <select name="idcliente[]" id="idcliente"  class="form-control selectpicker"
-                                multiple="multiple" data-live-search="true"   required>
-                                <script>
-                                    $('#idcliente').selectpicker('val', [<?php echo $idcliente; ?>]);
-                                </script>                       
+                                multiple="multiple" data-live-search="true"   required>  
+                                                  
                                 </select>
  
                                 
