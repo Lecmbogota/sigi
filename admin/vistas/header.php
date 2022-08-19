@@ -130,11 +130,12 @@ if (strlen(session_id()) < 1) {
 
                         </li>
                     </ul>
-                </ul>
-
-
-
-
+                </ul> 
+                 <li class="treeview">
+                <li>
+                    <a href="../ajax/usuario.php?op=salir"><i class="fa fa-power-off" aria-hidden="true"></i>
+                        <span>CERRAR SESION</a>
+                </li>
                 <?php } ?>
 <!--------------------------------------------------------------------------------------------------------------------------------->
 
@@ -172,7 +173,12 @@ if (strlen(session_id()) < 1) {
 
 
                 </li>
-                </ul>
+                 <li class="treeview">
+                <li>
+                    <a href="../ajax/usuario.php?op=salir"><i class="fa fa-power-off" aria-hidden="true"></i>
+                        <span>CERRAR SESION</a>
+                </li>
+
 
                 <?php } ?>
 <!--------------------------------------------------------------------------------------------------------------------------------->
@@ -206,11 +212,15 @@ if (strlen(session_id()) < 1) {
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                             <ul class="treeview-menu">
-                                <li><a href="asignar.php"><i class="fa fa-calendar"></i> Asignar Estudios</a>
+                                <li><a href="asignar.php"><i class="fa fa-calendar"></i> Crear/Ver Planeación</a>
                                 </li>
                             </ul>
                     </li>
-                </ul>
+                </un>
+                <li>
+                    <a href="../ajax/usuario.php?op=salir"><i class="fa fa-power-off" aria-hidden="true"></i>
+                        <span>CERRAR SESION</a>
+                </li>
 
                 <?php } ?>
 <!--------------------------------------------------------------------------------------------------------------------------------->
@@ -252,6 +262,24 @@ if (strlen(session_id()) < 1) {
 
                     </ul>
                 </ul>
+                <ul class="sidebar-menu tree" data-widget="tree">
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-suitcase" aria-hidden="true"></i> <span>CATI</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                            <ul class="treeview-menu">
+                                <li><a href="verasignacion.php"><i class="fa fa-calendar"></i> Ver Planeación</a>
+                                </li>
+                            </ul>
+                    </li>
+                </un>
+                <li>
+                    <a href="../ajax/usuario.php?op=salir"><i class="fa fa-power-off" aria-hidden="true"></i>
+                        <span>CERRAR SESION</a>
+                </li>
+
                 <?php } ?>
 <!--------------------------------------------------------------------------------------------------------------------------------->
 
@@ -289,9 +317,26 @@ if (strlen(session_id()) < 1) {
                         </li>
 
                     </ul>
-
+                    <ul class="sidebar-menu tree" data-widget="tree">
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-suitcase" aria-hidden="true"></i> <span> CATI</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                            <ul class="treeview-menu">
+                                <li><a href="verasignacion.php"><i class="fa fa-calendar"></i> Ver Planeación</a>
+                                </li>
+                            </ul>
+                    </li>
+                </un>
                 </li>
                 </ul>
+                <li>
+                    <a href="../ajax/usuario.php?op=salir"><i class="fa fa-power-off" aria-hidden="true"></i>
+                        <span>CERRAR SESION</a>
+                </li>
+
                 <?php } ?>
 <!--------------------------------------------------------------------------------------------------------------------------------->
 
@@ -316,6 +361,11 @@ if (strlen(session_id()) < 1) {
                     </li>
                 </ul>
                 </ul>
+                <li>
+                    <a href="../ajax/usuario.php?op=salir"><i class="fa fa-power-off" aria-hidden="true"></i>
+                        <span>CERRAR SESION</a>
+                </li>
+
                 <?php } ?>
 <!--------------------------------------------------------------------------------------------------------------------------------->
 
@@ -332,6 +382,11 @@ if (strlen(session_id()) < 1) {
 
                     </li>
                 </ul>
+                <li>
+                    <a href="../ajax/usuario.php?op=salir"><i class="fa fa-power-off" aria-hidden="true"></i>
+                        <span>CERRAR SESION</a>
+                </li>
+
                 <?php } ?> 
 <!--------------------------------------------------------------------------------------------------------------------------------->
 
@@ -432,7 +487,7 @@ if (strlen(session_id()) < 1) {
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                             <ul class="treeview-menu">
-                                <li><a href="asignar.php"><i class="fa fa-calendar"></i> Asignar Estudios</a>
+                                <li><a href="asignar.php"><i class="fa fa-calendar"></i> Crear/Ver Planeación</a>
                                 </li>
                                 <li><a href="productividad.php"><i class="fa fa-line-chart" aria-hidden="true"></i>
                                         Reportes de
@@ -470,31 +525,15 @@ if (strlen(session_id()) < 1) {
 
                     </li>
                 </ul>
-
-                <?php } ?>
-<!--------------------------------------------------------------------------------------------------------------------------------->
-
-<!--Modulo de Cerre de Sesion------------------------------------------------------------------------------------------------------>
-                <?php if (
-                    $_SESSION['tipousuario'] == 'Administrador' ||
-                    $_SESSION['tipousuario'] == 'DIRECTOR DE OPERACIONES' ||
-                    $_SESSION['tipousuario'] ==
-                        'AUXILIAR DE CAPACITACIÓN Y FORMACIÓN' ||
-                    $_SESSION['tipousuario'] == 'LIDER DE GESTION' ||
-                    $_SESSION['tipousuario'] ==
-                        'DIRECTORA ADMINISTRATIVA Y FINANCIERA' ||
-                    $_SESSION['tipousuario'] == 'AUXILIAR ADMINISTRATIVO' ||
-                    $_SESSION['tipousuario'] == 'LÍDER CATI ESTUDIOS MASIVOS'
-                ) { ?>
-                 <li class="treeview">
                 <li>
                     <a href="../ajax/usuario.php?op=salir"><i class="fa fa-power-off" aria-hidden="true"></i>
                         <span>CERRAR SESION</a>
                 </li>
-                </li>
-                </ul>
+
+
                 <?php } ?>
 <!--------------------------------------------------------------------------------------------------------------------------------->
+
 
             </section>
         </aside>

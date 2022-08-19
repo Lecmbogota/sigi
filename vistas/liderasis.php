@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../admin/public/css/font-awesome.css">
     <link rel="stylesheet" href="../admin/public/css/AdminLTE.min.css">
     <link rel="stylesheet" href="../admin/public/css/blue.css">
-    <link rel="shortcut icon" href="../admin/public/img/favicon.ico">
+    <link rel="shortcut icon" href="">
 </head>
 <body class="hold-transition lockscreen">
     <div class="lockscreen-wrapper">
@@ -21,43 +21,51 @@
         <div class="lockscreen-name"></div>
         <div class="lockscreen-item">
             <form action="" class="panel-body" name="formulario" id="formulario" method="POST">
-                <div class="input-group">
+                <div class="input-group" >
+                    
                     <input type="password" class="form-control" name="codigo_persona" id="codigo_persona"
                         placeholder="INGRESA TU CEDULA">
-                        <select name="tipo" class="form-control" id="tipo">
-                            <?php
-                            //PARAMETROS ESTANDART
-                            date_default_timezone_set('America/Bogota');
-                            $timenow = date('H:i:s');
-                            $day = date('l');
-                            //---------------------------------------------------------------
-                            //CONDICIONAL SABADOS Y DOMINGOS
-                            if ($day == 'Satuday' || $day == 'Sunday') {
-                                if (
-                                    $timenow > date('05:00:00') &&
-                                    $timenow < date('10:10:00')
-                                ) {
-                                    echo '<option value="INICIO GESTION">INICIO GESTION</option>';
+                    
+                        <div hidden>
+                            <select  name="tipo" class="form-control" id="tipo" >
+                                <?php
+                                //PARAMETROS ESTANDART
+                                date_default_timezone_set('America/Bogota');
+                                $timenow = date('H:i:s');
+                                $day = date('l');
+                                //---------------------------------------------------------------
+                                //CONDICIONAL SABADOS Y DOMINGOS
+                                if ($day == 'Satuday' || $day == 'Sunday') {
+                                    if (
+                                        $timenow > date('05:00:00') &&
+                                        $timenow < date('10:10:00')
+                                    ) {
+                                        echo '<option selected value="INICIO GESTION">INICIO GESTION</option>';
+                                    } else {
+                                        echo '<option selected disabled value="">Pase Por Administracion</option>';
+                                    }
                                 }
-                            }
-                            //---------------------------------------------------------------
-                            //CONDICIONAL LUNES A VIERNES
-                            elseif (
-                                $day == 'Monday' ||
-                                $day == 'Tuesday' ||
-                                $day == 'Wednesday' ||
-                                $day == 'Thursday' ||
-                                $day == 'Friday'
-                            ) {
-                                if (
-                                    $timenow > date('05:00:00') &&
-                                    $timenow > date('08:10:00')
+                                //---------------------------------------------------------------
+                                //CONDICIONAL LUNES A VIERNES
+                                elseif (
+                                    $day == 'Monday' ||
+                                    $day == 'Tuesday' ||
+                                    $day == 'Wednesday' ||
+                                    $day == 'Thursday' ||
+                                    $day == 'Friday'
                                 ) {
-                                    echo '<option value="INICIO GESTION">INICIO GESTION</option>';
+                                    if (
+                                        $timenow > date('05:00:00') &&
+                                        $timenow < date('08:10:00')
+                                    ) {
+                                        echo '<option selected value="INICIO GESTION">INICIO GESTION</option>';
+                                    } else {
+                                        echo '<option selected disabled value="">Pase Por Administracion</option>';
+                                    }
                                 }
-                            }
-                            ?>
-                        </select>
+                                ?>
+                            </select>
+                        </div>
                     <div class="input-group-btn">
                         <button type="submit" class="btn btn-primary"><i
                                 class="fa fa-arrow-right text-muted"></i></button>
