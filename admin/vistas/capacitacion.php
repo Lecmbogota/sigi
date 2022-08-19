@@ -73,8 +73,8 @@ if (!isset($_SESSION['nombre'])) {
 
                                 <div class='form-group col-lg-5 '>
                                     <label for=''>ESTUDIO:</label>
-                                    <select name="estudio" id="estudio"  class="form-control selectpicker"
-                                data-live-search="true"   >
+                                    <select name="estudio" id="estudio"  class="form-control selectpicker "
+                                data-live-search="true"    >
                                 </select>
                                 </div>
                                 
