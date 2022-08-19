@@ -1,13 +1,11 @@
-<?php 
+<?php
 //activamos almacenamiento en el buffer
 ob_start();
 session_start();
 if (!isset($_SESSION['nombre'])) {
-  header("Location: login.html");
-}else{
-
-require 'header.php';
- ?>
+    header('Location: login.html');
+} else {
+    require 'header.php'; ?>
 <div class="content-wrapper">
     <!-- Main content -->
     <section class="content">
@@ -19,11 +17,19 @@ require 'header.php';
         <div class="row">
             <div class="col-md-12">
                 <div class="box">
+                    <!-- BOTON AGREGAR NUEVO ESTUDIO 
+                    <div class="box-header with-border">
+                        <h1 class="box-title"><button class="btn btn-success" onclick="mostrarformu(true)"
+                                id="btnagregar"><i class="fa fa-plus-circle"></i>Crear Estudio</button></h1>
+                    </div>-->
+
+
                     <!-- ENCABEZADOS DE LA TABLA ESTUDIOS  -->
                     <div class="panel-body table-responsive" id="listadoregistros">
                         <table id="tbllist" class="table table-hover table-fixed" width='100%'>
                             <thead>
                                 <th>-</th>
+
                                 <th>CLIENTE</th>
                                 <th>ESTUDIO</th>
                                 <th>NIVEL</th>
@@ -35,9 +41,13 @@ require 'header.php';
                                 <th>TMO</th>
                                 <th>TME</th>
                                 <th>ESTATUS</th>
+                                <th>PROGRESO</th>
+
                             </thead>
                         </table>
                     </div>
+
+
                     <!-- FORMULARIO AGREGAR ESTUDIO -->
                     <div class="panel-body" id="formularioregistros">
                     
@@ -50,16 +60,18 @@ require 'header.php';
                                 <input class="form-control" type="text" name="Cliente" id="nombre" maxlength="100"
                                     onkeyup="this.value = this.value.toUpperCase();" required>
                             </div>
+
                             <!-- INPUT ESTUDIO -->
                             <div class="form-group col-lg-6 col-md-6 col-xs-6">
                                 <label for="">Estudio:</label>
                                 <input class="form-control" type="text" name="Estudio" id="Estudio" maxlength="100"
                                     onkeyup="this.value = this.value.toUpperCase();" required>
                             </div>
+
                             <!-- INPUT NIVEL -->
                             <div class="form-group col-lg-2 col-md-2 col-xs-2">
                                 <label for="">Nivel:</label>
-                                <select class="form-control" name="Nivel" id="Nivel">
+                                <select class="form-control" name="Nivel" id="Nivel" data-live-search="true" data-live-search-style="startsWith">
                                     <option value="Nivel 1">Nivel 1</option>
                                     <option value="Nivel 2">Nivel 2</option>
                                     <option value="Nivel 3">Nivel 3</option>
@@ -101,6 +113,8 @@ require 'header.php';
                                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                     required>
                             </div>
+
+
                             <!-- DATAPICKER FECHA DE INICIO -->
                             <div class="form-group col-lg-2 col-md-2 col-xs-2">
                                 <label for="">Fecha de Inicio:</label>
@@ -112,11 +126,17 @@ require 'header.php';
                                 <input type="date" class="form-control" id="Fecha_Entrega_Estudio"
                                     name="Fecha_Entrega_Estudio" min="2022-01-01" max="2032-12-31" required>
                             </div>
+
+
+
                             <!-- BOTON GUARDAR -->
                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>
                                     Guardar</button>
-                                              <!-- BOTON CANCELAR -->
+
+
+
+                                <!-- BOTON CANCELAR -->
                                 <button class="btn btn-danger" onclick="cancelarform()" type="button"><i
                                         class="fa fa-arrow-circle-left"></i> Cancelar</button>
                             </div>
@@ -166,13 +186,10 @@ require 'header.php';
     </section>
     <!-- /.content -->
 </div>
-<?php 
-
-require 'footer.php';
- ?>
+<?php require 'footer.php'; ?>
 <script src="scripts/estudio.js"></script>
-<?php 
+<?php
 }
 
 ob_end_flush();
-  ?>
+?>

@@ -54,7 +54,7 @@ if (strlen(session_id()) < 1) {
     <!-- SWEETALERT2 -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
 
     
@@ -86,10 +86,11 @@ if (strlen(session_id()) < 1) {
                             <span>INICIO</span></a>
                     </li>
 
-<!--Modulo ADMINISTRACION --------------------------------------------------------------------------------------------------------->
+
+<!--Modulo DIRECTOR ADMINISTRATIVO Y FINANCIERO ----------------------------------------------------------------------------------->
                     <?php if (
                         $_SESSION['tipousuario'] ==
-                        'DIRECTORA ADMINISTRATIVA Y FINANCIERA'
+                        'DIRECTOR ADMINISTRATIVO Y FINANCIERO'
                     ) { ?>
                     <li class="treeview">
                         <a href="#">
@@ -176,6 +177,44 @@ if (strlen(session_id()) < 1) {
                 <?php } ?>
 <!--------------------------------------------------------------------------------------------------------------------------------->
 
+<!--Modulo COORDINADOR CATI-------------------------------------------------------------------------------------------------------->
+                <?php if ($_SESSION['tipousuario'] == 'COORDINADOR CATI') { ?>
+                
+
+                <ul class="sidebar-menu tree" data-widget="tree">
+                    <li><a href="verestudios.php"><i class="fa fa-laptop" aria-hidden="true"></i>
+                            <span>ESTUDIOS</span><span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i></a>
+                        </span>
+
+                    </li>
+                </ul>
+
+                <ul class="sidebar-menu tree" data-widget="tree">
+                    <li><a href="vercap.php"><i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                            <span>CAPACITACION</span><span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i></a>
+                        </span>
+
+                    </li>
+                </ul>
+                <ul class="sidebar-menu tree" data-widget="tree">
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-suitcase" aria-hidden="true"></i> <span>COORDINACION CATI</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                            <ul class="treeview-menu">
+                                <li><a href="asignar.php"><i class="fa fa-calendar"></i> Asignar Estudios</a>
+                                </li>
+                            </ul>
+                    </li>
+                </ul>
+
+                <?php } ?>
+<!--------------------------------------------------------------------------------------------------------------------------------->
+
 <!--Modulo LÍDER CATI ESTUDIOS MASIVOS--------------------------------------------------------------------------------------------->
                 <?php if (
                     $_SESSION['tipousuario'] == 'LÍDER CATI ESTUDIOS MASIVOS'
@@ -227,6 +266,28 @@ if (strlen(session_id()) < 1) {
                     </a>
                     <!--MODULO DE ASISTNCIA-->
                     <ul class="treeview-menu">
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i> <span> Asistencias</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="asistencia.php"><i class="fa fa-pie-chart" aria-hidden="true"></i>
+                                        Reporte General</a>
+                                </li>
+
+
+                                <li><a href="rptasistencia.php"><i class="fa fa-pie-chart" aria-hidden="true"></i>
+                                        Reporte
+                                        individual</a></li>
+                                <li><a href="http://192.168.0.122/sigi/vistas/liderasis.php"><i class="fa fa-pie-chart"
+                                            aria-hidden="true"></i>
+                                        Control de Asistencia</a></li>
+                            </ul>
+                        </li>
+
                     </ul>
 
                 </li>
@@ -434,7 +495,6 @@ if (strlen(session_id()) < 1) {
                 </ul>
                 <?php } ?>
 <!--------------------------------------------------------------------------------------------------------------------------------->
- 
 
             </section>
         </aside>

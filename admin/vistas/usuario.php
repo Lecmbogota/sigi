@@ -68,16 +68,17 @@ if (!isset($_SESSION['nombre'])) {
                                                 maxlength="100" placeholder="Apellidos" onkeyup="this.value = this.value.toUpperCase();"  required>
                                         </div>
                                         <div class="form-group col-lg-3">
-                                            <label for="">Email: </label>
-                                            <input class="form-control" type="text" name="email" id="email"
-                                                maxlength="70" placeholder="Ejemplo@operative.net.co">
+                                            <div class="input-group">
+                                                <span class="input-group-addon" >@</span>
+                                                <input type="text" name="email" id="email" class="form-control" placeholder="Ejemplo@operative.net.co" aria-describedby="basic-addon1">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group col-lg-12">
                                 <div class="card">
-                                    <h5 class="card-header">ASIGNACION DE CARGO Y DEPARTAMENTO</h5>
+                                    <h5 class="card-header">ASIGNACION DE CARGO</h5>
                                     <div class="card-body">
                                         <div class="form-group col-lg-12">
                                             <div class="form-group col-lg-6">

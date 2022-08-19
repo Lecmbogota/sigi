@@ -48,67 +48,25 @@
                     <input type="password" class="form-control" name="codigo_persona" id="codigo_persona"
                         placeholder="INGRESA TU CEDULA">
                         <select name="tipo" class="form-control" id="tipo">
+                            <option  selected disabled value="">Seleccionar</option>
                             <optgroup label="GESTION">
-                                  <?php
-                                  date_default_timezone_set('America/Bogota');
-                                  $timenow = date('H:i:s');
-                                  if (
-                                      $timenow > date('12:00:00') &&
-                                      $timenow < date('00:00:00')
-                                  ) {
-                                      echo '<option selected value="FIN GESTION">FIN GESTION</option>';
-                                  } else {
-                                      echo '<option disabled hidden>FIN GESTION</option>';
-                                  }
-                                  ?>
+                               <option  value="FIN GESTION">FIN GESTION</option>
                             </optgroup>
+                            
                             <optgroup label="BREAK"> 
-                                <?php
-                                date_default_timezone_set('America/Bogota');
-                                $timenow = date('H:i:s');
-                                if (
-                                    $timenow > date('09:00:00') &&
-                                    $timenow < date('15:00:00')
-                                ) {
-                                    echo '<option selected value="INICIO BREAK">INICIO BREAK</option>';
-                                }
-                                ?>                       
-                                <option value="FIN BREAK">FIN BREAK</option>
+                                <option  value="INICIO BREAK">INICIO BREAK</option>                       
+                                <option  value="FIN BREAK">FIN BREAK</option>
                             </optgroup>
+                            
                             <optgroup label="ALMUERZO">
-                                <?php
-                                date_default_timezone_set('America/Bogota');
-                                $timenow = date('H:i:s');
-                                if (
-                                    $timenow > date('11:00:00') &&
-                                    $timenow < date('16:00:00')
-                                ) {
-                                    echo '<option selected value="INICIO ALMUERZO">INICIO ALMUERZO</option>';
-                                } else {
-                                    echo '<option disabled hidden>INICIO ALMUERZO</option>';
-                                }
-                                ?>
-                                <?php
-                                date_default_timezone_set('America/Bogota');
-                                $timenow = date('H:i:s');
-                                if (
-                                    $timenow > date('12:30:00') &&
-                                    $timenow < date('17:30:00')
-                                ) {
-                                    echo '<option selected value="FIN ALMUERZO">FIN ALMUERZO</option>';
-                                } else {
-                                    echo '<option disabled hidden>FIN ALMUERZO</option>';
-                                }
-                                ?>
+                                <option  value="INICIO ALMUERZO">INICIO ALMUERZO</option>
+                                <option  value="FIN ALMUERZO">FIN ALMUERZO</option>';
                             </optgroup>
                             
                             <optgroup label="CAPACITACION"> 
-                                <option value="INICIO CAPACITACION">INICIO CAPACITACION</option>
-                                <option value="FIN CAPACITACION">FIN CAPACITACION</option>
+                                <option  value="INICIO CAPACITACION">INICIO CAPACITACION</option>
+                                <option  value="FIN CAPACITACION">FIN CAPACITACION</option>
                             </optgroup>
-                       
-
-
                         </select>
                     <div class="input-group-btn">
                         <button type="submit" class="btn btn-primary"><i
