@@ -86,7 +86,7 @@ if (strlen(session_id()) < 1) {
                             <span>INICIO</span></a>
                     </li>
 
-
+<!--Modulo ADMINISTRACION --------------------------------------------------------------------------------------------------------->
                     <?php if (
                         $_SESSION['tipousuario'] ==
                         'DIRECTORA ADMINISTRATIVA Y FINANCIERA'
@@ -114,6 +114,9 @@ if (strlen(session_id()) < 1) {
                                     <li><a href="rptasistencia.php"><i class="fa fa-pie-chart" aria-hidden="true"></i>
                                             Reporte
                                             individual</a></li>
+                                    <li><a href="http://192.168.0.122/sigi/vistas/liderasis.php"><i class="fa fa-pie-chart"
+                                            aria-hidden="true"></i>
+                                        SCA INI. GEST.</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -126,19 +129,15 @@ if (strlen(session_id()) < 1) {
 
                         </li>
                     </ul>
-                    <li>
-                        <a href="../ajax/usuario.php?op=salir"><i class="fa fa-power-off" aria-hidden="true"></i>
-                            <span>CERRAR SESION</a>
-                    </li>
-
                 </ul>
 
 
 
 
                 <?php } ?>
+<!--------------------------------------------------------------------------------------------------------------------------------->
 
-
+<!--Modulo AUXILIAR ADMINISTRATIVO------------------------------------------------------------------------------------------------->
                 <?php if (
                     $_SESSION['tipousuario'] == 'AUXILIAR ADMINISTRATIVO'
                 ) { ?>
@@ -172,14 +171,12 @@ if (strlen(session_id()) < 1) {
 
 
                 </li>
-
-                <li>
-                    <a href="../ajax/usuario.php?op=salir"><i class="fa fa-power-off" aria-hidden="true"></i>
-                        <span>CERRAR SESION</a>
-                </li>
                 </ul>
-                <?php } ?>
 
+                <?php } ?>
+<!--------------------------------------------------------------------------------------------------------------------------------->
+
+<!--Modulo LÍDER CATI ESTUDIOS MASIVOS--------------------------------------------------------------------------------------------->
                 <?php if (
                     $_SESSION['tipousuario'] == 'LÍDER CATI ESTUDIOS MASIVOS'
                 ) { ?>
@@ -215,15 +212,11 @@ if (strlen(session_id()) < 1) {
                         </li>
 
                     </ul>
-
-                <li>
-                    <a href="../ajax/usuario.php?op=salir"><i class="fa fa-power-off" aria-hidden="true"></i>
-                        <span>CERRAR SESION</a>
-                </li>
-
                 </ul>
                 <?php } ?>
+<!--------------------------------------------------------------------------------------------------------------------------------->
 
+<!--Modulo LIDER DE GESTION-------------------------------------------------------------------------------------------------------->
                 <?php if ($_SESSION['tipousuario'] == 'LIDER DE GESTION') { ?>
                 <li class="treeview">
                     <a href="#">
@@ -237,19 +230,11 @@ if (strlen(session_id()) < 1) {
                     </ul>
 
                 </li>
-
-                <li>
-                    <a href="../ajax/usuario.php?op=salir"><i class="fa fa-power-off" aria-hidden="true"></i>
-                        <span>CERRAR SESION</a>
-                </li>
-
                 </ul>
                 <?php } ?>
+<!--------------------------------------------------------------------------------------------------------------------------------->
 
-
-
-
-
+<!--Modulo DIRECTOR DE OPERACIONES------------------------------------------------------------------------------------------------->
                 <?php if (
                     $_SESSION['tipousuario'] == 'DIRECTOR DE OPERACIONES'
                 ) { ?>
@@ -261,37 +246,35 @@ if (strlen(session_id()) < 1) {
 
                     </li>
                 </ul>
-                <li>
-                    <a href="../ajax/usuario.php?op=salir"><i class="fa fa-power-off" aria-hidden="true"></i>
-                        <span>CERRAR SESION</a>
-                </li>
+                <ul class="sidebar-menu tree" data-widget="tree">
+                    <li><a href="vercap.php"><i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                            <span>CAPACITACION</span><span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i></a>
+                        </span>
 
+                    </li>
+                </ul>
                 </ul>
                 <?php } ?>
+<!--------------------------------------------------------------------------------------------------------------------------------->
 
+<!--Modulo AUXILIAR DE CAPACITACIÓN Y FORMACIÓN------------------------------------------------------------------------------------>
+                <?php if (
+                    $_SESSION['tipousuario'] ==
+                    'AUXILIAR DE CAPACITACIÓN Y FORMACIÓN'
+                ) { ?>
+                <ul class="sidebar-menu tree" data-widget="tree">
+                    <li><a href="capacitacion.php"><i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                            <span>CAPACITACION</span><span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i></a>
+                        </span>
 
+                    </li>
+                </ul>
+                <?php } ?> 
+<!--------------------------------------------------------------------------------------------------------------------------------->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!--Modulo SuperUsuario del Sistema------------------------------------------------------------------------------------------------>
                 <?php if ($_SESSION['tipousuario'] == 'Administrador') { ?>
                 <li class="treeview">
                     <a href="#">
@@ -353,6 +336,9 @@ if (strlen(session_id()) < 1) {
                                 <li><a href="rptasistencia.php"><i class="fa fa-pie-chart" aria-hidden="true"></i>
                                         Reporte
                                         individual</a></li>
+                                <li><a href="http://192.168.0.122/sigi/vistas/homeWorkAsistencia.php"><i class="fa fa-pie-chart"
+                                            aria-hidden="true"></i>
+                                        Control de Asistencia</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -422,16 +408,33 @@ if (strlen(session_id()) < 1) {
                             </span>
 
                     </li>
-
-
-                    <li>
-                        <a href="../ajax/usuario.php?op=salir"><i class="fa fa-power-off" aria-hidden="true"></i>
-                            <span>CERRAR SESION</a>
-                    </li>
-
                 </ul>
 
                 <?php } ?>
+<!--------------------------------------------------------------------------------------------------------------------------------->
+
+<!--Modulo de Cerre de Sesion------------------------------------------------------------------------------------------------------>
+                <?php if (
+                    $_SESSION['tipousuario'] == 'Administrador' ||
+                    $_SESSION['tipousuario'] == 'DIRECTOR DE OPERACIONES' ||
+                    $_SESSION['tipousuario'] ==
+                        'AUXILIAR DE CAPACITACIÓN Y FORMACIÓN' ||
+                    $_SESSION['tipousuario'] == 'LIDER DE GESTION' ||
+                    $_SESSION['tipousuario'] ==
+                        'DIRECTORA ADMINISTRATIVA Y FINANCIERA' ||
+                    $_SESSION['tipousuario'] == 'AUXILIAR ADMINISTRATIVO' ||
+                    $_SESSION['tipousuario'] == 'LÍDER CATI ESTUDIOS MASIVOS'
+                ) { ?>
+                 <li class="treeview">
+                <li>
+                    <a href="../ajax/usuario.php?op=salir"><i class="fa fa-power-off" aria-hidden="true"></i>
+                        <span>CERRAR SESION</a>
+                </li>
+                </li>
+                </ul>
+                <?php } ?>
+<!--------------------------------------------------------------------------------------------------------------------------------->
+ 
 
             </section>
         </aside>

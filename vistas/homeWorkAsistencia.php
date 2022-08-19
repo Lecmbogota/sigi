@@ -48,58 +48,51 @@
                     <input type="password" class="form-control" name="codigo_persona" id="codigo_persona"
                         placeholder="INGRESA TU CEDULA">
                         <select name="tipo" class="form-control" id="tipo">
+                            <option disabled selected>Selecccionar...</option>
                             <optgroup label="GESTION">
-                                  <?php
-                                  date_default_timezone_set('America/Bogota');
-                                  $timenow = date('H:i:s');
-                                  if (
-                                      $timenow > date('12:00:00') &&
-                                      $timenow < date('00:00:00')
-                                  ) {
-                                      echo '<option selected value="FIN GESTION">FIN GESTION</option>';
-                                  } else {
-                                      echo '<option disabled hidden>FIN GESTION</option>';
-                                  }
-                                  ?>
-                            </optgroup>
-                            <optgroup label="BREAK"> 
                                 <?php
                                 date_default_timezone_set('America/Bogota');
                                 $timenow = date('H:i:s');
                                 if (
-                                    $timenow > date('09:00:00') &&
-                                    $timenow < date('15:00:00')
+                                    $timenow < date('08:10:00') &&
+                                    $timenow > date('05:00:00')
                                 ) {
-                                    echo '<option selected value="INICIO BREAK">INICIO BREAK</option>';
+                                    echo '<option value="INICIO GESTION">INICIO GESTION</option>';
+                                } else {
+                                    echo '<option disabled hidden>INICIO</option>';
                                 }
-                                ?>                       
+                                ?>
+
+                                <?php if (
+                                    $timenow > date('12:00:00') &&
+                                    $timenow < date('00:00:00')
+                                ) {
+                                    echo '<option value="FIN GESTION">FIN GESTION</option>';
+                                } else {
+                                    echo '<option disabled hidden>FIN GESTION</option>';
+                                } ?>
+                            </optgroup>
+                            <optgroup label="BREAK">                        
+                                <option value="INICIO BREAK">INICIO BREAK</option>
                                 <option value="FIN BREAK">FIN BREAK</option>
                             </optgroup>
                             <optgroup label="ALMUERZO">
-                                <?php
-                                date_default_timezone_set('America/Bogota');
-                                $timenow = date('H:i:s');
-                                if (
+                                <?php if (
                                     $timenow > date('11:00:00') &&
                                     $timenow < date('16:00:00')
                                 ) {
-                                    echo '<option selected value="INICIO ALMUERZO">INICIO ALMUERZO</option>';
+                                    echo '<option value="INICIO ALMUERZO">INICIO ALMUERZO</option>';
                                 } else {
                                     echo '<option disabled hidden>INICIO ALMUERZO</option>';
-                                }
-                                ?>
-                                <?php
-                                date_default_timezone_set('America/Bogota');
-                                $timenow = date('H:i:s');
-                                if (
+                                } ?>
+                                <?php if (
                                     $timenow > date('12:30:00') &&
                                     $timenow < date('17:30:00')
                                 ) {
-                                    echo '<option selected value="FIN ALMUERZO">FIN ALMUERZO</option>';
+                                    echo '<option value="FIN ALMUERZO">FIN ALMUERZO</option>';
                                 } else {
                                     echo '<option disabled hidden>FIN ALMUERZO</option>';
-                                }
-                                ?>
+                                } ?>
                             </optgroup>
                             
                             <optgroup label="CAPACITACION"> 

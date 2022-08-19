@@ -24,8 +24,9 @@
 
     <!-- Automatic element centering -->
     <div class="lockscreen-wrapper">
-        <?php 
- //include '../ajax/asistencia.php' ?>
+        <?php
+//include '../ajax/asistencia.php'
+?>
         <div name="movimientos" id="movimientos">
         </div>
 
@@ -46,16 +47,24 @@
                 <div class="input-group">
                     <input type="password" class="form-control" name="codigo_persona" id="codigo_persona"
                         placeholder="INGRESA TU CEDULA">
-                    <div hidden>
                         <select name="tipo" class="form-control" id="tipo">
-                            <option select value="INICIO GESTION">INICIO GESTION</option>
-
+                            <?php
+                            date_default_timezone_set('America/Bogota');
+                            $timenow = date('H:i:s');
+                            if (
+                                $timenow < date('08:10:00') &&
+                                $timenow > date('05:00:00')
+                            ) {
+                                echo '<option selected value="INICIO GESTION">INICIO GESTION</option>';
+                            } else {
+                                echo '<option selected disabled >FUERA DE HORARIO</option>';
+                            }
+                            ?>
                         </select>
-                    </div>
                     <div class="input-group-btn">
                         <button type="submit" class="btn btn-primary"><i
                                 class="fa fa-arrow-right text-muted"></i></button>
-
+                        
 
                     </div>
                 </div>
