@@ -56,7 +56,7 @@ class Productividad
     //listar registros
     public function listar()
     {
-        $sql = ' SELECT * FROM productividad';
+        $sql = 'SELECT * FROM productividad';
         return ejecutarConsulta($sql);
     }
 

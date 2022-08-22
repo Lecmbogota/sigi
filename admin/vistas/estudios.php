@@ -1,13 +1,31 @@
-<?php 
+<?php
 //activamos almacenamiento en el buffer
 ob_start();
 session_start();
 if (!isset($_SESSION['nombre'])) {
-  header("Location: login.html");
-}else{
+    header('Location: login.html');
+} else {
 
-require 'header.php';
- ?>
+    require '../config/Conexion.php';
+    for ($e = 1; $e < 2; $e++) {
+        $query = 'TRUNCATE TABLE advance';
+        $query_run = mysqli_query($conexion, $query);
+        $query = 'INSERT INTO advance(avance,estudio)
+SELECT COUNT(ee_estudio)ee_estudi, ee_estudio FROM ee_carga WHERE ee_estatus = 1';
+        $query_run = mysqli_query($conexion, $query);
+        $query = 'UPDATE advance INNER JOIN estudios ON advance.estudio = estudios.Estudio 
+SET advance.idavance = estudios.id_Estudio';
+        $query_run = mysqli_query($conexion, $query);
+        $query = 'UPDATE estudios INNER JOIN advance ON estudios.id_Estudio = advance.idavance
+SET estudios.Avance_estudio = advance.avance';
+        $query_run = mysqli_query($conexion, $query);
+    }
+
+    require 'header.php';
+    ?>
+
+
+
 <div class="content-wrapper">
     <!-- Main content -->
     <section class="content">
@@ -188,13 +206,10 @@ require 'header.php';
     </section>
     <!-- /.content -->
 </div>
-<?php 
-
-require 'footer.php';
- ?>
+<?php require 'footer.php'; ?>
 <script src="scripts/estudio.js"></script>
-<?php 
+<?php
 }
 
 ob_end_flush();
-  ?>
+?>
