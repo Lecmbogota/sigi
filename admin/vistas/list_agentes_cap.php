@@ -1,6 +1,6 @@
 <?php
 
-require '../config/Conexionasis.php';
+require '../config/Conexion.php';
 $idestudiocap = $_GET['param_id'];
 $rspta = mysqli_query(
     $conexion,

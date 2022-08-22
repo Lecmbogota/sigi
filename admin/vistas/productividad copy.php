@@ -1,21 +1,14 @@
-<?php
+<?php 
 //activamos almacenamiento en el buffer
 ob_start();
 session_start();
 if (!isset($_SESSION['nombre'])) {
-    header('Location: login.html');
-} else {
-    require 'header.php'; ?>
-   
-   
-   <?php
-   require '../config/Conexion.php';
-   $query =
-       'DELETE t1 FROM ee_carga t1 INNER JOIN ee_carga t2 WHERE t1.id_carga > t2.id_carga AND t1.ee_id = t2.ee_id';
-   $query_run = mysqli_query($conexion, $query);
+  header("Location: login.html");
+}else{
 
-   ?>
+require 'header.php';
 
+ ?>
 <div class="content-wrapper">
     <!-- Main content -->
     <section class="content">
@@ -33,9 +26,9 @@ if (!isset($_SESSION['nombre'])) {
                 <div class="box">
                     <div class="box-header with-border">
 
-                        <form action="loadproductividad.php" name="save_multi_select" id="save_multi_select" method="POST">
+                        <form action="" name="formularioe" id="formularioe" method="POST">
                             <h1 class="box-title"> <button class="btn btn-primary" type="submit"
-                                    id="btnGuarda"><i class="fa fa-save"></i> eliminar duplicados</button>
+                                    id="btnGuarda"><i class="fa fa-save"></i> Vaciar</button>
                         </form>
                         <form action="" name="formulariol" id="formularioa" method="POST">
                             <h1 class="box-title"> <button class="btn btn-primary" type="submit"
@@ -209,10 +202,13 @@ if (!isset($_SESSION['nombre'])) {
     </section>
     <!-- /.content -->
 </div>
-<?php require 'footer.php'; ?>
+<?php 
+
+require 'footer.php';
+ ?>
 <script src="scripts/productividad.js"></script>
-<?php
+<?php 
 }
 
 ob_end_flush();
-?>
+  ?>

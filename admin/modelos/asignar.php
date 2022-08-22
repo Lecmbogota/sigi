@@ -1,6 +1,6 @@
 <?php
 //incluir la conexion de base de datos
-require '../config/Conexionasis.php';
+require '../config/Conexion.php';
 
 class Asignar
 {
@@ -43,7 +43,6 @@ class Asignar
         $sql = 'SELECT * FROM asignacionestudio';
         return ejecutarConsulta($sql);
     }
-
 }
 
 ?>

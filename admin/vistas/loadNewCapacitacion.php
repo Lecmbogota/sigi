@@ -1,6 +1,5 @@
 <?php
-$con = mysqli_connect('192.168.0.122', 'operative', 'Operative2020*', 'sigi');
-
+require '../config/Conexion.php';
 if (isset($_POST['save_multi_select'])) {
     $idcliente = $_POST['idcliente'];
     $idestudiocap = $_POST['estudio'];
@@ -10,14 +9,14 @@ if (isset($_POST['save_multi_select'])) {
         // echo $item."<br>";
         $query = "INSERT INTO capacitacion (cedulacap,idestudiocap,calificacion,fecha_capacitacion) VALUES ('$item','$idestudiocap','$calificacion','$fecha_capacitacion')";
 
-        $query_run = mysqli_query($con, $query);
+        $query_run = mysqli_query($conexion, $query);
         $query =
             'UPDATE capacitacion INNER JOIN usuarios SET capacitacion.agentecap = CONCAT ( usuarios.nombre, " ", usuarios.apellidos ) WHERE capacitacion.cedulacap = usuarios.cedula';
-        $query_run = mysqli_query($con, $query);
+        $query_run = mysqli_query($conexion, $query);
 
         $query =
             'UPDATE capacitacion INNER JOIN estudios ON capacitacion.idestudiocap = estudios.id_Estudio SET capacitacion.estudio = estudios.Estudio';
-        $query_run = mysqli_query($con, $query);
+        $query_run = mysqli_query($conexion, $query);
     }
     if ($query_run) {
         header(

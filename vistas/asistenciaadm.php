@@ -27,38 +27,7 @@
                         <!--<option selected value="INICIO GESTION">INICIO GESTION</option>-->
 
                     <select  name="tipo" class="form-control" id="tipo" >
-                            <?php
-                            date_default_timezone_set('America/Bogota');
-                            $timenow = date('H:i:s');
-                            $day = date('l');
-
-                            if ($day == 'Saturday' || $day == 'Sunday') {
-                                if (
-                                    $timenow < date('09:10:00') &&
-                                    $timenow > date('05:00:00')
-                                ) {
-                                    echo '<option selected value="INICIO GESTION">INICIO GESTION</option>';
-                                } else {
-                                    echo '<option selected  value="">LLEGADA TARDE</option>';
-                                }
-                            }
-                            if (
-                                $day == 'Monday' ||
-                                $day == 'Tuesday' ||
-                                $day == 'Wednesday' ||
-                                $day == 'Thursday' ||
-                                $day == 'Friday'
-                            ) {
-                                if (
-                                    $timenow > date('05:00:00') &&
-                                    $timenow < date('08:10:00')
-                                ) {
-                                    echo '<option selected value="INICIO GESTION">INICIO GESTION</option>';
-                                } else {
-                                    echo '<option selected  value="">LLEGADA TARDE</option>';
-                                }
-                            }
-                            ?>
+                        <option selected value="INICIO GESTION">INICIO GESTION</option>
                     </select>
                     <div class="input-group-btn">
                         <button type="submit" class="btn btn-primary"><i

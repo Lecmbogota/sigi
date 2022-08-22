@@ -1,6 +1,6 @@
 <?php
 //incluir la conexion de base de datos
-require '../config/Conexionasis.php';
+require '../config/Conexion.php';
 class Estudio
 {
     //implementamos nuestro constructor
