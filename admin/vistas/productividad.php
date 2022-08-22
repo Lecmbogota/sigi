@@ -9,16 +9,32 @@ if (!isset($_SESSION['nombre'])) {
    
 <?php
 require '../config/Conexion.php';
-
 for ($e = 1; $e < 2; $e++) {
-    $query =
-        'UPDATE productividad INNER JOIN estudios ON productividad.estudio_prod = estudios.Estudio SET productividad.meta_prod = estudios.TME*productividad.total_horas_trabajadas_prod, productividad.porcentaje_prod = ((productividad.enc_realizadas_prod/productividad.meta_prod)*100)';
+    $query = 'TRUNCATE TABLE ee_carga';
     $query_run = mysqli_query($conexion, $query);
 
     for ($e = 1; $e < 2; $e++) {
         $query =
-            'UPDATE productividad SET porcentaje_prod= (SELECT (FORMAT(porcentaje_prod, 0)))';
+            'DELETE t1 FROM ee_carga t1 INNER JOIN ee_carga t2 WHERE t1.id_carga > t2.id_carga AND t1.ee_id = t2.ee_id';
         $query_run = mysqli_query($conexion, $query);
+
+        for ($e = 1; $e < 2; $e++) {
+            $query =
+                'INSERT INTO productividad (enc_realizadas_prod, agente_prod, estudio_prod, fecha_prod) SELECT COUNT(ee_estudio) ee_estatus, ee_encuestador, ee_estudio, ee_fecha FROM ee_carga WHERE ee_estatus = 1 GROUP BY ee_estudio,ee_fecha, ee_encuestador';
+            $query_run = mysqli_query($conexion, $query);
+
+            for ($e = 1; $e < 2; $e++) {
+                $query =
+                    'UPDATE productividad INNER JOIN estudios ON productividad.estudio_prod = estudios.Estudio SET productividad.meta_prod = estudios.TME*productividad.total_horas_trabajadas_prod, productividad.porcentaje_prod = ((productividad.enc_realizadas_prod/productividad.meta_prod)*100)';
+                $query_run = mysqli_query($conexion, $query);
+
+                for ($e = 1; $e < 2; $e++) {
+                    $query =
+                        'UPDATE productividad SET porcentaje_prod= (SELECT (FORMAT(porcentaje_prod, 2)))';
+                    $query_run = mysqli_query($conexion, $query);
+                }
+            }
+        }
     }
 }
 ?>
