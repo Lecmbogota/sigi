@@ -9,28 +9,30 @@ if (!isset($_SESSION['nombre'])) {
    
 <?php
 require '../config/Conexion.php';
+
 for ($e = 1; $e < 2; $e++) {
-    $query = 'TRUNCATE TABLE ee_carga';
+    $query =
+        'DELETE t1 FROM ee_carga t1 INNER JOIN ee_carga t2 WHERE t1.id_carga > t2.id_carga AND t1.ee_id = t2.ee_id and t1.ee_estudio = t2.ee_estudio';
     $query_run = mysqli_query($conexion, $query);
 
     for ($e = 1; $e < 2; $e++) {
         $query =
-            'DELETE t1 FROM ee_carga t1 INNER JOIN ee_carga t2 WHERE t1.id_carga > t2.id_carga AND t1.ee_id = t2.ee_id';
+            ' INSERT INTO productividad(agente_prod,estudio_prod,fecha_prod,enc_realizadas_prod) SELECT ee_encuestador,ee_estudio,ee_fecha, SUM(ee_estatus) FROM ee_carga WHERE ee_estatus = 1 GROUP BY ee_estudio, ee_encuestador, ee_fecha';
         $query_run = mysqli_query($conexion, $query);
 
         for ($e = 1; $e < 2; $e++) {
             $query =
-                'INSERT INTO productividad (enc_realizadas_prod, agente_prod, estudio_prod, fecha_prod) SELECT COUNT(ee_estudio) ee_estatus, ee_encuestador, ee_estudio, ee_fecha FROM ee_carga WHERE ee_estatus = 1 GROUP BY ee_estudio,ee_fecha, ee_encuestador';
+                'UPDATE productividad INNER JOIN estudios ON productividad.estudio_prod = estudios.Estudio SET productividad.meta_prod = estudios.TME*productividad.total_horas_trabajadas_prod, productividad.porcentaje_prod = ((productividad.enc_realizadas_prod/productividad.meta_prod)*100)';
             $query_run = mysqli_query($conexion, $query);
 
             for ($e = 1; $e < 2; $e++) {
                 $query =
-                    'UPDATE productividad INNER JOIN estudios ON productividad.estudio_prod = estudios.Estudio SET productividad.meta_prod = estudios.TME*productividad.total_horas_trabajadas_prod, productividad.porcentaje_prod = ((productividad.enc_realizadas_prod/productividad.meta_prod)*100)';
+                    'UPDATE productividad SET porcentaje_prod= (SELECT (FORMAT(porcentaje_prod, 0)))';
                 $query_run = mysqli_query($conexion, $query);
 
                 for ($e = 1; $e < 2; $e++) {
                     $query =
-                        'UPDATE productividad SET porcentaje_prod= (SELECT (FORMAT(porcentaje_prod, 2)))';
+                        'DELETE t1 FROM productividad t1 INNER JOIN productividad t2 WHERE t1.id_productividad  > t2.id_productividad AND t1.estudio_prod = t2.estudio_prod and t1.fecha_prod = t2.fecha_prod AND t1.agente_prod = t2.agente_prod';
                     $query_run = mysqli_query($conexion, $query);
                 }
             }

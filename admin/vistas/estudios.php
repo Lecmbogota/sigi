@@ -10,11 +10,8 @@ if (!isset($_SESSION['nombre'])) {
     for ($e = 1; $e < 2; $e++) {
         $query = 'TRUNCATE TABLE advance';
         $query_run = mysqli_query($conexion, $query);
-        $query = 'INSERT INTO advance(estudio,avance) SELECT `estudio_prod`, SUM(`enc_realizadas_prod`) 
-FROM productividad
-WHERE `enc_realizadas_prod` IS NOT NULL   
-GROUP BY `estudio_prod`  
-ORDER BY `estudio_prod`';
+        $query =
+            'INSERT INTO advance(estudio,avance) SELECT ee_estudio, SUM(ee_estatus) FROM ee_carga WHERE ee_estatus = 1 GROUP BY ee_estudio ORDER BY ee_estudio';
         $query_run = mysqli_query($conexion, $query);
         $query = 'UPDATE advance INNER JOIN estudios ON advance.estudio = estudios.Estudio 
 SET advance.idavance = estudios.id_Estudio';
