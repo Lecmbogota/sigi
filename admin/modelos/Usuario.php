@@ -19,11 +19,13 @@ class Usuario
         $email,
         $clavehash,
         $usuariocreado,
-        $codigo_persona
+        $codigo_persona,
+        $usr_rotator,
+        $pwd_rotator
     ) {
         date_default_timezone_set('America/Bogota');
         $fechacreado = date('Y-m-d H:i:s');
-        $sql = "INSERT INTO usuarios (nombre,apellidos,cedula,login,iddepartamento,idtipousuario,email,password,estado,fechacreado,usuariocreado,codigo_persona) VALUES ('$nombre','$apellidos','$cedula','$login','$iddepartamento','$idtipousuario','$email','$clavehash','1','$fechacreado','$usuariocreado','$codigo_persona')";
+        $sql = "INSERT INTO usuarios (nombre,apellidos,cedula,login,iddepartamento,idtipousuario,email,password,estado,fechacreado,usuariocreado,codigo_persona,usr_rotator,pwd_rotator) VALUES ('$nombre','$apellidos','$cedula','$login','$iddepartamento','$idtipousuario','$email','$clavehash','1','$fechacreado','$usuariocreado','$codigo_persona','$usr_rotator','$pwd_rotator')";
         return ejecutarConsulta($sql);
     }
 
@@ -37,9 +39,11 @@ class Usuario
         $idtipousuario,
         $email,
         $usuariocreado,
-        $codigo_persona
+        $codigo_persona,
+        $usr_rotator,
+        $pwd_rotator
     ) {
-        $sql = "UPDATE usuarios SET nombre='$nombre',apellidos='$apellidos',cedula='$cedula',login='$login',iddepartamento='$iddepartamento',idtipousuario='$idtipousuario',email='$email',usuariocreado='$usuariocreado',codigo_persona='$codigo_persona'    
+        $sql = "UPDATE usuarios SET nombre='$nombre',apellidos='$apellidos',cedula='$cedula',login='$login',iddepartamento='$iddepartamento',idtipousuario='$idtipousuario',email='$email',usuariocreado='$usuariocreado',codigo_persona='$codigo_persona',usr_rotator='$usr_rotator',pwd_rotator='$pwd_rotator'
 	WHERE idusuario='$idusuario'";
         return ejecutarConsulta($sql);
     }
@@ -74,7 +78,7 @@ class Usuario
     //listar registros
     public function listar()
     {
-        $sql = 'SELECT * FROM usuarios';
+        $sql = 'SELECT * FROM usuarios  ORDER BY nombre';
         return ejecutarConsulta($sql);
     }
     public function listaru()

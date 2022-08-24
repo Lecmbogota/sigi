@@ -1,14 +1,11 @@
-<?php 
+<?php
 //activamos almacenamiento en el buffer
 ob_start();
 session_start();
 if (!isset($_SESSION['nombre'])) {
-  header("Location: login.html");
-}else{
-
-require 'header.php';
-
- ?>
+    header('Location: login.html');
+} else {
+    require 'header.php'; ?>
 <div class="content-wrapper">
     <!-- Main content -->
     <section class="content">
@@ -16,7 +13,7 @@ require 'header.php';
         <div class="info-box">
             <span class="info-box-icon bg-blue"><i class="fa fa-file"></i></span>
             <div class="info-box-content">
-                <h1 class="box-title">Usuarios</h1>
+                <h1 class="box-title">Usuarios - Personal Activo</h1>
             </div>
 
         </div>
@@ -24,39 +21,17 @@ require 'header.php';
         <div class="row">
             <div class="col-md-12">
                 <div class="box">
-                    <div class="box-header with-border">
-
-                        <form action="" name="formularioe" id="formularioe" method="POST">
-                            <h1 class="box-title"> <button class="btn btn-primary" type="submit"
-                                    id="btnGuarda"><i class="fa fa-save"></i> Vaciar</button>
-                        </form>
-                        <form action="" name="formulariol" id="formularioa" method="POST">
-                            <h1 class="box-title"> <button class="btn btn-primary" type="submit"
-                                    id="btnGuarda"><i class="fa fa-save"></i> ver</button>
-                        </form>
-                        <div class="box-tools pull-right">
-
-                        </div>
-                    </div>
                     <!--box-header-->
                     <!--centro-->
-
-
-
                     <div class="panel-body table-responsive" id="listadoregistros">
                         <table id="tbllistado" class="table table-hover table-fixed" width='100%'>
                             <thead>
-                                <th>ID</th>
-                                <th>AGENTE</th>
-                                <th>ESTUDIO</th>
-                                <th>META</th>
-                                <th>EFECTIVAS</th>
-                                <th>FECHA</th>
-                                <th>H INI</th>
-                                <th>H FIN</th>
-                                <th>TMU</th>
-                                <th>HTR</th>
-                                <th>%</th>
+                                <th>Opciones</th>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>                             
+                                <th>Cedula</th>
+                                <th>Usuario Rotator</th>
+                                <th>Estado</th>
                             </thead>
                         </table>
                     </div>
@@ -78,48 +53,52 @@ require 'header.php';
                                             <label for="">Nombres (*):</label>
                                             <input class="form-control" type="hidden" name="idusuario" id="idusuario">
                                             <input class="form-control" type="text" name="nombre" id="nombre"
-                                                maxlength="100" placeholder="Nombres" required>
+                                                maxlength="100" placeholder="Nombres" onkeyup="this.value = this.value.toUpperCase();" required>
                                         </div>
 
 
                                         <div class="form-group col-lg-2">
                                             <label for="">Apellidos (*):</label>
                                             <input class="form-control" type="text" name="apellidos" id="apellidos"
-                                                maxlength="100" placeholder="Apellidos" required>
+                                                maxlength="100" placeholder="Apellidos" onkeyup="this.value = this.value.toUpperCase();"  required>
                                         </div>
                                         <div class="form-group col-lg-3">
-                                            <label for="">Email: </label>
-                                            <input class="form-control" type="text" name="email" id="email"
-                                                maxlength="70" placeholder="Ejemplo@operative.net.co">
+                                            <label for="">Correo (*):</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon" >@</span>
+                                                <input type="text" name="email" id="email" class="form-control" placeholder="Ejemplo@operative.net.co" aria-describedby="basic-addon1">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group col-lg-12">
                                 <div class="card">
-                                    <h5 class="card-header">ASIGNACION DE CARGO Y DEPARTAMENTO</h5>
+                                    <h5 class="card-header">ASIGNACION DE CARGO </h5>
                                     <div class="card-body">
                                         <div class="form-group col-lg-12">
                                             <div class="form-group col-lg-6">
-                                                <label class="form-label select-label">Departamento:</label>
-                                                <select class="select" name="idtipousuario" id="idtipousuario" required>
-                                                </select>
-
+                                            <label>Cargo:</label>
+                                            <br>
+                                            <select class="select" name="idtipousuario" id="idtipousuario" required>
+                                            </select>
+                                                
                                             </div>
 
-                                            <div class="form-group col-lg-6">
-                                                <label class="form-label select-label">Departamento:</label>
+                                            <div class="form-group col-lg-6" hidden>
+                                            <label class="form-label select-label">Departamento:</label>
                                                 <select class="select" name="iddepartamento" id="iddepartamento"
-                                                    required>
+                                                    >
                                                 </select>
-
+                                                
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group col-lg-12">
+                            </div>
+                            <div class="form-group col-lg-12">
                                     <div class="card">
-                                        <h5 class="card-header">ACCESO A LA PLATAFORMA (SIGI)</h5>
+                                        <h5 class="card-header">ACCESO SIGI</h5>
                                         <div class="card-body">
                                             <div class="form-group col-lg-2">
                                                 <label for="">Usuario:</label>
@@ -130,14 +109,29 @@ require 'header.php';
 
                                             <div class="form-group col-lg-2" id="claves">
                                                 <label for="">Contraseña:</label>
-                                                <input class="form-control" type="password" name="clave" id="clave"
+                                                <input class="form-control" type="text" name="clave" id="clave"
                                                     maxlength="64" placeholder="*Cedula">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-
+                                <div class="form-group col-lg-12">
+                                    <div class="card">
+                                        <h5 class="card-header">ACCESO ROTATOR</h5>
+                                        <div class="card-body">
+                                            <div class="form-group col-lg-2">
+                                                <label for="">Usuario :</label>
+                                                <input class="form-control" type="text" name="usr_rotator" id="usr_rotator"
+                                                    maxlength="200" placeholder="Ejemplo: NOMBRE.APELLIDO" onkeyup="this.value = this.value.toUpperCase();" required>
+                                            </div>
+                                            <div class="form-group col-lg-2" id="claves">
+                                                <label for="">Contraseña:</label>
+                                                <input class="form-control" type="text" name="pwd_rotator" id="pwd_rotator"
+                                                    maxlength="200" placeholder="Ejemplo: NOMBREAPELLIDO" onkeyup="this.value = this.value.toUpperCase();" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="form-group col-lg-12">
                                     <div class="card">
                                         <h5 class="card-header">PIN Control de Asistencia</h5>
@@ -159,6 +153,8 @@ require 'header.php';
                                 </div>
                         </form>
                     </div>
+                    </div>
+
                     <!--modal para ver la venta-->
                     <div class="modal fade" id="getCodeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                         aria-hidden="true">
@@ -202,13 +198,10 @@ require 'header.php';
     </section>
     <!-- /.content -->
 </div>
-<?php 
-
-require 'footer.php';
- ?>
-<script src="scripts/productividad.js"></script>
-<?php 
+<?php require 'footer.php'; ?>
+<script src="scripts/usuario.js"></script>
+<?php
 }
 
 ob_end_flush();
-  ?>
+?>

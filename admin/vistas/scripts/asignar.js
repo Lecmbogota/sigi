@@ -112,4 +112,26 @@ function guardareditar(e) {
   $('#claves').show()
   limpiar()
 }
+
+function mostrar(id_asig) {
+  $.post('../ajax/asignar.php?op=mostrar', { id_asig: id_asig }, function (
+    data,
+    status,
+  ) {
+    data = JSON.parse(data)
+    mostrarformu(true)
+    if ($('#id_asig').val(data.id_asig).length == 0) {
+      $('#claves').show()
+    } else {
+      $('#claves').hide()
+    }
+    $('#agente_asig').val(data.agente_asig)
+    $('#estudio_asig').val(data.estudio_asig)
+    $('#fecha_asig').val(data.fecha_asig)
+    $('#hora_asig	').val(data.hora_asig)
+  })
+  $.post('../ajax/asignar.php?op=permisos&id=' + id_asig, function (r) {
+    $('#permisos').html(r)
+  })
+}
 init()

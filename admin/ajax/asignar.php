@@ -27,15 +27,13 @@ switch ($_GET['op']) {
         ? 'Datos registrados correctamente'
         : 'No se pudo registrar todos los datos del usuario';
     } else {
-      $rspta = $asignar->insertar(
+      $rspta = $asignar->editar(
+        id_asig,
         $agente_asig,
         $estudio_asig,
         $fecha_asig,
         $hora_asig
       );
-      echo $rspta
-        ? 'Datos actualizados correctamente'
-        : 'No se pudo actualizar los datos';
     }
     break;
 
@@ -51,7 +49,13 @@ switch ($_GET['op']) {
 
     while ($reg = $rspta->fetch_object()) {
       $data[] = [
-        '0' => $reg->id_asig,
+        "0" => $reg->id_asig
+          ? '<button class="btn btn-warning btn-xs" onclick="mostrar(' .
+            $reg->id_asig .
+            ')"><i class="fa fa-pencil"></i></button>'
+          : '<button class="btn btn-warning btn-xs" onclick="mostrar(' .
+            $reg->id_asig .
+            ')"><i class="fa fa-pencil"></i></button>',
         '1' => $reg->agente_asig,
         '2' => $reg->estudio_asig,
         '3' => $reg->fecha_asig,

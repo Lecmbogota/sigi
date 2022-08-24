@@ -43,9 +43,6 @@ switch ($_GET["op"]) {
         $ee_estudio,
         $ee_estatus
       );
-      echo $rspta
-        ? "Datos actualizados correctamente"
-        : "No se pudo actualizar los datos";
     }
     break;
 
@@ -75,16 +72,17 @@ switch ($_GET["op"]) {
 
     while ($reg = $rspta->fetch_object()) {
       $data[] = [
-        "0" => $reg->agente_prod,
-        "1" => $reg->estudio_prod,
-        "2" => $reg->meta_prod,
-        "3" => $reg->enc_realizadas_prod,
-        "4" => $reg->fecha_prod,
-        "5" => $reg->hora_ini_prod,
-        "6" => $reg->hora_fin_prod,
-        "7" => $reg->tiempo_muerto_prod,
-        "8" => $reg->total_horas_trabajadas_prod,
-        "9" => $reg->porcentaje_prod,
+        "0" => $reg->id_productividad,
+        "1" => $reg->agente_prod,
+        "2" => $reg->estudio_prod,
+        "3" => $reg->meta_prod,
+        "4" => $reg->enc_realizadas_prod,
+        "5" => $reg->fecha_prod,
+        "6" => $reg->hora_ini_prod,
+        "7" => $reg->hora_fin_prod,
+        "8" => $reg->tiempo_muerto_prod,
+        "9" => $reg->total_horas_trabajadas_prod,
+        "10" => $reg->porcentaje_prod,
       ];
     }
 

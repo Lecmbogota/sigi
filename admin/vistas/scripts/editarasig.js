@@ -5,7 +5,6 @@ function init() {
   mostrarform(false)
   mostrarform_clave(false)
   listar()
-
   $('#formularioc').on('submit', function (c) {
     editar_clave(c)
   })
@@ -13,32 +12,18 @@ function init() {
     guardaryeditar(e)
   })
 
-  $('#imagenmuestra').hide()
-  //mostramos los permisos
-  $.post('../ajax/productividad.php?op=permisos&id=', function (r) {
-    $('#permisos').html(r)
-  })
-
-  //cargamos los items al select departamento
-  $.post('../ajax/departamento.php?op=selectDepartamento', function (r) {
-    $('#iddepartamento').html(r)
-    $('#iddepartamento').selectpicker('refresh')
-  })
-
-  //cargamos los items al select tipousuario
-  $.post('../ajax/tipousuario.php?op=selectTipousuario', function (r) {
-    $('#idtipousuario').html(r)
-    $('#idtipousuario').selectpicker('refresh')
-  })
+  c
 }
 
 //funcion limpiar
 function limpiar() {
-  $('#ee_id').val('')
-  $('#ee_encuestador').val('')
-  $('#ee_fecha').val('')
-  $('#ee_estudio').val('')
-  $('#ee_estatus').selectpicker('refresh')
+  $('#agente_asig').val('')
+  $('#cedula_asig').val('')
+  $('#estudio_asig').val('')
+  $('#fecha_asig').val('')
+  $('#hora_asig').val('')
+  $('#hora_fin_asig').val('')
+  $('#id_estudio_asig').val('')
 }
 
 //funcion mostrar formulario
@@ -80,32 +65,27 @@ function cancelarform_clave() {
 }
 //funcion listar
 function listar() {
-  tabla = $('#tbllistado').dataTable({
-    aProcessing: true, //activamos el procedimiento del datatable
-    aServerSide: true, //paginacion y filrado realizados por el server
-    dom: 'Bfrtip', //definimos los elementos del control de la tabla
-    buttons: ['excelHtml5'],
-    language: {
-      url: '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json',
-    },
-    ajax: {
-      url: '../ajax/productividad.php?op=listar',
-      type: 'get',
-      dataType: 'json',
-      error: function (e) {
-        console.log(e.responseText)
-      },
-    },
-    bDestroy: true,
-    iDisplayLength: 50, //paginacion
-    order: [
-      [5, 'desc'],
-      [2, 'asc'],
-      [1, 'asc'],
-    ], //ordenar (columna, orden)
-  })
-}
+  tabla = $('#tbllistado')
+    .dataTable({
+      aProcessing: true, //activamos el procedimiento del datatable
+      aServerSide: true, //paginacion y filrado realizados por el server
+      dom: 'Bfrtip', //definimos los elementos del control de la tabla
+      buttons: ['excelHtml5'],
 
+      ajax: {
+        url: '../ajax/editarasig.php?op=listar',
+        type: 'get',
+        dataType: 'json',
+        error: function (e) {
+          console.log(e.responseText)
+        },
+      },
+      bDestroy: true,
+      iDisplayLength: 10, //paginacion
+      order: [[0, 'a2000sc']], //ordenar (columna, orden)
+    })
+    .DataTable()
+}
 //funcion para guardaryeditar
 function guardaryeditar(e) {
   e.preventDefault() //no se activara la accion predeterminada
@@ -113,7 +93,7 @@ function guardaryeditar(e) {
   var formData = new FormData($('#formulario')[0])
 
   $.ajax({
-    url: '../ajax/productividad.php?op=guardaryeditar',
+    url: '../ajax/editarasig.php?op=guardaryeditar',
     type: 'POST',
     data: formData,
     contentType: false,
@@ -135,7 +115,7 @@ function editar_clave(c) {
   var formData = new FormData($('#formularioc')[0])
 
   $.ajax({
-    url: '../ajax/productividad.php?op=editar_clave',
+    url: '../ajax/editarasig.php?op=editar_clave',
     type: 'POST',
     data: formData,
     contentType: false,
@@ -151,37 +131,50 @@ function editar_clave(c) {
   limpiar()
   $('#getCodeModal').modal('hide')
 }
-function mostrar(id_carga) {
-  $.post(
-    '../ajax/productividad.php?op=mostrar',
-    { id_carga: id_carga },
-    function (data, status) {
-      data = JSON.parse(data)
-      mostrarform(true)
-      if ($('#id_carga').val(data.id_carga).length == 0) {
-        $('#claves').show()
-      } else {
-        $('#claves').hide()
-      }
-      $('#ee_id').val(data.ee_id)
-      $('#ee_encuestador').val(data.ee_encuestador)
-      $('#ee_fecha').val(data.ee_fecha)
-      $('#ee_estudio').val('ee_estudio')
-      $('#ee_estatus').val(data.ee_estatus)
-    },
-  )
-  $.post('../ajax/productividad.php?op=permisos&id=' + id_carga, function (r) {
+function mostrar(id_asig) {
+  $.post('../ajax/editarasig.php?op=mostrar', { id_asig: id_asig }, function (
+    data,
+    status,
+  ) {
+    data = JSON.parse(data)
+    mostrarform(true)
+    if ($('#id_asig').val(data.id_asig).length == 0) {
+      $('#claves').show()
+    } else {
+      $('#claves').hide()
+    }
+    $('#agente_asig').val(data.agente_asig)
+    $('#	cedula_asig').val(data.cedula_asig)
+    $('#estudio_asig').val(data.estudio_asig)
+    $('#fecha_asig').val(data.fecha_asig)
+    $('#hora_asig').val(data.hora_asig)
+    $('#hora_fin_asig').val(data.hora_fin_asig)
+    $('#id_estudio_asig').val(data.id_estudio_asig)
+  })
+  $.post('../ajax/editarasig.php?op=permisos&id=' + id_asig, function (r) {
     $('#permisos').html(r)
   })
 }
 
+function mostrar_clave(id_asig) {
+  $('#getCodeModal').modal('show')
+  $.post(
+    '../ajax/editarasig.php?op=mostrar_clave',
+    { id_asig: id_asig },
+    function (data, status) {
+      data = JSON.parse(data)
+      $('#idusuarioc').val(data.id_asig)
+    },
+  )
+}
+
 //funcion para desactivar
-function desactivar(id_carga) {
+function desactivar(id_asig) {
   bootbox.confirm('¿Esta seguro de desactivar este dato?', function (result) {
     if (result) {
       $.post(
-        '../ajax/productividad.php?op=desactivar',
-        { id_carga: id_carga },
+        '../ajax/editarasig.php?op=desactivar',
+        { id_asig: id_asig },
         function (e) {
           bootbox.alert(e)
           tabla.ajax.reload()
@@ -191,12 +184,12 @@ function desactivar(id_carga) {
   })
 }
 
-function activar(id_carga) {
+function activar(id_asig) {
   bootbox.confirm('¿Esta seguro de activar este dato?', function (result) {
     if (result) {
       $.post(
-        '../ajax/productividad.php?op=activar',
-        { id_carga: id_carga },
+        '../ajax/editarasig.php?op=activar',
+        { id_asig: id_asig },
         function (e) {
           bootbox.alert(e)
           tabla.ajax.reload()

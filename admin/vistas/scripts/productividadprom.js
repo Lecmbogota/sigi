@@ -97,11 +97,11 @@ function listar() {
       },
     },
     bDestroy: true,
-    iDisplayLength: 50, //paginacion
+    iDisplayLength: 200, //paginacion
     order: [
-      [5, 'desc'],
-      [2, 'asc'],
-      [1, 'asc'],
+      [2, 'desc'],
+      [3, 'desc'],
+      [0, 'desc'],
     ], //ordenar (columna, orden)
   })
 }

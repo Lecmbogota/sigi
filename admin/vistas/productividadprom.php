@@ -39,6 +39,7 @@ if (!isset($_SESSION['nombre'])) {
                     <div class="panel-body table-responsive" id="listadoregistros">
                         <table id="tbllistado" class="table table-hover table-fixed" width='100%'>
                             <thead>
+                                <th>ID</th>
                                 <th>AGENTE</th>
                                 <th>ESTUDIO</th>
                                 <th>META</th>

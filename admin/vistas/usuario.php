@@ -13,7 +13,7 @@ if (!isset($_SESSION['nombre'])) {
         <div class="info-box">
             <span class="info-box-icon bg-blue"><i class="fa fa-file"></i></span>
             <div class="info-box-content">
-                <h1 class="box-title">Usuarios</h1>
+                <h1 class="box-title">Usuarios - Personal Activo</h1>
             </div>
 
         </div>
@@ -35,7 +35,9 @@ if (!isset($_SESSION['nombre'])) {
                             <thead>
                                 <th>Opciones</th>
                                 <th>Nombre</th>
-                                <th>Apellidos</th>
+                                <th>Apellidos</th>                             
+                                <th>Cedula</th>
+                                <th>Usuario Rotator</th>
                                 <th>Estado</th>
                             </thead>
                         </table>
@@ -68,6 +70,7 @@ if (!isset($_SESSION['nombre'])) {
                                                 maxlength="100" placeholder="Apellidos" onkeyup="this.value = this.value.toUpperCase();"  required>
                                         </div>
                                         <div class="form-group col-lg-3">
+                                            <label for="">Correo (*):</label>
                                             <div class="input-group">
                                                 <span class="input-group-addon" >@</span>
                                                 <input type="text" name="email" id="email" class="form-control" placeholder="Ejemplo@operative.net.co" aria-describedby="basic-addon1">
@@ -78,14 +81,14 @@ if (!isset($_SESSION['nombre'])) {
                             </div>
                             <div class="form-group col-lg-12">
                                 <div class="card">
-                                    <h5 class="card-header">ASIGNACION DE CARGO</h5>
+                                    <h5 class="card-header">ASIGNACION DE CARGO </h5>
                                     <div class="card-body">
                                         <div class="form-group col-lg-12">
                                             <div class="form-group col-lg-6">
                                             <label>Cargo:</label>
                                             <br>
-                                                <select class="select" name="idtipousuario" id="idtipousuario" required>
-                                                </select>
+                                            <select class="select" name="idtipousuario" id="idtipousuario" required>
+                                            </select>
                                                 
                                             </div>
 
@@ -99,9 +102,10 @@ if (!isset($_SESSION['nombre'])) {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group col-lg-12">
+                            </div>
+                            <div class="form-group col-lg-12">
                                     <div class="card">
-                                        <h5 class="card-header">ACCESO A LA PLATAFORMA (SIGI)</h5>
+                                        <h5 class="card-header">ACCESO SIGI</h5>
                                         <div class="card-body">
                                             <div class="form-group col-lg-2">
                                                 <label for="">Usuario:</label>
@@ -112,14 +116,29 @@ if (!isset($_SESSION['nombre'])) {
 
                                             <div class="form-group col-lg-2" id="claves">
                                                 <label for="">Contraseña:</label>
-                                                <input class="form-control" type="password" name="clave" id="clave"
+                                                <input class="form-control" type="text" name="clave" id="clave"
                                                     maxlength="64" placeholder="*Cedula">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-
+                                <div class="form-group col-lg-12">
+                                    <div class="card">
+                                        <h5 class="card-header">ACCESO ROTATOR</h5>
+                                        <div class="card-body">
+                                            <div class="form-group col-lg-2">
+                                                <label for="">Usuario :</label>
+                                                <input class="form-control" type="text" name="usr_rotator" id="usr_rotator"
+                                                    maxlength="200" placeholder="Ejemplo: NOMBRE.APELLIDO" onkeyup="this.value = this.value.toUpperCase();" required>
+                                            </div>
+                                            <div class="form-group col-lg-2" id="claves">
+                                                <label for="">Contraseña:</label>
+                                                <input class="form-control" type="text" name="pwd_rotator" id="pwd_rotator"
+                                                    maxlength="200" placeholder="Ejemplo: NOMBREAPELLIDO" onkeyup="this.value = this.value.toUpperCase();" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="form-group col-lg-12">
                                     <div class="card">
                                         <h5 class="card-header">PIN Control de Asistencia</h5>

@@ -482,13 +482,15 @@ if (strlen(session_id()) < 1) {
                 <ul class="sidebar-menu tree" data-widget="tree">
                     <li class="treeview">
                         <a href="#">
-                            <i class="fa fa-suitcase" aria-hidden="true"></i> <span>COORDINACION CATI</span>
+                            <i class="fa fa-suitcase" aria-hidden="true"></i> <span>COORDINACIÓN CATI</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                             <ul class="treeview-menu">
-                                <li><a href="asignar.php"><i class="fa fa-calendar"></i> Crear/Ver Planeación</a>
+                                <li><a href="asignar.php"><i class="fa fa-calendar"></i> Crear Planeación</a>
                                 </li>
+                                <li><a href="editarasig.php"><i class="fa fa-circle-o"></i> 
+                                        Editar Asignación</a></li>
                                 <li><a href="productividad.php"><i class="fa fa-line-chart" aria-hidden="true"></i>
                                         Reportes de
                                         Productividad</a></li>
@@ -508,10 +510,12 @@ if (strlen(session_id()) < 1) {
 
                             <ul class="treeview-menu">
                                 <li><a href="e_carga.php"><i class="fa fa-upload" aria-hidden="true"></i> Cargar
-                                        Encuestas
-                                        Exitosas</a></li>
-                                <li><a href="productividad.php"><i class="fa fa-circle-o"></i> Reportes de
-                                        Productividad</a></li>
+                                        Cargar Encuestas
+                                        E.</a></li>
+                                <li><a href="editarasig.php"><i class="fa fa-circle-o"></i> 
+                                        Editar Asignación</a></li>
+                                <li><a href="productividad.php"><i class="fa fa-circle-o"></i>
+                                        Productividad Diaria</a></li>
                             </ul>
                     </li>
 

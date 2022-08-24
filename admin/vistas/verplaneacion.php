@@ -26,15 +26,6 @@ if (!isset($_SESSION['nombre'])) {
             <div class="col-md-12">
                 <div class="box">
 
-
-
-                    <!-- BOTON AGREGAR NUEVO ESTUDIO -->
-                    <div class="box-header with-border">
-                        <h1 class="box-title"><button class="btn btn-success" onclick="mostrarformu(true)"
-                                id="btnagregar"><i class="fa fa-plus-circle"></i>Agregar</button></h1>
-                    </div>
-
-
                     <!-- ENCABEZADOS DE LA TABLA ESTUDIOS  -->
                     <div class="panel-body table-responsive" id="listadoregistros">
                         <table id="tbllist" class="table table-hover table-fixed" width='100%'>
@@ -89,7 +80,7 @@ if (!isset($_SESSION['nombre'])) {
                                 });
                                 </script>
                                 <input type="date" class="form-control" id="fecha_asignacion" name="fecha_asignacion"
-                                    min="2022-01-01" max="2032-12-31">
+                                    min="2022-08-01" max="2032-12-31">
 
 
                             </div>
