@@ -51,7 +51,7 @@
                             ) {
                                 if (
                                     $timenow > date('05:00:00') &&
-                                    $timenow < date('08:50:00')
+                                    $timenow < date('09:50:00')
                                 ) {
                                     echo '<option selected value="INICIO GESTION">INICIO GESTION</option>';
                                 } else {
