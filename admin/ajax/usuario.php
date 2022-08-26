@@ -122,18 +122,10 @@ switch ($_GET["op"]) {
     while ($reg = $rspta->fetch_object()) {
       $data[] = [
         "0" => $reg->estado
-          ? '<button class="btn btn-warning btn-xs" onclick="mostrar(' .
-            $reg->idusuario .
-            ')"><i class="fa fa-pencil"></i></button>' .
-            ' ' .
-            '<button class="btn btn-info btn-xs" onclick="mostrar_clave(' .
+          ? '<button class="btn btn-warning btn-xs" onclick="mostrar(' . $reg->idusuario .')"><i class="fa fa-pencil"></i></button>' .' ' .'<button class="btn btn-info btn-xs" onclick="mostrar_clave(' .
             $reg->idusuario .
             ')"><i class="fa fa-key"></i></button>'
-          : '<button class="btn btn-warning btn-xs" onclick="mostrar(' .
-            $reg->idusuario .
-            ')"><i class="fa fa-pencil"></i></button>' .
-            ' ' .
-            '<button class="btn btn-info btn-xs" onclick="mostrar_clave(' .
+          : '<button class="btn btn-warning btn-xs" onclick="mostrar(' . $reg->idusuario .')"><i class="fa fa-pencil"></i></button>' . ' ' . '<button class="btn btn-info btn-xs" onclick="mostrar_clave(' .
             $reg->idusuario .
             ')"><i class="fa fa-key"></i></button>',
         "1" => $reg->nombre,

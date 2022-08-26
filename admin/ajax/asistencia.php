@@ -22,15 +22,15 @@ switch ($_GET["op"]) {
       $hora = date("H:i");
 
       if ($tipo == "INICIO GESTION") {
-        $rspta = $asistencia->registrar_inicio_gestion($codigo_persona, $tipo);
-        //$movimiento = 0;
+        $rspta = $asistencia->registrar_inicio_break($codigo_persona, $tipo);
+        //$movimiento = 1;
         echo $rspta
           ? '<h3><strong>Nombres: </strong> ' .
             $result['nombre'] .
             '</h3><div class="alert alert-success"> INICIO GESTION - REGISTRADO ' .
             $hora .
             '</div>'
-          : 'No se pudo registrar el ingreso';
+          : 'No se pudo registrar la salida';
       }
 
       if ($tipo == "FIN GESTION") {
@@ -143,15 +143,13 @@ switch ($_GET["op"]) {
 
     while ($reg = $rspta->fetch_object()) {
       $data[] = [
-        "0" =>
-          '<button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>',
-        "1" => $reg->codigo_persona,
-        "2" => $reg->nombre,
-        "3" => $reg->apellidos,
-        "4" => $reg->tipousuario,
-        "5" => $reg->fecha_hora,
-        "6" => $reg->tipo,
-        "7" => $reg->fecha,
+        "0" => $reg->codigo_persona,
+        "1" => $reg->nombre,
+        "2" => $reg->apellidos,
+        "3" => $reg->tipousuario,
+        "4" => $reg->tipo,
+        "5" => $reg->fecha,
+        "6" => $reg->hora,
       ];
     }
 
@@ -187,7 +185,7 @@ switch ($_GET["op"]) {
         "0" => $reg->fecha,
         "1" => $reg->nombre,
         "2" => $reg->tipo,
-        "3" => $reg->fecha_hora,
+        "3" => $reg->hora,
         "4" => $reg->codigo_persona,
       ];
     }
@@ -218,7 +216,7 @@ switch ($_GET["op"]) {
         "0" => $reg->fecha,
         "1" => $reg->nombre,
         "2" => $reg->tipo,
-        "3" => $reg->fecha_hora,
+        "3" => $reg->hora,
         "4" => $reg->codigo_persona,
       ];
     }

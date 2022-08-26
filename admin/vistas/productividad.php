@@ -1,3 +1,5 @@
+
+
 <?php
 //activamos almacenamiento en el buffer
 ob_start();
@@ -11,9 +13,9 @@ if (!isset($_SESSION['nombre'])) {
     <section class="content">
 
         <div class="info-box">
-            <span class="info-box-icon bg-blue"><i class="fa fa-file"></i></span>
+            <span class="info-box-icon bg-blue"><i class="fa fa-bar-chart" aria-hidden="true"></i></span>
             <div class="info-box-content">
-                <h1 class="box-title">Usuarios</h1>
+                <h1 class="box-title">Productividad General</h1>
             </div>
 
         </div>

@@ -33,10 +33,15 @@ class Asignar
 
     public function mostrar($id_asig)
     {
-        $sql = "SELECT * FROM asignacionestudio WHERE id_asig = '55'";
+        $sql = "SELECT * FROM asignacionestudio WHERE id_asig = '$id_asig'";
         return ejecutarConsultaSimpleFila($sql);
     }
 
+     public function eliminaregistro($id_asig)
+    {
+        $sql = "DELETE FROM asignacionestudio WHERE id_asig='$id_asig'";
+        return ejecutarConsulta($sql);
+    }
     public function listar()
     {
         $sql = 'SELECT * FROM asignacionestudio';

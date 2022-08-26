@@ -29,10 +29,12 @@ SET estudios.Avance_estudio = advance.avance';
 <div class="content-wrapper">
     <!-- Main content -->
     <section class="content">
-        <ol class="breadcrumb">
-            <li><a href="escritorio.php">VOLVER</a></li>
-            <li class="active">Estudios</li>
-        </ol>
+
+        <div class="info-box">
+            <span class="info-box-icon bg-blue"><i class="fa fa-bar-chart" aria-hidden="true"></i></span>
+            <div class="info-box-content">
+                <h1 class="box-title">Estudios</h1>
+        </div>
         <!-- Default box -->
         <div class="row">
             <div class="col-md-12">
@@ -40,7 +42,7 @@ SET estudios.Avance_estudio = advance.avance';
                     <!-- BOTON AGREGAR NUEVO ESTUDIO -->
                     <div class="box-header with-border">
                         <h1 class="box-title"><button class="btn btn-success" onclick="mostrarformu(true)"
-                                id="btnagregar"><i class="fa fa-plus-circle"></i>Crear Estudio</button></h1>
+                                id="btnagregar"><i class="fa fa-plus-circle"></i>Agregar Estudio</button></h1>
                     </div>
 
 
@@ -48,20 +50,20 @@ SET estudios.Avance_estudio = advance.avance';
                     <div class="panel-body table-responsive" id="listadoregistros">
                         <table id="tbllist" class="table table-hover table-fixed" width='100%'>
                             <thead>
-                                <th>-</th>
+                                <th width='5%'>OPCIONES</th>
+                                <th width='10%'>ESTADO</th>
+                                <th width='20%'>CLIENTE</th>
+                                <th width='27%'>ESTUDIO</th>
+                                <th width='5%'>NIVEL</th>
+                                <th width='5%'>P. COT</th>
+                                <th width='5%'>P. COM</th>
+                                <th width='5%'>MUESTRA</th>
+                                <th width='5%'>FECHA INICIO</th>
+                                <th width='5%'>FECHA ENTREGA</th>
+                                <th width='2%'>TMO</th>
+                                <th width='2%'>TME</th>
 
-                                <th>CLIENTE</th>
-                                <th>ESTUDIO</th>
-                                <th>NIVEL</th>
-                                <th>P. COTIZACIÓN</th>
-                                <th>P. COMISIÓN</th>
-                                <th>MUESTRA</th>
-                                <th>FECHA INICIO</th>
-                                <th>FECHA ENTREGA</th>
-                                <th>TMO</th>
-                                <th>TME</th>
-                                <th>ESTATUS</th>
-                                <th>PROGRESO</th>
+                                <th width='5%'>PROGRESO</th>
 
                             </thead>
                         </table>
@@ -75,7 +77,7 @@ SET estudios.Avance_estudio = advance.avance';
                         <form action="" name="formulario" id="formulario" method="POST">
                             <div class="form-group col-lg-4 col-md-4 col-xs-4">
                                 <!-- INPUT CLIENTE -->
-                                <input class="form-control" type="hidden" name="id_Estudio " id="id_Estudio ">
+                                <input class="form-control" type="hidden" name="id_Estudio" id="id_Estudio">
                                 <label for="">Cliente:</label>
                                 <input class="form-control" type="text" name="Cliente" id="nombre" maxlength="100"
                                     onkeyup="this.value = this.value.toUpperCase();" required>

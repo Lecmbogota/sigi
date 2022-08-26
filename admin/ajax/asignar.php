@@ -4,7 +4,7 @@ require_once '../modelos/asignar.php';
 
 $asignar = new Asignar();
 
-$id_asig = isset($_POST['id_asig ']) ? limpiarCadena($_POST['id_asig ']) : '';
+$id_asig = isset($_POST['id_asig']) ? limpiarCadena($_POST['id_asig']) : '';
 $agente_asig = isset($_POST['cedula']) ? limpiarCadena($_POST['cedula']) : '';
 $estudio_asig = isset($_POST['estudio'])
   ? limpiarCadena($_POST['estudio'])
@@ -42,6 +42,13 @@ switch ($_GET['op']) {
     echo json_encode($rspta);
     break;
 
+  case 'eliminaregistro':
+    $rspta = $asignar->eliminaregistro($id_asig);
+    echo $rspta
+      ? ' Registro Eliminado correctamente'
+      : ' El Registro no pudo ser Eliminado';
+    break;
+
   case 'listar':
     $rspta = $asignar->listar();
     //declaramos un array
@@ -50,12 +57,12 @@ switch ($_GET['op']) {
     while ($reg = $rspta->fetch_object()) {
       $data[] = [
         "0" => $reg->id_asig
-          ? '<button class="btn btn-warning btn-xs" onclick="mostrar(' .
+          ? '<button class="btn btn-danger btn-xs" onclick="eliminaregistro(' .
             $reg->id_asig .
-            ')"><i class="fa fa-pencil"></i></button>'
-          : '<button class="btn btn-warning btn-xs" onclick="mostrar(' .
+            ')"><i class="fa fa-times"></i> BORRAR</button>'
+          : '<button class="btn btn-danger btn-xs" onclick="eliminaregistro(' .
             $reg->id_asig .
-            ')"><i class="fa fa-pencil"></i></button>',
+            ')"><i class="fa fa-times"></i> BORRAR</button>',
         '1' => $reg->agente_asig,
         '2' => $reg->estudio_asig,
         '3' => $reg->fecha_asig,

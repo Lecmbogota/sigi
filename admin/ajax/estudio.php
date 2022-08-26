@@ -53,7 +53,8 @@ switch ($_GET['op']) {
         ? 'Datos del Estudio registrados correctamente'
         : 'No se pudo registrar todos los datos del Estudio';
     } else {
-      $rspta = $usuario->insertar(
+      $rspta = $estudio->editar(
+        $id_Estudio,
         $Cliente,
         $Estudio,
         $Nivel,
@@ -73,6 +74,13 @@ switch ($_GET['op']) {
     }
     break;
 
+  case 'eliminaregistro':
+    $rspta = $estudio->eliminaregistro($id_Estudio);
+    echo $rspta
+      ? ' Estudio Eliminado correctamente'
+      : ' El Estudio no pudo ser Eliminado';
+    break;
+
   case 'mostrar':
     $rspta = $estudio->mostrar($id_Estudio);
     echo json_encode($rspta);
@@ -86,25 +94,38 @@ switch ($_GET['op']) {
     while ($reg = $rspta->fetch_object()) {
       $data[] = [
         "0" => $reg->Estado
-          ? '<a" onclick="desactivar(' .
+          ? '<div class="btn-group btn-group-toggle" data-toggle="buttons"><button class="btn btn-warning btn-xs" onclick="mostrar(' .
             $reg->id_Estudio .
-            ')"><i class="fa fa-toggle-on" style="color:green"></i></a</div>'
-          : '<a onclick="activar(' .
+            ')"><i class="fa fa-pencil"></i></button>' .
+            ' ' .
+            '<button class="btn btn-danger btn-xs" onclick="eliminaregistro(' .
             $reg->id_Estudio .
-            ')"><i class="fa fa-toggle-off" style="color:red"></i></a></div>',
-        '1' => $reg->Cliente,
-        '2' => $reg->Estudio,
-        '3' => $reg->Nivel,
-        '4' => $reg->PCotizacion,
-        '5' => $reg->PComision,
-        '6' => $reg->Muestra,
-        '7' => $reg->Fecha_Inicio_Estudio,
-        '8' => $reg->Fecha_Entrega_Estudio,
-        '9' => $reg->TMO,
-        '10' => $reg->TME,
-        "11" => $reg->Estado
-          ? '<span class="label bg-green">En Curso</span>'
-          : '<span class="label bg-red">Cerrado</span>',
+            ')"><i class="fa fa-times"></i></button>'
+          : '<div class="btn-group btn-group-toggle" data-toggle="buttons"><button class="btn btn-warning btn-xs" onclick="mostrar(' .
+            $reg->id_Estudio .
+            ')"><i class="fa fa-pencil"></i></button>' .
+            ' ' .
+            '<button class="btn btn-danger btn-xs" onclick="eliminaregistro(' .
+            $reg->id_Estudio .
+            ')"><i class="fa fa-times"></i></button>',
+        "1" => $reg->Estado
+          ? '<button class="btn btn-success btn-xs " onclick="desactivar(' .
+            $reg->id_Estudio .
+            ')" width="250" ><i class="fa fa-unlock" aria-hidden="true"></i> ACTIVO  .</button>'
+          : '<button class="btn btn-danger btn-xs " onclick="activar(' .
+            $reg->id_Estudio .
+            ')"><i class="fa fa-lock" aria-hidden="true"></i> CERRADO</button>',
+
+        '2' => $reg->Cliente,
+        '3' => $reg->Estudio,
+        '4' => $reg->Nivel,
+        '5' => $reg->PCotizacion,
+        '6' => $reg->PComision,
+        '7' => $reg->Muestra,
+        '8' => $reg->Fecha_Inicio_Estudio,
+        '9' => $reg->Fecha_Entrega_Estudio,
+        '10' => $reg->TMO,
+        '11' => $reg->TME,
         "12" => $reg->Estado
           ? '<progress value="' .
             $reg->Avance_estudio .

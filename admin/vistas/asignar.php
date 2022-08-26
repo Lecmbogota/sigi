@@ -11,9 +11,9 @@ if (!isset($_SESSION['nombre'])) {
     <section class="content">
 
         <div class="info-box">
-            <span class="info-box-icon bg-blue"><i class="fa fa-file"></i></span>
+            <span class="info-box-icon bg-blue"><i class="fa fa-calendar-check-o" aria-hidden="true"></i></span>
             <div class="info-box-content">
-                <h1 class="box-title">Asignar Estudios</h1>
+                <h1 class="box-title">Planeación</h1>
             </div>
 
         </div>

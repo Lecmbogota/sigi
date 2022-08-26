@@ -14,6 +14,7 @@ $("#formulario").on("submit",function(e){
    	$('#idcliente').selectpicker('refresh');
    });
 
+  
 }
 
 
@@ -27,9 +28,11 @@ function listar(){
 		dom: 'Bfrtip',//definimos los elementos del control de la tabla
 		buttons: [
                   'copyHtml5',
-                  'excelHtml5',
+      'excelHtml5',
+                  
 
-		],
+    ],
+
 		"ajax":
 		{
 			url:'../ajax/asistencia.php?op=listar',
@@ -41,7 +44,7 @@ function listar(){
 		},
 		"bDestroy":true,
 		"iDisplayLength":10,//paginacion
-		"order":[[0,"desc"]]//ordenar (columna, orden)
+		"order": [[5, "desc"], [6, "desc"] ],//ordenar (columna, orden)
 	}).DataTable();
 }
 

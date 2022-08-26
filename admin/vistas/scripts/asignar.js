@@ -60,6 +60,22 @@ function mostrarform_clave(flag) {
   }
 }
 
+function eliminaregistro(id_asig) {
+  bootbox.confirm('¿Esta seguro de Eliminar este Registro?', function (result) {
+    if (result) {
+      $.post(
+        '../ajax/asignar.php?op=eliminaregistro',
+        { id_asig: id_asig },
+        function (e) {
+          bootbox.alert(e)
+          tabla.ajax.reload()
+        },
+      )
+    }
+  })
+}
+
+
 function cancelarform() {
   $('#claves').show()
   limpiar()
@@ -112,6 +128,8 @@ function guardareditar(e) {
   $('#claves').show()
   limpiar()
 }
+
+
 
 function mostrar(id_asig) {
   $.post('../ajax/asignar.php?op=mostrar', { id_asig: id_asig }, function (

@@ -11,7 +11,7 @@ class Asistencia
     //listar registros
     public function listar()
     {
-        $sql = "SELECT a.idasistencia,a.codigo_persona,a.fecha_hora,a.tipo,a.fecha,u.nombre,u.apellidos,t.nombre as tipousuario 
+        $sql = "SELECT a.idasistencia,a.codigo_persona,a.hora,a.tipo,a.fecha,u.nombre,u.apellidos,t.nombre as tipousuario 
 FROM asistencia a 
 INNER JOIN usuarios u 
 INNER JOIN tipousuario t 
@@ -21,7 +21,7 @@ ON u.idtipousuario=t.idtipousuario WHERE a.codigo_persona=u.codigo_persona";
 
     public function listaru($idusuario)
     {
-        $sql = "SELECT a.idasistencia,a.codigo_persona,a.fecha_hora,a.tipo,a.fecha,u.nombre,u.apellidos,d.nombre as departamento FROM asistencia a INNER JOIN usuarios u INNER JOIN departamento d ON u.iddepartamento=d.iddepartamento WHERE a.codigo_persona=u.codigo_persona AND u.idusuario='$idusuario'";
+        $sql = "SELECT a.idasistencia,a.codigo_persona,a.hora,a.tipo,a.fecha,u.nombre,u.apellidos,d.nombre as departamento FROM asistencia a INNER JOIN usuarios u INNER JOIN departamento d ON u.iddepartamento=d.iddepartamento WHERE a.codigo_persona=u.codigo_persona AND u.idusuario='$idusuario'";
         return ejecutarConsulta($sql);
     }
 
@@ -30,7 +30,7 @@ ON u.idtipousuario=t.idtipousuario WHERE a.codigo_persona=u.codigo_persona";
         $fecha_fin,
         $codigo_persona
     ) {
-        $sql = "SELECT a.idasistencia,a.codigo_persona,a.fecha_hora,a.tipo,a.fecha,u.nombre,u.apellidos FROM asistencia a INNER JOIN usuarios u ON  a.codigo_persona=u.codigo_persona WHERE DATE(a.fecha)>='$fecha_inicio' AND DATE(a.fecha)<='$fecha_fin' AND a.codigo_persona='$codigo_persona'";
+        $sql = "SELECT a.idasistencia,a.codigo_persona,a.hora,a.tipo,a.fecha,u.nombre,u.apellidos FROM asistencia a INNER JOIN usuarios u ON  a.codigo_persona=u.codigo_persona WHERE DATE(a.fecha)>='$fecha_inicio' AND DATE(a.fecha)<='$fecha_fin' AND a.codigo_persona='$codigo_persona'";
         return ejecutarConsulta($sql);
     }
 }

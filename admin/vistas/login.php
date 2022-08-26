@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../public/css/AdminLTE.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="../public/css/blue.css">
-    <link rel="shortcut icon" href="http://www.operative.net.co/images/logo.png">
+    <link rel="shortcut icon" href="../public/images/logo.png">
     <style>
 html {
   height: 100%;
@@ -29,12 +29,10 @@ body {
     <?php require '../config/Conexion.php'; ?>
     <div class="login-box">
       <div class="login-logo">
-      <img class="profile-img" src="http://www.operative.net.co/images/logo.png" width="250">
-      <br>
-       
+      <img class="profile-img" src="../public/images/logo_lg.png" width="250">
       </div><!-- /.login-logo -->
       <div class="login-box-body ">
-        <p class="login-box-msg">SIGI - Sistema Integrado de Gestion Interna</p>
+
         <form method="post" id="frmAcceso">
           <div class="form-group has-feedback">
             <input type="text" id="logina" name="logina" class="form-control" placeholder="Usuario">

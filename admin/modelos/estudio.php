@@ -42,7 +42,12 @@ class Estudio
         $Estado,
         $Fecha_Creacion
     ) {
-        $sql = "UPDATE estudios SET Cliente='$Cliente',Estudio='$Estudio',Nivel='$Nivel',PCotizacion='$PCotizacion',PComision='$PComision',Muestra='$Muestra',Fecha_Inicio_Estudio='$Fecha_Inicio_Estudio',Fecha_Entrega_Estudio='$Fecha_Entrega_Estudio',TMO='$TMO',TME='$TME',Estado='$Estado' ,Fecha_Creacion='$Fecha_Creacion' WHERE id_Estudio='$id_Estudio'";
+        $sql = "UPDATE estudios SET Cliente='$Cliente',Estudio='$Estudio',Nivel='$Nivel',PCotizacion='$PCotizacion',PComision='$PComision',Muestra='$Muestra',Fecha_Inicio_Estudio='$Fecha_Inicio_Estudio',Fecha_Entrega_Estudio='$Fecha_Entrega_Estudio',TMO='$TMO',TME='$TME',Estado='1' WHERE id_Estudio='$id_Estudio'";
+        return ejecutarConsulta($sql);
+    }
+    public function eliminaregistro($id_Estudio)
+    {
+        $sql = "DELETE FROM estudios WHERE id_Estudio='$id_Estudio'";
         return ejecutarConsulta($sql);
     }
     public function desactivar($id_Estudio)
@@ -78,8 +83,7 @@ class Estudio
 
     public function Selectes()
     {
-        $sql =
-            'SELECT * FROM estudios WHERE Estado = 1 ORDER BY Estudio ASC';
+        $sql = 'SELECT * FROM estudios WHERE Estado = 1 ORDER BY Estudio ASC';
         return ejecutarConsulta($sql);
     }
 }

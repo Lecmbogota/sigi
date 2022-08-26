@@ -42,10 +42,8 @@ if (!isset($_SESSION['nombre'])) {
                                     <h5 class="card-header"></h5>
                                     <div class="card-body">
                                         <div class="form-group col-lg-2">
-                                            <label for="">"agente_asig"</label>
+
                                             <input class="form-control" type="hidden" name="id_asig" id="id_asig">
-                                            <input class="form-control" type="text" name="agente_asig" id="agente_asig" disabled>
-                                            <input class="form-control" type="date" name="fecha_asig" id="fecha_asig" disabled>
                                             <input type="time" class="form-control" id="hora_fin_asig" name="hora_fin_asig" min="05:00" max="24:00" required>
                                         </div>
                                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">

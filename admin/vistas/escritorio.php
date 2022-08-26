@@ -158,6 +158,22 @@ require_once('../modelos/Usuario.php');
                                         class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="small-box bg-orange">
+                                <div class="inner">
+                                    <h4 style="font-size: 20px;">
+                                        <strong>Asistencia: </strong>
+                                    </h4>
+                                    <p>Total <?php echo $reg->nombre; ?></p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-list" aria-hidden="true"></i>
+                                </div>
+                                <a href="asistencia.php" class="small-box-footer">Agregar <i
+                                        class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+
+
                         <?php } ?>
 
 

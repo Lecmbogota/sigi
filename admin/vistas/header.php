@@ -42,8 +42,8 @@ if (strlen(session_id()) < 1) {
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../public/css/_all-skins.min.css">
-    <link rel="apple-touch-icon" href="../public/img/apple-touch-icon.png">
-    <link rel="shortcut icon" href="http://www.operative.net.co/images/logo.png">
+    <link rel="apple-touch-icon" href="../public/images/logo.png">
+    <link rel="shortcut icon" href="../public/images/logo.png">
 
     <!-- DATATABLES -->
     <link rel="stylesheet" type="text/css" href="../public/datatables/jquery.dataTables.min.css">
@@ -487,9 +487,9 @@ if (strlen(session_id()) < 1) {
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                             <ul class="treeview-menu">
-                                <li><a href="asignar.php"><i class="fa fa-calendar"></i> Crear Planeación</a>
+                                <li><a href="asignar.php"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Crear Planeación</a>
                                 </li>
-                                <li><a href="editarasig.php"><i class="fa fa-circle-o"></i> 
+                                <li><a href="editarasig.php"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 
                                         Editar Asignación</a></li>
                                 <li><a href="productividad.php"><i class="fa fa-line-chart" aria-hidden="true"></i>
                                         Reportes de
