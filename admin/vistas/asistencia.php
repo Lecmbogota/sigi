@@ -43,7 +43,6 @@ require 'header.php';
                 </div>
             </div>
             <!-- /.box -->
-
     </section>
     <!-- /.content -->
 </div>

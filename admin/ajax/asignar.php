@@ -13,6 +13,9 @@ $fecha_asig = isset($_POST['fecha_asignacion'])
   ? limpiarCadena($_POST['fecha_asignacion'])
   : '';
 $hora_asig = isset($_POST['horaasig']) ? limpiarCadena($_POST['horaasig']) : '';
+$hora_fin_asig = isset($_POST['hora_fin_asig'])
+  ? limpiarCadena($_POST['hora_fin_asig'])
+  : '';
 
 switch ($_GET['op']) {
   case 'guardareditar':
@@ -21,7 +24,8 @@ switch ($_GET['op']) {
         $agente_asig,
         $estudio_asig,
         $fecha_asig,
-        $hora_asig
+        $hora_asig,
+        $hora_fin_asig
       );
       echo $rspta
         ? 'Datos registrados correctamente'
@@ -32,7 +36,8 @@ switch ($_GET['op']) {
         $agente_asig,
         $estudio_asig,
         $fecha_asig,
-        $hora_asig
+        $hora_asig,
+        $hora_fin_asig
       );
     }
     break;
@@ -67,6 +72,7 @@ switch ($_GET['op']) {
         '2' => $reg->estudio_asig,
         '3' => $reg->fecha_asig,
         '4' => $reg->hora_asig,
+        '5' => $reg->hora_fin_asig,
       ];
     }
 

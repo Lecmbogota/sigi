@@ -12,9 +12,10 @@ class Asignar
         $agente_asig,
         $estudio_asig,
         $fecha_asig,
-        $hora_asig
+        $hora_asig,
+        $hora_fin_asig
     ) {
-        $sql = "INSERT INTO asignacionestudio (agente_asig,estudio_asig,fecha_asig,hora_asig) VALUES ('$agente_asig','$estudio_asig','$fecha_asig','$hora_asig')";
+        $sql = "INSERT INTO asignacionestudio (agente_asig,estudio_asig,fecha_asig,hora_asig,hora_fin_asig) VALUES ('$agente_asig','$estudio_asig','$fecha_asig','$hora_asig','$hora_fin_asig')";
         return ejecutarConsulta($sql);
     }
 
@@ -23,9 +24,10 @@ class Asignar
         $agente_asig,
         $estudio_asig,
         $fecha_asig,
-        $hora_asig
+        $hora_asig,
+        $hora_fin_asig
     ) {
-        $sql = "UPDATE asignacionestudio SET agente_asig='$agente_asig',estudio_asig='$estudio_asig',fecha_asig='$fecha_asig',hora_asig='$hora_asig' 
+        $sql = "UPDATE asignacionestudio SET agente_asig='$agente_asig',estudio_asig='$estudio_asig',fecha_asig='$fecha_asig',hora_asig='$hora_asig',hora_fin_asig='$hora_fin_asig
         WHERE id_asig='$id_asig'";
 
         return ejecutarConsulta($sql);

@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../public/css/AdminLTE.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="../public/css/blue.css">
-    <link rel="shortcut icon" href="../public/images/logo.png">
+    <link rel="shortcut icon" href="../public/images/logo_lg.webp">
     <style>
 html {
   height: 100%;
@@ -24,12 +24,14 @@ body {
   min-height: 100%;
 }
 </style>
+
+
   </head>
   <body >
     <?php require '../config/Conexion.php'; ?>
     <div class="login-box">
       <div class="login-logo">
-      <img class="profile-img" src="../public/images/logo_lg.png" width="250">
+      <img class="profile-img" src="../public/images/logo_lg.webp" width="250">
       </div><!-- /.login-logo -->
       <div class="login-box-body ">
 

@@ -75,7 +75,6 @@ function eliminaregistro(id_asig) {
   })
 }
 
-
 function cancelarform() {
   $('#claves').show()
   limpiar()
@@ -103,8 +102,11 @@ function listar() {
         },
       },
       bDestroy: true,
-      iDisplayLength: 10, //paginacion
-      order: [[0, 'desc']], //ordenar (columna, orden)
+      iDisplayLength: 30, //paginacion
+      order: [
+        [3, 'desc'],
+        [2, 'desc'],
+      ], //ordenar (columna, orden)
     })
     .DataTable()
 }
@@ -129,8 +131,6 @@ function guardareditar(e) {
   limpiar()
 }
 
-
-
 function mostrar(id_asig) {
   $.post('../ajax/asignar.php?op=mostrar', { id_asig: id_asig }, function (
     data,
@@ -147,6 +147,7 @@ function mostrar(id_asig) {
     $('#estudio_asig').val(data.estudio_asig)
     $('#fecha_asig').val(data.fecha_asig)
     $('#hora_asig	').val(data.hora_asig)
+    $('#hora_fin_asig	').val(data.hora_fin_asig)
   })
   $.post('../ajax/asignar.php?op=permisos&id=' + id_asig, function (r) {
     $('#permisos').html(r)

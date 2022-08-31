@@ -20,7 +20,7 @@ if (isset($_POST['save_multi_select'])) {
         $query_run = mysqli_query($conexion, $query);
     }
     if ($query_run) {
-        header('Location: http://192.168.0.122/sigi/admin/vistas/asignar.php');
+        header('Location: http://192.168.0.122/admin/vistas/asignar.php');
     }
 }
 ?>

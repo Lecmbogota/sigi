@@ -14,7 +14,6 @@ class Estudio
         $Estudio,
         $Nivel,
         $PCotizacion,
-        $PComision,
         $Muestra,
         $Fecha_Inicio_Estudio,
         $Fecha_Entrega_Estudio,
@@ -23,7 +22,7 @@ class Estudio
         $Estado
     ) {
         date_default_timezone_set('America/Bogota');
-        $sql = "INSERT INTO estudios (Cliente,Estudio,Nivel,PCotizacion,PComision, Muestra,Fecha_Inicio_Estudio,Fecha_Entrega_Estudio,TMO,TME,Estado) VALUES ('$Cliente','$Estudio','$Nivel','$PCotizacion','$PComision','$Muestra','$Fecha_Inicio_Estudio','$Fecha_Entrega_Estudio','$TMO','$TME','1')";
+        $sql = "INSERT INTO estudios (Cliente,Estudio,Nivel,PCotizacion, Muestra,Fecha_Inicio_Estudio,Fecha_Entrega_Estudio,TMO,TME,Estado) VALUES ('$Cliente','$Estudio','$Nivel','$PCotizacion','$Muestra','$Fecha_Inicio_Estudio','$Fecha_Entrega_Estudio','$TMO','$TME','1')";
         return ejecutarConsulta($sql);
     }
 
@@ -33,7 +32,6 @@ class Estudio
         $Estudio,
         $Nivel,
         $PCotizacion,
-        $PComision,
         $Muestra,
         $Fecha_Inicio_Estudio,
         $Fecha_Entrega_Estudio,
@@ -42,7 +40,7 @@ class Estudio
         $Estado,
         $Fecha_Creacion
     ) {
-        $sql = "UPDATE estudios SET Cliente='$Cliente',Estudio='$Estudio',Nivel='$Nivel',PCotizacion='$PCotizacion',PComision='$PComision',Muestra='$Muestra',Fecha_Inicio_Estudio='$Fecha_Inicio_Estudio',Fecha_Entrega_Estudio='$Fecha_Entrega_Estudio',TMO='$TMO',TME='$TME',Estado='1' WHERE id_Estudio='$id_Estudio'";
+        $sql = "UPDATE estudios SET Cliente='$Cliente',Estudio='$Estudio',Nivel='$Nivel',PCotizacion='$PCotizacion',Muestra='$Muestra',Fecha_Inicio_Estudio='$Fecha_Inicio_Estudio',Fecha_Entrega_Estudio='$Fecha_Entrega_Estudio',TMO='$TMO',TME='$TME',Estado='1' WHERE id_Estudio='$id_Estudio'";
         return ejecutarConsulta($sql);
     }
     public function eliminaregistro($id_Estudio)

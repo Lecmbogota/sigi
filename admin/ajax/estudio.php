@@ -39,7 +39,6 @@ switch ($_GET['op']) {
         $Estudio,
         $Nivel,
         $PCotizacion,
-        $PComision,
         $Muestra,
         $Fecha_Inicio_Estudio,
         $Fecha_Entrega_Estudio,
@@ -59,7 +58,6 @@ switch ($_GET['op']) {
         $Estudio,
         $Nivel,
         $PCotizacion,
-        $PComision,
         $Muestra,
         $Fecha_Inicio_Estudio,
         $Fecha_Entrega_Estudio,
@@ -120,13 +118,12 @@ switch ($_GET['op']) {
         '3' => $reg->Estudio,
         '4' => $reg->Nivel,
         '5' => $reg->PCotizacion,
-        '6' => $reg->PComision,
-        '7' => $reg->Muestra,
-        '8' => $reg->Fecha_Inicio_Estudio,
-        '9' => $reg->Fecha_Entrega_Estudio,
-        '10' => $reg->TMO,
-        '11' => $reg->TME,
-        "12" => $reg->Estado
+        '6' => $reg->Muestra,
+        '7' => $reg->Fecha_Inicio_Estudio,
+        '8' => $reg->Fecha_Entrega_Estudio,
+        '9' => $reg->TMO,
+        '10' => $reg->TME,
+        "11" => $reg->Estado
           ? '<progress value="' .
             $reg->Avance_estudio .
             '" max="' .

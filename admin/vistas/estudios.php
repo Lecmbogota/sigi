@@ -56,7 +56,6 @@ SET estudios.Avance_estudio = advance.avance';
                                 <th width='27%'>ESTUDIO</th>
                                 <th width='5%'>NIVEL</th>
                                 <th width='5%'>P. COT</th>
-                                <th width='5%'>P. COM</th>
                                 <th width='5%'>MUESTRA</th>
                                 <th width='5%'>FECHA INICIO</th>
                                 <th width='5%'>FECHA ENTREGA</th>
