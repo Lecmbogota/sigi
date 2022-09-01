@@ -73,18 +73,16 @@ if (strlen(session_id()) < 1) {
         </header>
         <!-- Left side column. contains the logo and sidebar -->
         <aside class="main-sidebar">
-
+                    
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar">
+                
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu tree" data-widget="tree">
-
-
-
+                    
                     <li><a href="escritorio.php"><i class="fa fa-home" aria-hidden="true"></i>
                             <span>INICIO</span></a>
                     </li>
-
 
 <!--Modulo DIRECTOR ADMINISTRATIVO Y FINANCIERO ----------------------------------------------------------------------------------->
                     <?php if (
@@ -102,18 +100,17 @@ if (strlen(session_id()) < 1) {
                         <ul class="treeview-menu">
                             <li class="treeview">
                                 <a href="#">
-                                    <i class="fa fa-clock-o" aria-hidden="true"></i> <span> Asistencias</span>
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i> <span> ASISTENCIAS</span>
                                     <span class="pull-right-container">
                                         <i class="fa fa-angle-left pull-right"></i>
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
                                     <li><a href="asistencia.php"><i class="fa fa-pie-chart" aria-hidden="true"></i>
-                                            Reporte General</a>
+                                            REPORTE GENERAL</a>
                                     </li>
                                     <li><a href="rptasistencia.php"><i class="fa fa-pie-chart" aria-hidden="true"></i>
-                                            Reporte
-                                            individual</a></li>
+                                            REPORTE INDIVIDUAL</a></li>
                                     <li><a href="http://192.168.0.122/sigi/vistas/liderasis.php"><i class="fa fa-pie-chart"
                                             aria-hidden="true"></i>
                                         SCA INI. GEST.</a></li>
@@ -124,24 +121,64 @@ if (strlen(session_id()) < 1) {
                                         <i class="fa fa-angle-left pull-right"></i>
                                     </span>
                                 </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="tsg.php"><i class="fa fa-clock-o" aria-hidden="true"></i>
-                                            REGISTRAR TSG</a>
-                                    </li>
-                                   
-                                </ul>
                             </li>
                         </ul>
                     </li>
-                    <ul class="sidebar-menu tree" data-widget="tree">
-                        <li><a href="verestudios.php"><i class="fa fa-laptop" aria-hidden="true"></i>
-                                <span>DIR. OPERACIONES</span><span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i></a>
-                            </span>
+            
+                    <li><a href="estudios.php"><i class="fa fa-laptop" aria-hidden="true"></i>
+                        <span>DIR. OPERACIONES</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></a></span>
+                    </li>
+                    <li><a href="tsg.php"><i class="fa fa-clock-o" aria-hidden="true"></i>
+                                            REGISTRAR TSG</a>
+                                    </li>
+                
+                 <li class="treeview">
+                <li>
+                    <a href="../ajax/usuario.php?op=salir"><i class="fa fa-power-off" aria-hidden="true"></i>
+                        <span>CERRAR SESION</a>
+                </li>
+                <?php } ?>
+<!--------------------------------------------------------------------------------------------------------------------------------->
 
-                        </li>
-                    </ul>
-                </ul> 
+<!--MODULO AGENTES----------------------------------------------------------------------------------------------------------------->
+                    <?php if (
+                        $_SESSION['tipousuario'] ==
+                        'AGENTE CALL CENTER'
+                    ) { ?>
+                    <li class="treeview">
+                        <a href="verasig_agente.php">
+                            <i class="fa fa-users" aria-hidden="true"></i> <span> ASIGNACION DE ESTUDIOS</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                    </li>
+                 <li class="treeview">
+                <li>
+                    <a href="../ajax/usuario.php?op=salir"><i class="fa fa-power-off" aria-hidden="true"></i>
+                        <span>CERRAR SESION</a>
+                </li>
+                <?php } ?>
+<!--------------------------------------------------------------------------------------------------------------------------------->
+
+<!--MODULO CALIDAD----------------------------------------------------------------------------------------------------------------->
+                    <?php if (
+                        $_SESSION['tipousuario'] ==
+                        'ANALISTA DE CALIDAD' ||
+                        $_SESSION['tipousuario'] ==
+                        'LÍDER DE CALIDAD'
+                    ) { ?>
+                    <li class="treeview">
+                        <a href="calidad.php">
+                            <i class="fa fa-users" aria-hidden="true"></i> <span> ENCUESTAS</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li><a href="tsg.php"><i class="fa fa-clock-o" aria-hidden="true"></i>
+                                            REGISTRAR TSG</a>
+                                    </li>
                  <li class="treeview">
                 <li>
                     <a href="../ajax/usuario.php?op=salir"><i class="fa fa-power-off" aria-hidden="true"></i>
@@ -172,21 +209,16 @@ if (strlen(session_id()) < 1) {
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="asistencia.php"><i class="fa fa-pie-chart" aria-hidden="true"></i>
-                                        Reporte General</a>
+                                        REPORTE GENERAL</a>
                                 </li>
                                 <li><a href="rptasistencia.php"><i class="fa fa-pie-chart" aria-hidden="true"></i>
-                                        Reporte
-                                        individual</a></li>
+                                        REPORTE INDIVIDUAL</a></li>
                             </ul>
                         </li>
-                            <a href="#">
-                                <i class="fa fa-clock-o" aria-hidden="true"></i> <span> OPERACIONES CATI</span>
-                                <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                            </a>
-                                <ul class="treeview-menu">
+                        <ul class="treeview-menu">
                                     <li><a href="tsg.php"><i class="fa fa-clock-o" aria-hidden="true"></i> REGISTRAR TSG</a>
                                     </li>
-                                </ul>
+                                </ul>                               
                     </ul>
 
 
@@ -230,9 +262,18 @@ if (strlen(session_id()) < 1) {
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                             <ul class="treeview-menu">
-                                <li><a href="asignar.php"><i class="fa fa-calendar"></i> Crear/Ver Planeación</a>
+                                <li><a href="asignar.php"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Crear Planeación</a>
                                 </li>
-                                <li><a href="tsg.php"><i class="fa fa-clock-o" aria-hidden="true"></i> REGISTRAR TSG</a>
+                                <li><a href="editarasig.php"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 
+                                        Editar Asignación</a></li>
+                                <li><a href="productividad.php"><i class="fa fa-line-chart" aria-hidden="true"></i>
+                                        Productividad Detallada</a></li>
+                                <li><a href="productividadprom.php"><i class="fa fa-line-chart" aria-hidden="true"></i>
+                                        Productividad Diaria </a></li>
+                                <li><a href="e_carga.php"><i class="fa fa-upload" aria-hidden="true"></i> Cargar
+                                        Encuestas
+                                        Exitosas</a></li>
+                                <li><a href="tsg.php"><i class="fa fa-clock-o" aria-hidden="true"></i> Registrar TSG</a>
                                     </li>
                             </ul>
                     </li>
@@ -290,8 +331,20 @@ if (strlen(session_id()) < 1) {
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                             <ul class="treeview-menu">
-                                <li><a href="verasignacion.php"><i class="fa fa-calendar"></i> Ver Planeación</a>
+                                <li><a href="asignar.php"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Crear Planeación</a>
                                 </li>
+                                <li><a href="editarasig.php"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 
+                                        Editar Asignación</a></li>
+                                <li><a href="productividad.php"><i class="fa fa-line-chart" aria-hidden="true"></i>
+                                        Productividad Detallada</a></li>
+                                <li><a href="productividadprom.php"><i class="fa fa-line-chart" aria-hidden="true"></i>
+                                        Productividad Diaria </a></li>
+                                <li><a href="e_carga.php"><i class="fa fa-upload" aria-hidden="true"></i> Cargar
+                                        Encuestas
+                                        Exitosas</a></li>
+                                <li><a href="tsg.php"><i class="fa fa-clock-o" aria-hidden="true"></i> Registrar TSG</a>
+                                    </li>
+
                             </ul>
                     </li>
                 </un>
@@ -345,8 +398,19 @@ if (strlen(session_id()) < 1) {
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                             <ul class="treeview-menu">
-                                <li><a href="verasignacion.php"><i class="fa fa-calendar"></i> Ver Planeación</a>
+                                <li><a href="asignar.php"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Crear Planeación</a>
                                 </li>
+                                <li><a href="editarasig.php"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 
+                                        Editar Asignación</a></li>
+                                <li><a href="productividad.php"><i class="fa fa-line-chart" aria-hidden="true"></i>
+                                        Productividad Detallada</a></li>
+                                <li><a href="productividadprom.php"><i class="fa fa-line-chart" aria-hidden="true"></i>
+                                        Productividad Diaria </a></li>
+                                <li><a href="e_carga.php"><i class="fa fa-upload" aria-hidden="true"></i> Cargar
+                                        Encuestas
+                                        Exitosas</a></li>
+                                <li><a href="tsg.php"><i class="fa fa-clock-o" aria-hidden="true"></i> Registrar TSG</a>
+                                    </li>
                             </ul>
                     </li>
                 </un>
@@ -380,7 +444,11 @@ if (strlen(session_id()) < 1) {
 
                     </li>
                 </ul>
+                <ul class="sidebar-menu tree" data-widget="tree">
+                 <li><a href="tsg.php"><i class="fa fa-clock-o" aria-hidden="true"></i> Registrar TSG</a>
+                                    </li>
                 </ul>
+                
                 <li>
                     <a href="../ajax/usuario.php?op=salir"><i class="fa fa-power-off" aria-hidden="true"></i>
                         <span>CERRAR SESION</a>
@@ -397,19 +465,13 @@ if (strlen(session_id()) < 1) {
                 <ul class="sidebar-menu tree" data-widget="tree">
                     <li><a href="capacitacion.php"><i class="fa fa-graduation-cap" aria-hidden="true"></i>
                             <span>CAPACITACION</span><span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i></a>
+                                </a>
                         </span>
 
                     </li>
-                    <a href="#">
-                                <i class="fa fa-clock-o" aria-hidden="true"></i> <span> OPERACIONES CATI</span>
-                                <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                            </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="tsg.php"><i class="fa fa-clock-o" aria-hidden="true"></i> Registrar TSG</a>
-                                    </li>
-                                </ul>
                 </ul>
+                <li><a href="tsg.php"><i class="fa fa-clock-o" aria-hidden="true"></i> Registrar TSG</a>
+                                    </li>
                 <li>
                     <a href="../ajax/usuario.php?op=salir"><i class="fa fa-power-off" aria-hidden="true"></i>
                         <span>CERRAR SESION</a>
@@ -540,13 +602,19 @@ if (strlen(session_id()) < 1) {
                             </span>
 
                             <ul class="treeview-menu">
-                                <li><a href="e_carga.php"><i class="fa fa-upload" aria-hidden="true"></i> Cargar
-                                        Cargar Encuestas
-                                        E.</a></li>
-                                <li><a href="editarasig.php"><i class="fa fa-circle-o"></i> 
+                                <li><a href="asignar.php"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Crear Planeación</a>
+                                </li>
+                                <li><a href="editarasig.php"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 
                                         Editar Asignación</a></li>
-                                <li><a href="productividad.php"><i class="fa fa-circle-o"></i>
-                                        Productividad Diaria</a></li>
+                                <li><a href="productividad.php"><i class="fa fa-line-chart" aria-hidden="true"></i>
+                                        Productividad Detallada</a></li>
+                                <li><a href="productividadprom.php"><i class="fa fa-line-chart" aria-hidden="true"></i>
+                                        Productividad Diaria </a></li>
+                                <li><a href="e_carga.php"><i class="fa fa-upload" aria-hidden="true"></i> Cargar
+                                        Encuestas
+                                        Exitosas</a></li>
+                                <li><a href="tsg.php"><i class="fa fa-clock-o" aria-hidden="true"></i> Registrar TSG</a>
+                                    </li>
                             </ul>
                     </li>
 
@@ -568,7 +636,6 @@ if (strlen(session_id()) < 1) {
 
                 <?php } ?>
 <!--------------------------------------------------------------------------------------------------------------------------------->
-
 
             </section>
         </aside>

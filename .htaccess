@@ -1,17 +1,4 @@
 Options All -Indexes
-Options +FollowSymLinks
-RewriteCond %{QUERY_STRING} (;|<|>|’|”|\)|%0A|%0D|%22|%27|%3C|%3E|%00).*(/\*|union|select|insert|cast|set|declare|drop|update|md5|benchmark) [NC,OR]
-  RewriteCond %{QUERY_STRING} \.\./\.\. [OR]
-  RewriteCond %{QUERY_STRING} (localhost|loopback|127\.0\.0\.1) [NC,OR]
-  RewriteCond %{QUERY_STRING} \.[a-z0-9] [NC,OR]
-  RewriteCond %{QUERY_STRING} (<|>|’|%0A|%0D|%27|%3C|%3E|%00) [NC]
-  RewriteRule .* - [F]
-  RewriteRule ^(cache|includes|logs|tmp)/ - [F]
-  RewriteCond %{REQUEST_FILENAME} -f
-  RewriteCond %{REQUEST_URI} \.php|\.ini|\.xml [NC]
-  RewriteCond %{REQUEST_URI} \/library\/ [OR]
-  RewriteCond %{REQUEST_URI} \/images\/ [OR]
-  RewriteCond %{REQUEST_URI} \/cache\/
   RewriteRule ^(.*)$ index.php [R=404]
   ErrorDocument 404  http://192.168.0.122/sigi/admin/vistas/login.php
   ErrorDocument 403  http://192.168.0.122/sigi/admin/vistas/login.php
@@ -22,11 +9,3 @@ RewriteCond %{QUERY_STRING} (;|<|>|’|”|\)|%0A|%0D|%22|%27|%3C|%3E|%00).*(/\*
   ErrorDocument 501  http://192.168.0.122/sigi/admin/vistas/login.php
   ErrorDocument 401  http://192.168.0.122/sigi/admin/vistas/login.php
   ErrorDocument 500  http://192.168.0.122/sigi/admin/vistas/login.php
-
-  Options +FollowSymLinks
-RewriteEngine On
- 
-RewriteCond %{SCRIPT_FILENAME} !-d
-RewriteCond %{SCRIPT_FILENAME} !-f
- 
-RewriteRule ^.*$ ./index.php

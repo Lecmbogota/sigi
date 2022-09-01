@@ -75,70 +75,7 @@ require_once('../modelos/Usuario.php');
                         </div>
                         <?php } ?>
 
-                        <?php if ($_SESSION['tipousuario'] == 'DIRECTORA ADMINISTRATIVA Y FINANCIERA') {
-?>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <div class="small-box bg-blue">
-
-                                <a href="asistencia.php" class="small-box-footer">
-                                    <div class="inner">
-                                        <h5 style="font-size: 20px;">
-                                            <strong>Lista de Asistencia General</strong>
-
-                                        </h5>
-                                        <p>Visualización y Descarga</p>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="fa fa-list" aria-hidden="true"></i>
-                                    </div>&nbsp;
-                                    <div class="small-box-footer">
-                                        <i class="fa"></i>
-                                    </div>
-
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <div class="small-box bg-blue">
-
-                                <a href="rptasistencia.php" class="small-box-footer">
-                                    <div class="inner">
-                                        <h5 style="font-size: 20px;">
-                                            <strong>Lista de Asistencia Detallada</strong>
-                                        </h5>
-                                        <p>Visualización y Descarga</p>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="fa fa-list" aria-hidden="true"></i>
-                                    </div>&nbsp;
-                                    <div class="small-box-footer">
-                                        <i class="fa"></i>
-                                    </div>
-
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <div class="small-box bg-blue">
-
-                                <a href="estudios.php" class="small-box-footer">
-                                    <div class="inner">
-                                        <h5 style="font-size: 20px;">
-                                            <strong>Estudios</strong>
-                                        </h5>
-                                        <p>Creacion, Visualizacion, Edicion, Descarga </p>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="fa fa-book" aria-hidden="true"></i>
-                                    </div>&nbsp;
-                                    <div class="small-box-footer">
-                                        <i class="fa"></i>
-                                    </div>
-
-                                </a>
-                            </div>
-                        </div>
-                        <?php } ?>
+                        
 
 
                         <?php if ($_SESSION['tipousuario']=='Administrador') {
@@ -179,7 +116,67 @@ require_once('../modelos/Usuario.php');
 
                         <?php if ($_SESSION['tipousuario'] == 'AUXILIAR ADMINISTRATIVA' || $_SESSION['tipousuario'] == 'DIRECTORA ADMINISTRATIVA Y FINANCIERA') {
 ?>
-                       
+                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="small-box bg-blue">
+
+                                <a href="asistencia.php" class="small-box-footer">
+                                    <div class="inner">
+                                        <h5 style="font-size: 20px;">
+                                            <strong>Lista de Asistencia General</strong>
+
+                                        </h5>
+                                        <p>Visualizar, Descargar</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fa fa-list" aria-hidden="true"></i>
+                                    </div>&nbsp;
+                                    <div class="small-box-footer">
+                                        <i class="fa"></i>
+                                    </div>
+
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="small-box bg-blue">
+
+                                <a href="rptasistencia.php" class="small-box-footer">
+                                    <div class="inner">
+                                        <h5 style="font-size: 20px;">
+                                            <strong>Lista de Asistencia Detallada</strong>
+                                        </h5>
+                                        <p>Visualizar, Descargar</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fa fa-list" aria-hidden="true"></i>
+                                    </div>&nbsp;
+                                    <div class="small-box-footer">
+                                        <i class="fa"></i>
+                                    </div>
+
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="small-box bg-blue">
+
+                                <a href="estudios.php" class="small-box-footer">
+                                    <div class="inner">
+                                        <h5 style="font-size: 20px;">
+                                            <strong>Estudios</strong>
+                                        </h5>
+                                        <p>Crear, Visualizar, Editar, Descargar </p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fa fa-book" aria-hidden="true"></i>
+                                    </div>&nbsp;
+                                    <div class="small-box-footer">
+                                        <i class="fa"></i>
+                                    </div>
+
+                                </a>
+                            </div>
+                        </div>
                         <?php } ?>
 
                         <!--fin centro-->
