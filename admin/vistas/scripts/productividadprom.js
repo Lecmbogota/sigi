@@ -15,7 +15,7 @@ function init() {
 
   $('#imagenmuestra').hide()
   //mostramos los permisos
-  $.post('../ajax/productividad.php?op=permisos&id=', function (r) {
+  $.post('../ajax/productividadprom.php?op=permisos&id=', function (r) {
     $('#permisos').html(r)
   })
 
@@ -89,7 +89,7 @@ function listar() {
       url: '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json',
     },
     ajax: {
-      url: '../ajax/productividad.php?op=listar',
+      url: '../ajax/productividadprom.php?op=listar',
       type: 'get',
       dataType: 'json',
       error: function (e) {
@@ -99,9 +99,9 @@ function listar() {
     bDestroy: true,
     iDisplayLength: 200, //paginacion
     order: [
-      [2, 'desc'],
-      [3, 'desc'],
-      [0, 'desc'],
+      [4, 'desc'],
+      [1, 'desc'],
+      
     ], //ordenar (columna, orden)
   })
 }
@@ -113,7 +113,7 @@ function guardaryeditar(e) {
   var formData = new FormData($('#formulario')[0])
 
   $.ajax({
-    url: '../ajax/productividad.php?op=guardaryeditar',
+    url: '../ajax/productividadprom.php?op=guardaryeditar',
     type: 'POST',
     data: formData,
     contentType: false,
@@ -135,7 +135,7 @@ function editar_clave(c) {
   var formData = new FormData($('#formularioc')[0])
 
   $.ajax({
-    url: '../ajax/productividad.php?op=editar_clave',
+    url: '../ajax/productividadprom.php?op=editar_clave',
     type: 'POST',
     data: formData,
     contentType: false,
@@ -153,7 +153,7 @@ function editar_clave(c) {
 }
 function mostrar(id_carga) {
   $.post(
-    '../ajax/productividad.php?op=mostrar',
+    '../ajax/productividadprom.php?op=mostrar',
     { id_carga: id_carga },
     function (data, status) {
       data = JSON.parse(data)
@@ -170,7 +170,7 @@ function mostrar(id_carga) {
       $('#ee_estatus').val(data.ee_estatus)
     },
   )
-  $.post('../ajax/productividad.php?op=permisos&id=' + id_carga, function (r) {
+  $.post('../ajax/productividadprom.php?op=permisos&id=' + id_carga, function (r) {
     $('#permisos').html(r)
   })
 }
@@ -180,7 +180,7 @@ function desactivar(id_carga) {
   bootbox.confirm('¿Esta seguro de desactivar este dato?', function (result) {
     if (result) {
       $.post(
-        '../ajax/productividad.php?op=desactivar',
+        '../ajax/productividadprom.php?op=desactivar',
         { id_carga: id_carga },
         function (e) {
           bootbox.alert(e)
@@ -195,7 +195,7 @@ function activar(id_carga) {
   bootbox.confirm('¿Esta seguro de activar este dato?', function (result) {
     if (result) {
       $.post(
-        '../ajax/productividad.php?op=activar',
+        '../ajax/productividadprom.php?op=activar',
         { id_carga: id_carga },
         function (e) {
           bootbox.alert(e)

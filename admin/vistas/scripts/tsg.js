@@ -13,13 +13,13 @@ function init() {
   })
 
   $('document').ready(function () {
-    $('#agente').selectpicker('refresh')
-    $('#estudio').load('list_Estudios_cap.php')
-    $('#estudio').change(function () {
-      var id = $('#estudio').val()
-      $.get('list_agentes_cap.php', { param_id: id }).done(function (Data) {
-        $('#agente').html(Data)
-        $('#agente').selectpicker('refresh')
+    $('#agente_tsg').selectpicker('refresh')
+    $('#supervisor_tsg').load('list_area_tsg.php')
+    $('#supervisor_tsg').change(function () {
+      var id = $('#supervisor_tsg').val()
+      $.get('list_agentes_tsg.php', { param_id: id }).done(function (Data) {
+        $('#agente_tsg').html(Data)
+        $('#agente_tsg').selectpicker('refresh')
       })
     })
   })
@@ -60,12 +60,12 @@ function mostrarform_clave(flag) {
   }
 }
 
-function eliminaregistro(id_asig) {
+function eliminaregistro(id_tsg) {
   bootbox.confirm('¿Esta seguro de Eliminar este Registro?', function (result) {
     if (result) {
       $.post(
-        '../ajax/asignar.php?op=eliminaregistro',
-        { id_asig: id_asig },
+        '../ajax/tsg.php?op=eliminaregistro',
+        { id_tsg: id_tsg },
         function (e) {
           bootbox.alert(e)
           tabla.ajax.reload()
@@ -81,11 +81,6 @@ function cancelarform() {
   mostrarformu(false)
 }
 
-function cancelarform_clave() {
-  limpiar()
-  mostrarform_clave(false)
-}
-
 function listar() {
   tabla = $('#tbllist')
     .dataTable({
@@ -94,7 +89,7 @@ function listar() {
       dom: 'Bfrtip', //definimos los elementos del control de la tabla
       buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5'],
       ajax: {
-        url: '../ajax/asignar.php?op=listar',
+        url: '../ajax/tsg.php?op=listar',
         type: 'get',
         dataType: 'json',
         error: function (e) {
@@ -111,46 +106,4 @@ function listar() {
     .DataTable()
 }
 
-function guardareditar(e) {
-  e.preventDefault() //no se activara la accion predeterminada
-  $('#btnGuardar').prop('disabled', true)
-  var formData = new FormData($('#formulario')[0])
-  $.ajax({
-    url: '../ajax/asignar.php?op=guardareditar',
-    type: 'POST',
-    data: formData,
-    contentType: false,
-    processData: false,
-    success: function (datos) {
-      bootbox.alert(datos)
-      mostrarformu(false)
-      tabla.ajax.reload()
-    },
-  })
-  $('#claves').show()
-  limpiar()
-}
-
-function mostrar(id_asig) {
-  $.post('../ajax/asignar.php?op=mostrar', { id_asig: id_asig }, function (
-    data,
-    status,
-  ) {
-    data = JSON.parse(data)
-    mostrarformu(true)
-    if ($('#id_asig').val(data.id_asig).length == 0) {
-      $('#claves').show()
-    } else {
-      $('#claves').hide()
-    }
-    $('#agente_asig').val(data.agente_asig)
-    $('#estudio_asig').val(data.estudio_asig)
-    $('#fecha_asig').val(data.fecha_asig)
-    $('#hora_asig').val(data.hora_asig)
-    $('#hora_fin_asig').val(data.hora_fin_asig)
-  })
-  $.post('../ajax/asignar.php?op=permisos&id=' + id_asig, function (r) {
-    $('#permisos').html(r)
-  })
-}
 init()

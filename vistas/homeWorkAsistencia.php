@@ -143,7 +143,7 @@
                                 }
                                 ?>
                                 <?php if (
-                                    $timenow > date('12:30:00') &&
+                                    $timenow > date('11:30:00') &&
                                     $timenow < date('17:30:00')
                                 ) {
                                     echo '<option value="FIN ALMUERZO">FIN ALMUERZO</option>';

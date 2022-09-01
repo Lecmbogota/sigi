@@ -7,6 +7,40 @@ session_start();
 if (!isset($_SESSION['nombre'])) {
     header('Location: login.html');
 } else {
+
+//actualizar data
+    require '../config/Conexion.php';
+    for ($e = 1; $e < 2; $e++) {
+
+        $query ='DELETE t1 FROM ee_carga t1 INNER JOIN ee_carga t2 WHERE t1.id_carga > t2.id_carga AND t1.ee_id = t2.ee_id and t1.ee_estudio = t2.ee_estudio';
+        $query_run = mysqli_query($conexion, $query);
+        $query ='UPDATE ee_carga INNER JOIN usuarios ON ee_carga.ee_encuestador = usuarios.usr_rotator SET ee_carga.ee_encuestador = CONCAT(usuarios.nombre," ",usuarios.apellidos)';
+        $query_run = mysqli_query($conexion, $query);
+        $query ='INSERT INTO productividad(agente_prod,estudio_prod,fecha_prod,enc_realizadas_prod) SELECT ee_encuestador,ee_estudio,ee_fecha, SUM(ee_estatus) FROM ee_carga WHERE ee_estatus = 1 GROUP BY ee_encuestador, ee_fecha';
+        $query_run = mysqli_query($conexion, $query);
+        $query ='DELETE t1 FROM productividad t1 INNER JOIN productividad t2 WHERE t1.id_productividad  > t2.id_productividad AND t1.estudio_prod = t2.estudio_prod and t1.fecha_prod = t2.fecha_prod AND t1.agente_prod = t2.agente_prod';
+        $query_run = mysqli_query($conexion, $query);
+        $query = 'UPDATE productividad SET productividad.total_horas_trabajadas_prod = (SELECT (TIMEDIFF(`hora_fin_prod`,`hora_ini_prod`)/10000)) WHERE  hora_fin_prod >  "00:00:00"';
+        $query_run = mysqli_query($conexion, $query);
+        $query ='UPDATE productividad INNER JOIN asignacionestudio ON productividad.agente_prod = asignacionestudio.agente_asig AND productividad.fecha_prod = asignacionestudio.fecha_asig SET productividad.hora_ini_prod = asignacionestudio.hora_asig';
+        $query_run = mysqli_query($conexion, $query);
+        $query = 'UPDATE productividad INNER JOIN asignacionestudio ON productividad.agente_prod = asignacionestudio.agente_asig AND productividad.fecha_prod = asignacionestudio.fecha_asig SET productividad.hora_fin_prod = asignacionestudio.hora_fin_asig';
+        $query_run = mysqli_query($conexion, $query);
+        $query = 'UPDATE productividad SET `total_horas_trabajadas_prod`= (SELECT (FORMAT(`total_horas_trabajadas_prod`, 1)))';
+        $query_run = mysqli_query($conexion, $query);
+        $query ='UPDATE productividad INNER JOIN estudios ON productividad.estudio_prod = estudios.Estudio SET productividad.meta_prod = estudios.TME*productividad.total_horas_trabajadas_prod, productividad.porcentaje_prod = ((productividad.enc_realizadas_prod/productividad.meta_prod)*100)';
+        $query_run = mysqli_query($conexion, $query);
+        
+
+    }
+
+//---
+
+
+
+
+
+
     require 'header.php'; ?>
 <div class="content-wrapper">
     <!-- Main content -->
@@ -15,7 +49,7 @@ if (!isset($_SESSION['nombre'])) {
         <div class="info-box">
             <span class="info-box-icon bg-blue"><i class="fa fa-bar-chart" aria-hidden="true"></i></span>
             <div class="info-box-content">
-                <h1 class="box-title">Productividad General</h1>
+                <h1 class="box-title">Productividad Detallada</h1>
             </div>
 
         </div>
@@ -25,9 +59,9 @@ if (!isset($_SESSION['nombre'])) {
                 <div class="box">
                     <div class="box-header with-border">
 
-                        <form action="" name="formulariol" id="formularioa" method="POST">
+                        <form action="" name="formulariol" id="f" method="POST">
                             <h1 class="box-title"> <button class="btn btn-primary" type="submit"
-                                    id="btnGuarda"><i class="fa fa-save"></i>Calcular</button>
+                                    id="btnGuarda"><i class="fa fa-save"></i>Actualizar</button>
                         </form>
                         <div class="box-tools pull-right">
 
@@ -48,9 +82,6 @@ if (!isset($_SESSION['nombre'])) {
                                 <th>FECHA</th>
                                 <th>H INI</th>
                                 <th>H FIN</th>
-                                <th>TMU</th>
-                                <th>HTR</th>
-                                <th>%</th>
                             </thead>
                         </table>
                     </div>

@@ -16,14 +16,8 @@
     <!-- iCheck -->
     <link rel="stylesheet" href="../public/css/blue.css">
     <link rel="shortcut icon" href="../public/images/logo_lg.webp">
-    <style>
-html {
-  height: 100%;
-}
-body {
-  min-height: 100%;
-}
-</style>
+
+
 
 
   </head>

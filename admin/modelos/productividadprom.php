@@ -13,12 +13,11 @@ class Productividad
         $ee_id,
         $ee_encuestador,
         $ee_fecha,
-        $ee_estudio,
         $ee_estatus
     ) {
         date_default_timezone_set('America/Bogota');
         $fechacreado = date('Y-m-d H:i:s');
-        $sql = "INSERT INTO productividad (ee_id,ee_encuestador,ee_fecha,ee_estudio,ee_estatus) VALUES ('$ee_id','$ee_encuestador','$ee_fecha','$ee_estudio','$ee_estatus')";
+        $sql = "INSERT INTO productividad (ee_id,ee_encuestador,ee_fecha,ee_estudio,ee_estatus) VALUES ('$ee_id','$ee_encuestador','$ee_fecha','$ee_estatus')";
         return ejecutarConsulta($sql);
     }
 
@@ -27,10 +26,9 @@ class Productividad
         $ee_id,
         $ee_encuestador,
         $ee_fecha,
-        $ee_estudio,
         $ee_estatus
     ) {
-        $sql = "UPDATE productividad SET ee_id='$ee_id',ee_encuestador='$ee_encuestador',ee_fecha='$ee_fecha',ee_estudio='$ee_estudio',ee_estatus='$ee_estatus'    
+        $sql = "UPDATE productividad SET ee_id='$ee_id',ee_encuestador='$ee_encuestador',ee_fecha='$ee_fecha',ee_estatus='$ee_estatus'    
 	WHERE id_carga='$id_carga'";
         return ejecutarConsulta($sql);
     }
@@ -56,7 +54,7 @@ class Productividad
     //listar registros
     public function listar()
     {
-        $sql = 'SELECT * FROM productividad';
+        $sql = 'SELECT * FROM productividad2';
         return ejecutarConsulta($sql);
     }
 

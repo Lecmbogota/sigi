@@ -72,7 +72,7 @@ switch ($_GET['op']) {
         '2' => $reg->estudio_asig,
         '3' => $reg->fecha_asig,
         '4' => $reg->hora_asig,
-        '5' => $reg->hora_fin_asig,
+        '5' => $reg->hora_fin_asig
       ];
     }
 

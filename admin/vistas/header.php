@@ -36,13 +36,12 @@ if (strlen(session_id()) < 1) {
         integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous">
     </script>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../public/css/font-awesome.css">
+    <script src="https://kit.fontawesome.com/6fe7cfb60a.js" crossorigin="anonymous"></script>
     <!-- Theme style -->
     <link rel="stylesheet" href="../public/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../public/css/_all-skins.min.css">
-    <link rel="apple-touch-icon" href="../public/images/logo.png">
     <link rel="shortcut icon" href="../public/images/logo.png">
 
     <!-- DATATABLES -->
@@ -119,6 +118,18 @@ if (strlen(session_id()) < 1) {
                                             aria-hidden="true"></i>
                                         SCA INI. GEST.</a></li>
                                 </ul>
+                                <a href="#">
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i> <span> OPERACIONES CATI</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="tsg.php"><i class="fa fa-clock-o" aria-hidden="true"></i>
+                                            REGISTRAR TSG</a>
+                                    </li>
+                                   
+                                </ul>
                             </li>
                         </ul>
                     </li>
@@ -168,7 +179,14 @@ if (strlen(session_id()) < 1) {
                                         individual</a></li>
                             </ul>
                         </li>
-
+                            <a href="#">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i> <span> OPERACIONES CATI</span>
+                                <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                            </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="tsg.php"><i class="fa fa-clock-o" aria-hidden="true"></i> REGISTRAR TSG</a>
+                                    </li>
+                                </ul>
                     </ul>
 
 
@@ -214,6 +232,8 @@ if (strlen(session_id()) < 1) {
                             <ul class="treeview-menu">
                                 <li><a href="asignar.php"><i class="fa fa-calendar"></i> Crear/Ver Planeación</a>
                                 </li>
+                                <li><a href="tsg.php"><i class="fa fa-clock-o" aria-hidden="true"></i> REGISTRAR TSG</a>
+                                    </li>
                             </ul>
                     </li>
                 </un>
@@ -381,6 +401,14 @@ if (strlen(session_id()) < 1) {
                         </span>
 
                     </li>
+                    <a href="#">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i> <span> OPERACIONES CATI</span>
+                                <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                            </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="tsg.php"><i class="fa fa-clock-o" aria-hidden="true"></i> Registrar TSG</a>
+                                    </li>
+                                </ul>
                 </ul>
                 <li>
                     <a href="../ajax/usuario.php?op=salir"><i class="fa fa-power-off" aria-hidden="true"></i>
@@ -492,11 +520,14 @@ if (strlen(session_id()) < 1) {
                                 <li><a href="editarasig.php"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 
                                         Editar Asignación</a></li>
                                 <li><a href="productividad.php"><i class="fa fa-line-chart" aria-hidden="true"></i>
-                                        Reportes de
-                                        Productividad</a></li>
+                                        Productividad Detallada</a></li>
+                                <li><a href="productividadprom.php"><i class="fa fa-line-chart" aria-hidden="true"></i>
+                                        Productividad Diaria </a></li>
                                 <li><a href="e_carga.php"><i class="fa fa-upload" aria-hidden="true"></i> Cargar
                                         Encuestas
                                         Exitosas</a></li>
+                                <li><a href="tsg.php"><i class="fa fa-clock-o" aria-hidden="true"></i> Registrar TSG</a>
+                                    </li>
 
                             </ul>
                     </li>

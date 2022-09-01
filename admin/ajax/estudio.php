@@ -109,10 +109,10 @@ switch ($_GET['op']) {
         "1" => $reg->Estado
           ? '<button class="btn btn-success btn-xs " onclick="desactivar(' .
             $reg->id_Estudio .
-            ')" width="250" ><i class="fa fa-unlock" aria-hidden="true"></i> ACTIVO  .</button>'
+            ')disabled"><i class="fa fa-unlock" aria-hidden="true"></i> ACTIVO  .</button>'
           : '<button class="btn btn-danger btn-xs " onclick="activar(' .
             $reg->id_Estudio .
-            ')"><i class="fa fa-lock" aria-hidden="true"></i> CERRADO</button>',
+            ')disabled"><i class="fa fa-lock" aria-hidden="true"></i> CERRADO</button>',
 
         '2' => $reg->Cliente,
         '3' => $reg->Estudio,

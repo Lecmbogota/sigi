@@ -20,7 +20,7 @@ if (isset($_POST['save_multi_select'])) {
     }
     if ($query_run) {
         header(
-            'Location: http://192.168.0.122/admin/vistas/capacitacion.php'
+            'Location: http://192.168.0.122/sigi/admin/vistas/capacitacion.php'
         );
     }
 }

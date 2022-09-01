@@ -10,14 +10,19 @@ if (!isset($_SESSION['nombre'])) {
     for ($e = 1; $e < 2; $e++) {
         $query = 'TRUNCATE TABLE advance';
         $query_run = mysqli_query($conexion, $query);
-        $query =
-            'INSERT INTO advance(estudio,avance) SELECT ee_estudio, SUM(ee_estatus) FROM ee_carga WHERE ee_estatus = 1 GROUP BY ee_estudio ORDER BY ee_estudio';
+        $query ='INSERT INTO advance(estudio,avance) SELECT ee_estudio, SUM(ee_estatus) FROM ee_carga WHERE ee_estatus = 1 GROUP BY ee_estudio ORDER BY ee_estudio';
+        $query_run = mysqli_query($conexion, $query);
         $query_run = mysqli_query($conexion, $query);
         $query = 'UPDATE advance INNER JOIN estudios ON advance.estudio = estudios.Estudio 
 SET advance.idavance = estudios.id_Estudio';
         $query_run = mysqli_query($conexion, $query);
         $query = 'UPDATE estudios INNER JOIN advance ON estudios.id_Estudio = advance.idavance
 SET estudios.Avance_estudio = advance.avance';
+        $query_run = mysqli_query($conexion, $query);
+
+        $query ='UPDATE estudios SET Estado = 0  WHERE Avance_estudio >= Muestra';
+        $query_run = mysqli_query($conexion, $query);
+        $query ='UPDATE estudios SET Estado = 1  WHERE Avance_estudio < Muestra';
         $query_run = mysqli_query($conexion, $query);
     }
 

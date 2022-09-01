@@ -37,6 +37,7 @@ if (!isset($_SESSION['nombre'])) {
                                 <th>Nombre</th>
                                 <th>Apellidos</th>                             
                                 <th>Cedula</th>
+                                <th>Cargo</th>
                                 <th>Usuario Rotator</th>
                                 <th>Estado</th>
                             </thead>

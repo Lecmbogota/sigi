@@ -5,6 +5,39 @@ session_start();
 if (!isset($_SESSION['nombre'])) {
     header('Location: login.html');
 } else {
+
+
+//actualizar data
+    require '../config/Conexion.php';
+    for ($e = 1; $e < 2; $e++) {
+
+                $query ='TRUNCATE TABLE productividad2';
+        $query_run = mysqli_query($conexion, $query);
+        $query ='INSERT INTO productividad2(agente_prod2,meta_prod2,enc_realizadas_prod2,fecha_prod2,hora_ini_prod2,hora_fin_prod2,tiempo_muerto_prod2) SELECT agente_prod,SUM(meta_prod),SUM(enc_realizadas_prod),fecha_prod,SUM(hora_ini_prod),SUM(hora_fin_prod),SUM(tiempo_muerto_prod) FROM productividad GROUP BY agente_prod, fecha_prod';
+        $query_run = mysqli_query($conexion, $query);
+        $query ='UPDATE productividad2 INNER JOIN tsg ON productividad2.agente_prod2 = tsg.cedula_tsg  AND productividad2.fecha_prod2 = tsg.fecha_tsg SET productividad2.tiempo_muerto_prod2 =  tsg.tiempo_tsg';
+        $query_run = mysqli_query($conexion, $query);
+        $query ='UPDATE productividad2 SET productividad2.total_horas_trabajadas_prod2 = (SELECT (TIMEDIFF(`hora_fin_prod2`,`hora_ini_prod2`)/10000)) WHERE  `hora_fin_prod2` >  "00:00:00"';
+        $query_run = mysqli_query($conexion, $query);
+        $query ='UPDATE productividad2 SET productividad2.total_horas_trabajadas_prod2 = productividad2.total_horas_trabajadas_prod2 - (( productividad2.tiempo_muerto_prod2 / 10000)+1)';
+        $query_run = mysqli_query($conexion, $query);
+        $query ='UPDATE productividad2 SET `total_horas_trabajadas_prod2`= (SELECT (FORMAT(`total_horas_trabajadas_prod2`, 1)))';
+        $query_run = mysqli_query($conexion, $query);
+        $query ='UPDATE productividad2 SET productividad2.porcentaje_prod2 = ((productividad2.enc_realizadas_prod2/productividad2.meta_prod2)*100)';
+        $query_run = mysqli_query($conexion, $query);
+        $query ='UPDATE productividad2 SET porcentaje_prod2= (SELECT (FORMAT(porcentaje_prod2, 1)))';
+        $query_run = mysqli_query($conexion, $query);
+
+
+    }
+
+//---
+
+
+
+
+
+
     require 'header.php'; ?>
 <div class="content-wrapper">
     <!-- Main content -->
@@ -13,7 +46,7 @@ if (!isset($_SESSION['nombre'])) {
         <div class="info-box">
             <span class="info-box-icon bg-blue"><i class="fa fa-file"></i></span>
             <div class="info-box-content">
-                <h1 class="box-title">Usuarios</h1>
+                <h1 class="box-title">Productividad Diaria</h1>
             </div>
 
         </div>
@@ -25,7 +58,7 @@ if (!isset($_SESSION['nombre'])) {
 
                         <form action="" name="formulariol" id="formularioa" method="POST">
                             <h1 class="box-title"> <button class="btn btn-primary" type="submit"
-                                    id="btnGuarda"><i class="fa fa-save"></i>Calcular</button>
+                                    id="btnGuarda"><i class="fa fa-save"></i>Actualizar</button>
                         </form>
                         <div class="box-tools pull-right">
 
@@ -41,7 +74,6 @@ if (!isset($_SESSION['nombre'])) {
                             <thead>
                                 <th>ID</th>
                                 <th>AGENTE</th>
-                                <th>ESTUDIO</th>
                                 <th>META</th>
                                 <th>EFECTIVAS</th>
                                 <th>FECHA</th>
@@ -196,7 +228,7 @@ if (!isset($_SESSION['nombre'])) {
     <!-- /.content -->
 </div>
 <?php require 'footer.php'; ?>
-<script src="scripts/productividad.js"></script>
+<script src="scripts/productividadprom.js"></script>
 <?php
 }
 

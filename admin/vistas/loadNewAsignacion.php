@@ -6,9 +6,10 @@ if (isset($_POST['save_multi_select'])) {
     $cedula_asig = $_POST['agente'];
     $fecha_asig = $_POST['fecha_asignacion'];
     $hora_asig = $_POST['horaasig'];
+    $hora_fin_asig = $_POST['hora_fin_asig'];
     foreach ($cedula_asig as $item) {
         // echo $item."<br>";
-        $query = "INSERT INTO asignacionestudio (cedula_asig,id_estudio_asig,fecha_asig,hora_asig) VALUES ('$item','$id_estudio_asig','$fecha_asig','$hora_asig')";
+        $query = "INSERT INTO asignacionestudio (cedula_asig,id_estudio_asig,fecha_asig,hora_asig,hora_fin_asig) VALUES ('$item','$id_estudio_asig','$fecha_asig','$hora_asig','$hora_fin_asig')";
         $query_run = mysqli_query($conexion, $query);
 
         $query =
@@ -20,7 +21,7 @@ if (isset($_POST['save_multi_select'])) {
         $query_run = mysqli_query($conexion, $query);
     }
     if ($query_run) {
-        header('Location: http://192.168.0.122/admin/vistas/asignar.php');
+        header('Location: http://192.168.0.122/sigi/admin/vistas/asignar.php');
     }
 }
 ?>

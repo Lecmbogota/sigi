@@ -82,9 +82,7 @@ switch ($_GET["op"]) {
         "4" => $reg->fecha_prod,
         "5" => $reg->hora_ini_prod,
         "6" => $reg->hora_fin_prod,
-        "7" => $reg->tiempo_muerto_prod,
-        "8" => $reg->total_horas_trabajadas_prod,
-        "9" => $reg->porcentaje_prod,
+
       ];
     }
 
